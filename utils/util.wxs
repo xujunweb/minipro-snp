@@ -1,0 +1,17 @@
+var formatMoney = function(money) {
+    if (!money) return '0';
+    money = money/100;
+    money = (+money).toString();
+    return money;
+}
+//保留两位小数
+var formatMoney2 = function(money) {
+    if (!money) return '0.00';
+    money = money/100;
+    money = (+money).toFixed(2);
+    return money;
+}
+module.exports = {
+    formatMoney: formatMoney,
+    formatMoney2: formatMoney2
+};
