@@ -1,0 +1,73 @@
+<view class='goods_warp'>
+    <view class="goods_row" wx:for="{{shopList}}" wx:for-index="i" wx:for-item="item" wx:key="{{i}}" bindtap="jumpNextPage" data-id="{{item.id}}" data-userType="{{item.userType}}" data-org-id="{{item.orgId}}" data-is-news="{{item.article}}" style='{{shopDt ? "padding-top:0;overflow:hidden;" : ""}}'>
+        <block  wx:if="{{!shopDt}}">
+            <view class="goods_row_info">
+                <view class="goods_row_info_l" catchtap="jumpToShop" data-type="{{item.userType}}" data-orgid="{{item.orgId}}" data-is-created="{{item.isCreated}}" data-publish-by="{{item.publishBy}}">
+                  <image src="{{item.avatar?item.avatar:'http://yamxcx.oss-cn-shenzhen.aliyuncs.com/pingtaixcx/user.png'}}" mode="aspectFill" class="goods_row_info_l_avatar"></image>
+                  <image src='http://yamxcx.oss-cn-shenzhen.aliyuncs.com/one-shop-one-mini-app/platform_dis/symbol.png' wx:if="{{item.userType==2}}" class="goods_row_info_l_sign"></image>
+                  <image src='http://yamxcx.oss-cn-shenzhen.aliyuncs.com/pingtaixcx/mprz.png' class='card_label' wx:if="{{item.isCreated == 2}}"></image>
+                 </view>
+                <view class="goods_row_info_r">
+                  <view class="goods_row_info_r_t">
+                      <view class="goods_row_info_r_t_name" catchtap="jumpToShop" data-type="{{item.userType}}" data-orgid="{{item.orgId}}" data-is-created="{{item.isCreated}}" data-publish-by="{{item.publishBy}}">{{item.user.nickname}}</view>
+                      <view class="goods_row_info_r_t_top" wx:if="{{item.topStatus == 2}}">顶</view>
+                  </view>
+                  <view class="goods_row_info_r_b">{{item.user.type}}</view>
+                </view>
+                 <view class='contact_2' catchtap="jumpPersonLetterHim" data-index='{{i}}'>
+                    <image src='http://yamxcx.oss-cn-shenzhen.aliyuncs.com/pingtaixcx/wechat.png'></image>
+                </view>
+            </view>
+        </block>
+        <!-- 文章or视频 -->
+             <!--<form  report-submit="true" bindsubmit='submitFormId' style="position: relative">-->
+            <!--<button class="button-none"   hover-class="none" formType="submit">-->
+        <block wx:if="{{item.type == 2}}">
+            <view class="goods_row_information">
+              <text class="goods_row_information_classify" wx:if="{{item.classifyName}}">#{{item.classifyName}}#</text>
+              <text class="goods_row_information_descr" capture-bind:longpress="longpress" selectable="true">{{item.descrIsHide ? item.content2 : item.content}}</text>
+            </view>
+            <view class='goods_row_information_spread' wx:if="{{item.content2}}" catchtap="onSpread" data-index="{{i}}" data-descr-is-hide="{{item.descrIsHide}}">{{item.descrIsHide ? "全文" : "收起"}}</view>
+            <view class='goods_row_information_link' wx:if="{{item.article.type == 1}}">
+              <view class="goods_row_information_link_image">
+                  <image src="{{item.article.cover !== 'http://oss.197.com/xcx/org/platformnews/default/imgCover.png'?item.article.cover:''}}" mode="aspectFill"></image>
+              </view>
+              <view class='goods_row_information_link_title'>{{item.article.title}}</view>
+            </view>
+            <view class="goods_row_information_video" wx:elif="{{item.article.type == 2}}">
+              <image class='cover_img' src="{{item.article.cover}}" mode="aspectFill"></image>
+              <image mode="aspectFill" class="player_icon" src="http://yamxcx.oss-cn-shenzhen.aliyuncs.com/pingtaixcx/player.png"/>
+            </view>
+        </block>
+
+        <!-- 信息or图片 -->
+        <block wx:elif="{{item.type == 1}}">
+          <view class="goods_row_descr">
+              <text class="goods_row_descr_classify" wx:if="{{item.classifyName}}">#{{item.classifyName}}#</text>
+              <text class="goods_row_descr_content" capture-bind:longpress="longpress"  selectable="true">{{item.content}}</text>
+          </view>
+          <view class="goods_row_image_1" wx:if="{{item.imgUrls.length > 2}}">
+              <image src="{{item.imgUrls[0]}}" mode="aspectFill"></image>
+              <image src="{{item.imgUrls[1]}}" mode="aspectFill"></image>
+              <image src="{{item.imgUrls[2]}}" mode="aspectFill"></image>
+          </view>
+          <view class="goods_row_image_2" wx:elif="{{item.imgUrls}}">
+              <image src="{{item.imgUrls[0]}}" mode="aspectFill"></image>
+          </view>
+        </block>
+        <view class="goods_row_4" catchtap="seeShopMap" wx:if="{{item.address}}" data-item="{{item}}">{{item.address}}</view>
+
+        <view class="goods_row_5" style="margin-top: {{item.hasRedPacket==2 ? '13rpx' : '30rpx'}}">
+          <view class='goods_row_5_ll'><text>{{item.viewNum}}</text></view>
+          <view class='goods_row_pl'><text>{{item.comments ? item.comments.length : 0}}</text></view>
+          <view class='{{item.likeStatus == 1 ? "goods_row_dz_2" : "goods_row_dz_1"}}' data-index="{{i}}" data-moment-id="{{item.id}}" data-like-status="{{item.likeStatus}}" data-user-type="{{item.userType}}" data-like-id="{{item.likeId}}" catchtap="onPraise">
+              <text>{{item.likes.length > 0 ? item.likes.length : "赞"}}</text>
+          </view>
+        </view>
+    </view>
+</view>
+
+<!-- <block wx:if="{{showTipData.show}}">
+  <import src="/components/template/show_dialog/show_dialog.wxml" />
+  <template is="showDialog" data="{{showTipData}}"></template>
+</block> -->

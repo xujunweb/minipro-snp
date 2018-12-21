@@ -6,6 +6,22 @@ export const getOpenId = (data)=>{
     url: wx.envConfig.host + 'pay/wx/getWeixinUserInfo',
     data: {...data},
     method: 'post',
-    // header: { ticket: app.globalData.userInfo.id || wx.getStorageSync('loginUserInfo').id}
+  })
+}
+
+//根据用户ID(ticket)获取用户信息
+export const getNewUserInfo = (data)=>{
+  return ajax({
+    url: wx.envConfig.host + 'user/getUserInfo',
+    data: { ...data },
+    method: 'post',
+  })
+}
+//
+export const userUpdate = (data) => {
+  return ajax({
+    url: wx.envConfig.host + 'user/update',
+    data: { ...data },
+    method: 'post',
   })
 }

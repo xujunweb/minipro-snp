@@ -6,7 +6,18 @@
   "window":{
     "backgroundTextStyle":"light",
     "navigationBarBackgroundColor": "#fff",
-    "navigationBarTitleText": "WeChat",
+    "navigationBarTitleText": "小程序",
     "navigationBarTextStyle":"black"
+  },
+  "networkTimeout": {
+    "request": 30000,
+    "connectSocket": 10000,
+    "uploadFile": 60000,
+    "downloadFile": 60000
+  },
+  "component": true,
+  "debug": false,
+  "usingComponents": {
+    "authorize": "/components/authorize/authorize"
   }
 }

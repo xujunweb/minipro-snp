@@ -1,13 +1,84 @@
-<!--index.wxml-->
-<view class="container">
-  <view class="userinfo">
-    <button wx:if="{{!hasUserInfo && canIUse}}" open-type="getUserInfo" bindgetuserinfo="getUserInfo"> 获取头像昵称 </button>
-    <block wx:else>
-      <image bindtap="bindViewTap" class="userinfo-avatar" src="{{userInfo.avatarUrl}}" mode="cover"></image>
-      <text class="userinfo-nickname">{{userInfo.nickName}}</text>
-    </block>
-  </view>
-  <view class="usermotto">
-    <text class="user-motto">{{motto}}</text>
-  </view>
+<!-- 头部封面 -->
+<!-- <view class="share_code_bg" style=" background:url({{platformInfo.discoverBg}}) center center / 100% no-repeat;"> -->
+<view class="share_code_bg">
+    <!-- 搜索 -->
+    <view class="search-container">
+        <navigator url="/subPackage/search/pages/search?isHasCategory={{isHasCategory}}&&fromPage=discover" hover-class="none">
+            <view class="search-view"></view>
+            <view class="search-text">搜索动态</view>
+        </navigator>
+        <navigator url="/subPackage/message/pages/pages/QRCode_collection/QRCode_collection" hover-class="none">
+            <view class="share_code"></view>
+        </navigator>
+    </view>
+    <view class="platform_info_view">
+        <view class="platform_info_item">帖子:{{platformVisit.activeNum}}</view>
+        <view class="platform_info_item">人气:{{platformVisit.popularityNum}}</view>
+        <view class="platform_info_item">成员:{{platformVisit.memberNum}}</view>
+    </view>
 </view>
+<!--分类-->
+<view class="container" style="background-color:#f4f4f4;">
+
+    <view class="classification {{platformInfo.enableMomentsRedPacket==2&&isOpen == 2?'':'classification2'}} {{isFixed ? 'fixed' : ''}}">
+        <view class="scroll-view-item_H" data-id="0" bindtap="ClickTab">
+            <text class="{{id == 0 ? 'cur' : ''}}">推荐</text>
+        </view>
+        <view class="scroll-view-item_H" data-id="9" bindtap="follow">
+            <text class="{{id == 9 ? 'cur' : ''}}">关注</text>
+        </view>
+        <view class="scroll-view-item_H" data-id="3" bindtap="ClickTab">
+            <text class="{{id == 3 ? 'cur' : ''}}">身边</text>
+        </view>
+        <view class="scroll-view-item_H" data-id="4" bindtap="ClickTab">
+            <text class="{{id == 4 ? 'cur' : ''}}">热帖</text>
+        </view>
+        <view class="scroll-view-item_H" data-id="99" bindtap="ClickTab" wx:if='{{platformInfo.enableMomentsRedPacket==2&&isOpen == 2}}'>
+            <text class="{{id == 99 ? 'cur' : ''}}">福利广场</text>
+        </view>
+        <view class="scroll-view-item_H" data-id="3" bindtap="jumpPersonCardList">
+            <text>名片榜</text>
+        </view>
+
+    </view>
+
+    <view>
+        <!-- 有商品的情况下 -->
+        <view class="goods" wx:if="{{userInfo.openid}}" style='overflow:hidden;'>
+            <!-- 贴吧样式 -->
+            <!-- <article-item shop-list="{{shopList}}" bindpraise="onPraise" bindspread="onSpread"></article-item> -->
+            <article-item bindpraise="onPraise" bindspread="onSpread"></article-item>
+            <!-- 上拉加载动画 -->
+            <view class="loading" wx:if="{{showLoading}}">
+                <image src="http://yamxcx.oss-cn-shenzhen.aliyuncs.com/one-shop-one-mini-app/loading.png"></image>
+                <text>加载中...</text>
+            </view>
+        </view>
+    </view>
+
+    <!--没有动态的情况下  -->
+    <view wx:if="{{noData && !recommendPayNoData}}" style="margin-top:100rpx;">
+      <!-- <view class="text">暂无动态</view> -->
+      <default_page onShow="{{onShow}}" params="{{authParams02}}"></default_page>
+    </view>
+    <!--<view class='no_collection_card' wx:if='{{noData && id != 9}}' style="margin-top:100rpx;">
+        <default_page onShow="{{onShow}}" params="{{authParams}}"></default_page>
+        <view class='no_collection_card_3' catchtap='goAttentionCard'>前往关注</view>
+    </view>
+    <view wx:if="{{noData && id == 9}}" style="margin-top:100rpx;">
+        <default_page onShow="{{onShow}}" params="{{authParams02}}"></default_page>
+    </view>-->
+</view>
+
+<!-- 无网络 -->
+<view wx:if="{{overtime}}">
+    <view bindtap="retry">
+        <image class="xz_img" src="/image/xuanzhuan.png"></image>
+        <view class="bind_click">加载失败
+            <text>点击重试</text>
+        </view>
+    </view>
+</view>
+
+<!-- 授权弹窗 -->
+<authorize onShow="{{onAuthShow}}" onHide="{{onAuthHide}}" />

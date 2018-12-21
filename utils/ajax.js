@@ -1,7 +1,8 @@
 /** 
  * ajax公用方法
  */
-function ajax(options,app) {
+function ajax(options) {
+  let app = getApp()
   options.loading && wx.showLoading({
     title: '加载中...',
     icon: 'loading'
@@ -10,10 +11,10 @@ function ajax(options,app) {
     wx.request({
       url: options.url,
       method: options.method,
-      header: { 'content-type': 'application/json;charset=utf-8', ...options.header },
+      header: { 'content-type': 'application/json;charset=utf-8', ...options.header, ticket: app.globalData.userInfo&&app.globalData.userInfo.id },
       data: options.data,
       success: (res) => {
-        if (res.statusCode !== 200 || res.data.code !== '000000') {
+        if (res.statusCode !== 200 || res.data.code !== 100) {
           reject(res.data)
           return
         }
