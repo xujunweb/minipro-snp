@@ -1,0 +1,52 @@
+<!--pages/detail/article/article.wxml-->
+<view class="goods_content">
+    <view class="goods" wx:if="{{artInfo}}">
+        <!--详情-->
+        <view class="goods_row" style="margin:0 30rpx 30rpx 30rpx;">
+            <view class="goods_left">
+                <image class="head_img" src="{{artInfo.user.avatar?artInfo.user.avatar:'http://yamxcx.oss-cn-shenzhen.aliyuncs.com/pingtaixcx/user.png'}}" mode="aspectFill"></image>
+                <view ></view>
+            </view>
+            <view class="goods_right" style="min-height:90rpx">
+                <view class="goods_right_a">
+                    <view class="goods_orgname">{{artInfo.user.nickname?artInfo.user.nickname:"微信用户"}}</view>
+                    <view class='contact_2'>
+                        <image src='http://yamxcx.oss-cn-shenzhen.aliyuncs.com/pingtaixcx/wechat.png'></image>
+                    </view>
+                </view>
+            </view>
+        </view>
+        <view class="goods_row">
+            <!--    2：信息，4文章-->
+            <view>
+                <view class="goods_right_b" wx:if="artInfo.content != ''" style="margin-top:-4rpx;">
+                    <text selectable="true">{{artInfo.content}}</text>
+                </view>
+                <view class="goods_right_c" wx:if="{{artInfo.img_urls.length}}" style="margin-top:30rpx;">
+                    <view wx:for="{{artInfo.img_urls}}" wx:for-index="idx" wx:key='item'>
+                        <image src="{{item}}" data-src="{{item}}" catchtap="previewImage" class="goods_image" mode='widthFix'></image>
+                    </view>
+                </view>
+            </view>
+            <view class="clearfloat"></view>
+            <view class="goods_address" catchtap="seeShopMap" data-item="{{item}}">{{artInfo.address}}</view>
+            <view class="goods_time">
+                <text class='time'>发布于：{{artInfo.insert_time}}</text>
+                <!-- <text class="read-num">点赞 {{artInfo.like}}</text> -->
+                <text class='del' wx:if='{{artInfo.user.openid===userInfo.openid}}' catchtap='confirmDelGoods'>删除{{app.globalData.openid}}</text>
+                <!-- <text class='tel_he' catchtap="contactHe" data-tel="{{item.phone}}">评论{{artInfo.comment}}</text> -->
+            </view>
+        </view>
+    </view>
+    <!-- 评论 -->
+    <block>
+        <view id="discussTop" class="discuss-top" />
+        <discuss lilikeStatuskes="{{artInfo.articleInfo.like}}" artid="{{artInfo.id}}" page="goods"  bindscollcommnet="scollCommnet" likeNum="{{artInfo.like}}" news-id="{{id}}" moment-id="{{id}}"/>
+        <view id="discussBottom" style=" width: 100%;background-color: #f4f4f4" />
+    </block>
+</view>
+<!-- 内容被删除时显示页面 -->
+<view class="del_goods_page" wx:if="{{isDel}}">
+    <view class="warn_icon"><icon type="warn" color="#d7d7d7" size="78"/></view>
+    <view class="del_desc">该发布内容已被管理员删除</view>
+</view>

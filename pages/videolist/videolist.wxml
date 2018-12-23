@@ -1,0 +1,8 @@
+<!--pages/videolist/videolist.wxml-->
+
+<pay-video wx:for="{{articlelist}}" item="{{item}}" wx:key="{{index}}" />
+
+
+
+<!-- 发布按钮 -->
+<release />

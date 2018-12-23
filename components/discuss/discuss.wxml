@@ -1,0 +1,56 @@
+<!-- 点赞&&评论 -->
+<view class='comment_and_praise' wx:if="{{artid}}">
+    <view class='tab' id="test">
+        <view class="tab_l tab_active">评论</view>
+        <view class="tab_r ">点赞{{likeNum}}</view>
+    </view>
+    <view class='comment_list'>
+        <view class='comment_list_row' wx:for="{{comments}}" wx:key="id">
+            <view class='comment_list_l'>
+                <image src="{{item.user.avatar?item.user.avatar:'https://xcximg.197.com/xcx/zctx2.png'}}" mode="aspectFill"></image>
+            </view>
+            <view class='comment_list_r'>
+                <view class='name'>{{item.user.nickname?item.user.nickname:'微信用户'}}</view>
+                <view class='content'>{{item.content}}</view>
+                <view class='warp'>
+                    <view class='time'>{{item.insert_time?item.insert_time:item.insert_time}}</view>
+                    <view class='del' wx:if="{{item.user.openid === openId}}" data-index="{{index}}" data-id="{{item.id}}" bindtap="deletComment">删除</view>
+                </view>
+            </view>
+        </view>
+
+    </view>
+    <view class="no_data" wx:if="{{showTab == 1 && comments.length == 0}}">暂无评论</view>
+    <view class='gray_item' wx:else></view>
+</view>
+
+<!-- 底部 -->
+<view class="footer {{inputStatus=='focus'?'focus':''}} {{isIPhoneX?'iphone_x':''}} {{footerShow ? '' : 'hide'}}" style="bottom:{{boardHeigt + 'px'}}" wx:if="{{artid}}">
+    <input type="text" class="{{page=='goods'&&momentsType!=2?'goods':''}}" focus="{{getFocus}}" placeholder='写评论' cursor-spacing="20" bindinput="commentChange" value="{{comment}}" bindconfirm="sendDiscuss" confirm-type="完成" bindfocus="inputFocus" bindblur="inputBlur" maxlength="200" adjust-position="{{false}}"/>
+    <block wx:if="{{inputStatus != 'focus'}}">
+        <view wx:if="{{page!='goods'||momentsType==2}}" class="comment {{comments.length == 0?'no_num':comments.length<10?'one_data':''}} {{comments.length > 0 ? 'comment_2' : ''}}" catchtap="scollCommnet">{{comments.length>0?comments.length:''}}</view>
+        <!-- <view wx:if="{{originType==3}}" class="comment-nums"><text>66</text></view> -->
+    <view class="like-img" bindtap="likeChange">
+        <image class="img" src="http://yamxcx.oss-cn-shenzhen.aliyuncs.com/xcx/{{likeStatus==1?'like_yes.png':'like_no.png'}}"></image>
+    </view>
+      <button class="share_btn news" open-type="share"></button>
+      <!-- <button wx:else data-page="{{page}}" bindtap="shareBox" class="share_btn {{page!='goods'||momentsType==2?'news':''}}"></button> -->
+    </block>
+</view>
+<!-- <block wx:if="{{showTipData.show}}">
+  <import src="/components/template/show_dialog/show_dialog.wxml" />
+  <template is="showDialog" data="{{showTipData}}"></template>
+</block> -->
+
+<!-- 分享弹框 -->
+<share_popup onShow="{{publishPopupShow}}" onHide="{{publishPopupHide}}" params="{{publishPopupParams}}" bind:boradimg="getBoardImage"></share_popup>
+
+<!-- 海报弹框 -->
+<view class="maskBox" catchtouchmove="noMove" wx:if="{{posterShow}}">
+    <view class="poster">
+        <image mode="widthFix" class="posterImg" src="{{posterImgSrc}}" data-src="{{posterImgSrc}}" bindtap="saveImage"/>
+        <view class="posterText">点击上图，长按保存图片即可分享到朋友圈</view>
+        <view bindtap="posterBtn" class="posterBtn">我知道了</view>
+    </view>
+</view>
+

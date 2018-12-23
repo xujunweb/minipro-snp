@@ -1,13 +1,54 @@
 {
-  "pages":[
+  "pages": [
     "pages/index/index",
-    "pages/logs/logs"
+    "pages/logs/logs",
+    "pages/release/aticle/aticle",
+    "pages/release/video/video",
+    "pages/my/my",
+    "pages/release/publish/publish",
+    "pages/friends/friends",
+    "pages/videolist/videolist",
+    "pages/detail/article/article",
+    "pages/detail/video/video"
   ],
-  "window":{
-    "backgroundTextStyle":"light",
+  "window": {
+    "backgroundTextStyle": "dark",
     "navigationBarBackgroundColor": "#fff",
-    "navigationBarTitleText": "小程序",
-    "navigationBarTextStyle":"black"
+    "navigationBarTitleText": "少年派",
+    "navigationBarTextStyle": "black",
+    "backgroundColor": "#f4f4f4"
+  },
+  "tabBar": {
+    "color": "#666666",
+    "selectedColor": "#fe6519",
+    "borderStyle": "#e6e6e6",
+    "backgroundColor": "#fff",
+    "list": [
+      {
+        "pagePath": "pages/index/index",
+        "text": "首页",
+        "iconPath": "image/discovery_normal.png",
+        "selectedIconPath": "image/discovery_press.png"
+      },
+      {
+        "pagePath": "pages/videolist/videolist",
+        "text": "视频",
+        "iconPath": "image/news3_normal.png",
+        "selectedIconPath": "image/news3_press.png"
+      },
+      {
+        "pagePath": "pages/friends/friends",
+        "text": "好友圈",
+        "iconPath": "image/news_normal.png",
+        "selectedIconPath": "image/news_press.png"
+      },
+      {
+        "pagePath": "pages/my/my",
+        "iconPath": "image/me_normal.png",
+        "selectedIconPath": "image/me_press.png",
+        "text": "我的"
+      }
+    ]
   },
   "networkTimeout": {
     "request": 30000,

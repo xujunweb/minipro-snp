@@ -1,0 +1,331 @@
+
+.comment_and_praise{ background-color:#f4f4f4;padding-bottom: 90rpx;}
+.comment_and_praise .tab{
+    border-bottom: 1rpx solid #e2e2e2;
+    display: flex;
+    display: -webkit-flex;
+    flex-direction: row;
+    background-color: white;
+  }
+  .comment_and_praise .tab view{
+    width: 50%;
+    text-align: center;
+    height: 91rpx;
+    line-height: 91rpx;
+    font-size: 28rpx;
+    color: #222;
+  }
+  .comment_and_praise .tab .tab_active{
+    color: #ff7800;
+    font-weight: bold;
+  }
+  .comment_and_praise .comment_list{
+    padding:0 30rpx;
+    background-color: white;
+  }
+  .comment_and_praise .comment_list .comment_list_row{
+    display: flex;
+    display: -webkit-flex;
+    flex-direction: row;
+    padding-top: 30rpx;
+  }
+  .comment_and_praise .comment_list .comment_list_row .comment_list_l{
+    margin-right: 20rpx;
+  }
+  .comment_and_praise .comment_list .comment_list_row .comment_list_l image{
+    width: 58rpx;
+    height: 58rpx;
+    border-radius: 50%;
+  }
+  .comment_and_praise .comment_list .comment_list_row .comment_list_r{
+    border-bottom: 1rpx solid #e2e2e2;
+    padding-bottom: 30rpx;
+    width: 100%;
+  }
+  .comment_and_praise .comment_list .comment_list_row:last-of-type .comment_list_r{
+    border-bottom: 0;
+  }
+  .comment_and_praise .comment_list .comment_list_row .comment_list_r .name{
+    font-size: 26rpx;
+    color: #666;
+    margin-bottom: 9rpx;
+    line-height: 26rpx;
+  }
+  .comment_and_praise .comment_list .comment_list_row .comment_list_r .content{
+    font-size: 28rpx;
+    color: #333;
+    line-height:36rpx;
+    margin-bottom: 30rpx;
+    list-style:none;
+    word-wrap:break-word;/*支持IE，chrome，FF*/
+    width: 610rpx;
+  }
+  .comment_and_praise .comment_list .comment_list_row .comment_list_r .warp{
+    line-height: 24rpx;
+    display: flex;
+    display: -webkit-flex;
+    flex-direction: row;
+  }
+  .comment_and_praise .comment_list .comment_list_row .comment_list_r .warp view{
+    font-size: 24rpx;
+    color: #999;
+  }
+  .comment_and_praise .comment_list .comment_list_row .comment_list_r .warp .del{
+    color: #667494;
+    margin-left: 40rpx;
+  }
+  .comment_and_praise .praise_list{
+    padding: 0 30rpx;
+    background-color: white;
+  }
+  .comment_and_praise .praise_list .praise_list_row{
+    height: 110rpx;
+    line-height: 110rpx;
+    display: flex;
+    display: -webkit-flex;
+    flex-direction: row;
+  }
+  .comment_and_praise .praise_list .praise_list_row .praise_list_l{
+    margin-right: 20rpx;
+    line-height: 1rpx;
+    width: 70rpx;
+    height: 70rpx;
+    border-radius: 50%;
+    margin-top: 20rpx;
+  }
+  .comment_and_praise .praise_list .praise_list_row .praise_list_l image{
+    width: 70rpx;
+    height: 70rpx;
+    border-radius: 50%;
+  }
+  .comment_and_praise .praise_list .praise_list_row .praise_list_r{
+    font-size: 28rpx;
+    color: #333;
+    width: 100%;
+    border-bottom: 1rpx solid #e2e2e2;
+  }
+  .comment_and_praise .praise_list .praise_list_row:last-of-type .praise_list_r{
+    border-bottom: 0;
+  }
+  .comment_and_praise .gray_item{
+    background-color: #f4f4f4;
+    height: 46rpx;
+    width: 100%;
+  }
+
+  .footer{
+    position: fixed;
+    left: 0;
+    bottom: 0;
+    background-color: #fff;
+    width: 100%;
+    padding: 10rpx 30rpx;
+    display: flex;
+    display: -webkit-flex;
+    flex-direction: row;
+    z-index: 999;
+    box-sizing: border-box;
+  }
+  .footer.focus{
+    padding: 15rpx 20rpx 25rpx 20rpx;
+  }
+  .iphone_x{
+    padding-bottom: 80rpx;
+  }
+   .iphone_x.focus{
+    padding: 15rpx 20rpx 75rpx 20rpx;
+  }
+  .footer input{
+    width:400rpx;
+    height: 70rpx;
+    color: #000;
+    line-height: 70rpx;
+    font-size: 28rpx;
+    padding-left: 19rpx; padding-right: 14rpx;
+    border:2rpx solid #ddd;
+    border-radius: 40rpx;
+    box-sizing: border-box;
+  }
+  .footer input.goods{
+    width: 328rpx;
+  }
+  .footer.focus input{
+    width: 100% !important;
+  }
+  .footer .comment{
+    background: url(http://yamxcx.oss-cn-shenzhen.aliyuncs.com/xcx/comment_outline.png) left center / 44rpx no-repeat;
+    font-size: 28rpx;
+    color: #666666;
+    height: 44rpx;
+    line-height: 44rpx;
+    align-self: center;
+    margin-left: 30rpx;
+    padding-left: 44rpx;
+  }
+  .footer .comment_2{
+    padding-left: 51rpx;
+  }
+  .footer .comment-nums {
+    display: inline-block;
+    align-self:center;
+    height: 44rpx;
+    line-height: 44rpx;
+    color: #666666;
+    font-size: 28rpx;
+    padding-left: 10rpx;
+  }
+  .footer .share_btn{
+    background: url(http://yamxcx.oss-cn-shenzhen.aliyuncs.com/xcx/share_grey_new.png) left center / 42rpx no-repeat;
+    width: 44rpx;
+    height: 48rpx;
+    padding: 0;
+    align-self: center;
+    margin: 0;
+  }
+  .footer button::after{
+    border: 0;
+  }
+  .footer .buy_button{
+    margin-left: 30rpx;
+    width: 160rpx;
+    height: 60rpx;
+    line-height: 60rpx;
+    background-color: #ff7800;
+    color: white;
+    font-size: 30rpx;
+    border-radius: 8rpx;
+    text-align: center;
+    align-self: center;
+    box-sizing: border-box;
+  }
+  .footer .like-img{
+    flex:1;
+    display:flex;
+    justify-content: center;
+    align-items:center;
+  }
+  .footer .like-img .img{
+    width:46rpx;
+    height:44rpx;
+  }
+  .no_data{
+    width: 100%;
+    height: 220rpx;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 28rpx;
+    color: #999999;
+    background-color: #f4f4f4;
+  }
+
+/* 分享成功弹框css */
+  .maskBox{
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background: rgba(0,0,0,0.7);
+    z-index: 5555;
+  }
+  .boxContent{
+    position: fixed;
+    bottom: 30rpx;
+    left: 30rpx;
+    right: 30rpx;
+    height: 505rpx;
+    background: #fff;
+    border-radius: 30rpx;
+  }
+  .boxContent1{
+    bottom: 80rpx;
+  }
+  .closeBox{
+    position: absolute;
+    right: 14rpx;
+    top: 14rpx;
+    width:65rpx;
+    height:65rpx;
+    background:url('http://yamxcx.oss-cn-shenzhen.aliyuncs.com/xcx/reward_close.png') center no-repeat;
+    background-size:27rpx;
+  }
+  .boxInfo{
+    margin-top: 100rpx;
+    text-align: center;
+  }
+  .boxTitle{
+    font-size:36rpx;
+    color:#333;
+  }
+  .boxSub{
+    font-size:30rpx;
+    color:#333;
+  }
+  .boxShare{
+    margin-top:50rpx;
+  }
+  .boxShare image{
+    height: 90rpx;
+    width: 90rpx;
+    display:block;
+    margin:auto;
+  }
+  .boxShare .shareHB{
+    display: inline-block;
+  }
+  .boxShare button{
+    display: inline-block;
+    margin: 0 20rpx;
+    padding: 0;
+    background: #fff;
+    width: 200rpx;
+  }
+  .boxShare button::after, .boxShare button::before{
+    border: none;
+  }
+
+  .boxShare button text{
+    display: block;
+    font-size: 26rpx;
+    line-height: 60rpx;
+    color:#333;
+  }
+
+
+  /* 海报弹框 */
+  .poster{
+    position: fixed;
+    top:10%;
+    left:50%;
+    margin-left:-325rpx;
+    width:650rpx;
+    height: auto;
+    background: #fff;
+    border-radius: 30rpx;
+  }
+  .posterImg{
+    width:570rpx;
+    margin:40rpx;
+    box-shadow:0 0 20rpx 0 rgba(154, 154, 154, 0.23);
+    border-radius: 20rpx;
+    display:block;
+  }
+  .posterText{
+    color:#999;
+    font-size:26rpx;
+    line-height: 28rpx;
+    text-align: center;
+    padding-bottom: 40rpx;
+  }
+  .posterBtn{
+    width:100%;
+    font-size:34rpx;
+    color:#ff7800;
+    height:100rpx;
+    line-height: 100rpx;
+    text-align: center;
+    border-top: 1px solid #e2e2e2;
+  }
+
+  .hide{ display:none !important; }

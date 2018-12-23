@@ -1,0 +1,25 @@
+<!-- 分享自定义弹框组件（含生成推广海报、分享好友/群） -->
+<view class="maskBox" wx:if="{{shareShow}}" catchtouchmove="noMove">
+    <view class="boxContent {{isIPhoneX ? 'boxContent1' :''}} {{params.title.text2.length<=0 ? 'boxContent-single-title' : ''}}">
+        <view bindtap="closeBox" class="closeBox"></view>
+        <view class="boxInfo">
+            <block wx:if="{{params.title.text2.length>0}}">
+                <view class="boxTitle">{{params.title.text1}}</view>
+                <view class="boxSub">{{params.title.text2}}</view>
+            </block>
+            <block wx:else>
+                <view class="boxTitle">{{params.title.text1}}</view>
+            </block>
+            <view class="boxShare">
+                <button  hover-class="none" class="shareHB" bindtap="shareHB">
+                    <image src="http://yamxcx.oss-cn-shenzhen.aliyuncs.com/xcx/pyq1.png" />
+                    <text>生成推广海报</text>
+                </button>
+                <button open-type="share" hover-class="none">
+                    <image src="https://xcximg.197.com/xcx/wxhy3.png" />
+                    <text>{{params.shareText}}</text>
+                </button>
+            </view>
+        </view>
+    </view>
+</view>

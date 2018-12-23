@@ -1,0 +1,30 @@
+<wxs src="../../../utils/util.wxs" module="u" />
+<view class='j_page'>
+    <view class='contact_us' style='overflow:hidden;width:100%;margin-top:0;border-top:1rpx solid #e2e2e2;'>
+        <view class='contact_us_li'>
+            <input type="text" placeholder='请输入标题' placeholder-style="color:#aaa;" value="{{title}}" class='in_tel' maxlength="40" bindinput='getTitle' bindblur="bindTextAreablur" />
+        </view>
+    </view>
+    <view class='videodiv' wx:if="{{videoUrl}}">
+      <video class="video" src="{{videoUrl}}" controls custom-cache="false" style='width:{{width}}rpx;height:{{height}}rpx' objectFit='cover' ></video>
+      <view class='delete' bindtap='deleteImg'>删除视频</view>
+    </view>
+
+    <view class='conception_pic' style='overflow:hidden;width:100%;' wx:if="{{!videoUrl}}">
+        <view class="img-sub">
+            <!--点击上传-->
+            <image src="../../../image/otherImages/uploadfile_add.jpg" class="img-big" bindtap='getImage'></image>
+            <view class='clear'></view>
+        </view>
+    </view>
+    <!--底部固定 发布部分-->
+    <form report-submit="true" style="height: 100%" bindsubmit='quicklyPublish' >
+    <view class='bottom-submit-part'>
+        <button class='right-data-part submit-able-class button-none'  hover-class="none" wx:if="{{ usedDisabled==true }}"  formType="submit">立即发布</button>
+        <button class='right-data-part submit-disable-class button-none' style="color: #fff;background-color:#d6d6d6" hover-class="none" wx:if="{{ usedDisabled==false }}" disabled="true">立即发布</button>
+    </view>
+   </form>
+</view>
+
+<!-- 授权弹窗 -->
+<authorize onShow="{{onAuthShow}}" onHide="{{onAuthHide}}" />

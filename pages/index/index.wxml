@@ -11,11 +11,6 @@
             <view class="share_code"></view>
         </navigator>
     </view>
-    <view class="platform_info_view">
-        <view class="platform_info_item">帖子:{{platformVisit.activeNum}}</view>
-        <view class="platform_info_item">人气:{{platformVisit.popularityNum}}</view>
-        <view class="platform_info_item">成员:{{platformVisit.memberNum}}</view>
-    </view>
 </view>
 <!--分类-->
 <view class="container" style="background-color:#f4f4f4;">
@@ -28,18 +23,26 @@
             <text class="{{id == 9 ? 'cur' : ''}}">关注</text>
         </view>
         <view class="scroll-view-item_H" data-id="3" bindtap="ClickTab">
-            <text class="{{id == 3 ? 'cur' : ''}}">身边</text>
+            <text class="{{id == 3 ? 'cur' : ''}}">学生</text>
         </view>
         <view class="scroll-view-item_H" data-id="4" bindtap="ClickTab">
-            <text class="{{id == 4 ? 'cur' : ''}}">热帖</text>
+            <text class="{{id == 4 ? 'cur' : ''}}">老师</text>
         </view>
-        <view class="scroll-view-item_H" data-id="99" bindtap="ClickTab" wx:if='{{platformInfo.enableMomentsRedPacket==2&&isOpen == 2}}'>
-            <text class="{{id == 99 ? 'cur' : ''}}">福利广场</text>
+        <view class="scroll-view-item_H" data-id="99" bindtap="ClickTab">
+            <text class="{{id == 99 ? 'cur' : ''}}">家长</text>
         </view>
         <view class="scroll-view-item_H" data-id="3" bindtap="jumpPersonCardList">
-            <text>名片榜</text>
+            <text>教育</text>
         </view>
-
+        <view class="scroll-view-item_H" data-id="99" bindtap="ClickTab">
+            <text class="{{id == 99 ? 'cur' : ''}}">动漫</text>
+        </view>
+        <view class="scroll-view-item_H" data-id="99" bindtap="ClickTab">
+            <text class="{{id == 99 ? 'cur' : ''}}">音乐</text>
+        </view>
+        <view class="scroll-view-item_H" data-id="99" bindtap="ClickTab">
+            <text class="{{id == 99 ? 'cur' : ''}}">上头条</text>
+        </view>
     </view>
 
     <view>
@@ -47,7 +50,7 @@
         <view class="goods" wx:if="{{userInfo.openid}}" style='overflow:hidden;'>
             <!-- 贴吧样式 -->
             <!-- <article-item shop-list="{{shopList}}" bindpraise="onPraise" bindspread="onSpread"></article-item> -->
-            <article-item bindpraise="onPraise" bindspread="onSpread"></article-item>
+            <article-item bindpraise="onPraise" bindspread="onSpread" shopList="{{articlelist}}"></article-item>
             <!-- 上拉加载动画 -->
             <view class="loading" wx:if="{{showLoading}}">
                 <image src="http://yamxcx.oss-cn-shenzhen.aliyuncs.com/one-shop-one-mini-app/loading.png"></image>
@@ -79,6 +82,7 @@
         </view>
     </view>
 </view>
-
+<!-- 发布按钮 -->
+<release />
 <!-- 授权弹窗 -->
 <authorize onShow="{{onAuthShow}}" onHide="{{onAuthHide}}" />

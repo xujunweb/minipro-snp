@@ -1,0 +1,61 @@
+<wxs src="../../../utils/util.wxs" module="u" />
+<view class='j_page'>
+    <view class='contact_us' style='overflow:hidden;width:100%;margin-top:0;border-top:1rpx solid #e2e2e2;'>
+        <view class='contact_us_li'>
+            <input type="text" placeholder='请输入标题' placeholder-style="color:#aaa;" value="{{title}}" class='in_tel' maxlength="40" bindinput='getTitle' bindblur="bindTextAreablur" />
+        </view>
+    </view>
+    <!--想法-->
+    <view class="conception">
+        <view class='conception_text'>
+            <textarea maxlength="2000" rowspan="5" placeholder='要发布的内容...' bindinput="bindTextAreaFocus"  bindblur="bindTextAreablur" placeholder-style="color:#aaa;"></textarea>
+        </view>
+    </view>
+
+    <view class='conception_pic' style='overflow:hidden;width:100%;'>
+        <view class="img-sub">
+            <block  wx:for="{{imgList}}" wx:for-index="i" wx:key="i">
+                <view class='uploadfile_imglist_li' wx:if="{{i<9}}">
+                    <image src="{{item}}" alt="" mode="aspectFill"></image>
+                    <view class='hover_li' data-id="{{item}}" bindtap='deleteImg' data-index="{{i}}">
+                        <image src="../../../image/otherImages/del_shadow.png" alt=""></image>
+                    </view>
+                </view>
+            </block>
+            <!--点击上传-->
+            <image src="../../../image/otherImages/uploadfile_add.jpg" class="img-big" bindtap='getImage'></image>
+            <view class='clear'></view>
+        </view>
+    </view>
+    <!--副内容输入-->
+    <!-- <view class='contact_us' style='overflow:hidden;width:100%;'>
+        <view class='contact_us_li' bindtap='openLocationAddress'>
+            <image src="http://yamxcx.oss-cn-shenzhen.aliyuncs.com/pingtaixcx/address.png" alt="" style="width:24rpx; height:24rpx; margin:34rpx 20rpx 0 0;"></image>
+            <view class="contact_us_li_address">
+                <input type="text" placeholder='请选择您的位置信息' disabled="true" maxlength="50" placeholder-style="color:#aaa;" class="in_address" value="{{address}}" />
+            </view>
+            <abcd><image src="../../../image/otherImages/next.png" alt="" /></abcd>
+        </view>
+        <view class='contact_us_li'>
+            <image src="http://yamxcx.oss-cn-shenzhen.aliyuncs.com/pingtaixcx/phone_num.png" alt="" style="width:24rpx; height:24rpx; margin:32rpx 16rpx 0 0;"></image>
+            <input type="number" placeholder='请输入标题' placeholder-style="color:#aaa;" value="{{phone}}" class='in_tel' maxlength="20" bindinput='getPhone' />
+        </view>
+    </view> -->
+
+    <!--协议-->
+    <!-- <view class="agreement" bindtap="radioChange">
+        <image src="http://yamxcx.oss-cn-shenzhen.aliyuncs.com/pingtaixcx/{{isCheck?'select_yes':'select_no'}}.png" />
+        <label class="_text">我已阅读并同意<text catchtap="openAgreement" style="color: #76849E">《平台用户服务协议》</text></label>
+    </view> -->
+
+    <!--底部固定 发布部分-->
+    <form report-submit="true" style="height: 100%" bindsubmit='quicklyPublish' >
+    <view class='bottom-submit-part'>
+        <button class='right-data-part submit-able-class button-none'  hover-class="none" wx:if="{{ usedDisabled==true }}"  formType="submit">立即发布</button>
+        <button class='right-data-part submit-disable-class button-none' style="color: #fff;background-color:#d6d6d6" hover-class="none" wx:if="{{ usedDisabled==false }}" disabled="true">立即发布</button>
+    </view>
+   </form>
+</view>
+
+<!-- 授权弹窗 -->
+<authorize onShow="{{onAuthShow}}" onHide="{{onAuthHide}}" />

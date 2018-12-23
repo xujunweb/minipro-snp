@@ -21,10 +21,10 @@ function ajax(options) {
         resolve(res.data)
       },
       fail: (err) => {
-        // wx.showToast({
-        //   title: '网络错误',
-        //   icon: 'none'
-        // })
+        wx.showToast({
+          title: '网络错误',
+          icon: 'none'
+        })
         reject(err)
       },
       complete: () => {

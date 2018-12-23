@@ -11,16 +11,23 @@ newPage({//引入监听全局每个页面的生命周期
     that.data.onAuthShow = ''
     that.data.onAuthHide = ''
     that.data.authParam = {}
+  },
+  unLoad: function () {
+  },
+  onShow: function (that,app) {
+    if(app.globalData.userInfo){
+      that.setData({
+        userInfo: app.globalData.userInfo
+      })
+    }
     wx.eventBus.on('updataUser', (userInfo) => {
       that.setData({
         userInfo: userInfo
       })
     })
-  },
-  unLoad: function () {
-  },
-  onShow: function (that,app) {
-    
+    wx.eventBus.on('showOnAuthShow', () => {
+      that.showOnAuthShow()
+    })
   },
   onHide: function (that) {
   },
@@ -31,8 +38,8 @@ newPage({//引入监听全局每个页面的生命周期
     //显示授权弹窗
     showOnAuthShow: function () {
       console.log('全局每个页面添加其他的方法', this);
-      let timestamp = new Date().getTime();
-      this.setData({ onAuthShow: timestamp, authParam: { isCallBackHandle: true } });
+      let timestamp = new Date().getTime()
+      this.setData({ onAuthShow: timestamp})
     }
   },
 });
@@ -124,9 +131,11 @@ App({
       this.getOpenId().then(() => {
         if (isCouldAuth && this.globalData.isCouldAuth == 2) {
           resolve(true)
+          return
         }
         if (!this.globalData.userInfo || !this.globalData.userInfo.nickname) {
           resolve(false)
+          return
         }
         resolve(true)
       }).catch((err)=>{

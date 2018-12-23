@@ -1,0 +1,5 @@
+<!--components/release.wxml-->
+<!-- 发布按钮 -->
+<navigator url="/pages/release/publish/publish" hover-class="none">
+  <view class="release_view"></view>
+</navigator>

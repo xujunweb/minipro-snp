@@ -11,7 +11,12 @@ var formatMoney2 = function(money) {
     money = (+money).toFixed(2);
     return money;
 }
+var strToArry = function(str,type){
+  var newtype = type || ','
+  return str.split(newtype)
+}
 module.exports = {
-    formatMoney: formatMoney,
-    formatMoney2: formatMoney2
+  formatMoney: formatMoney,
+  formatMoney2: formatMoney2,
+  strToArry: strToArry
 };

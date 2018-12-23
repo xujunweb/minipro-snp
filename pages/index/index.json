@@ -1,5 +1,8 @@
 {
+  "enablePullDownRefresh":true,
+  "navigationBarTitleText":"少年派",
   "usingComponents": {
-    "article-item": "/components/article-item/article-item"
+    "article-item": "/components/article-item/article-item",
+    "release":"/components/release/release"
   }
 }

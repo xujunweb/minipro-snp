@@ -1,0 +1,78 @@
+/* 分享成功弹框css */
+  .maskBox{
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background: rgba(0,0,0,0.7);
+    z-index: 5555;
+  }
+  .boxContent{ 
+    position: fixed;
+    bottom: 30rpx;
+    left: 30rpx;
+    right: 30rpx;
+    height: 505rpx;
+    background: #fff;
+    border-radius: 30rpx;
+  }
+  .boxContent1{
+    bottom: 80rpx;
+  }
+  .boxContent-single-title {
+    height: 480rpx;
+  }
+  .closeBox{
+    position: absolute;
+    right: 14rpx;
+    top: 14rpx;
+    width:65rpx;
+    height:65rpx;
+    background:url('http://yamxcx.oss-cn-shenzhen.aliyuncs.com/xcx/reward_close.png') center no-repeat;
+    background-size:27rpx;
+  }
+  .boxInfo{
+    margin-top: 100rpx;
+    text-align: center;
+  }
+  .boxTitle{
+    font-size:36rpx; 
+    color:#333;
+  }
+  .boxSub{
+    font-size:30rpx; 
+    color:#333;
+  }
+  .boxShare{ 
+    margin-top:50rpx;
+  }
+  .boxContent-single-title .boxShare{ 
+    margin-top:70rpx;
+  }
+  .boxShare image{ 
+    height: 90rpx;
+    width: 90rpx;
+    display:block;
+    margin:auto;
+  }
+  .boxShare .shareHB{
+    display: inline-block;
+  }
+  .boxShare button{
+    display: inline-block;
+    margin: 0 20rpx; 
+    padding: 0;
+    background: #fff;
+    width: 200rpx;
+  }
+  .boxShare button::after, .boxShare button::before{
+    border: none;
+  }
+
+  .boxShare button text{
+    display: block;
+    font-size: 26rpx;
+    line-height: 60rpx;
+    color:#333;
+  }

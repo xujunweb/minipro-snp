@@ -1,0 +1,27 @@
+<view class="publish_box">
+    <view class="enter-part">
+
+        <view class='publish_image_text line' bindtap='jumpPublishImageText'>
+            <view class="icon"><image src="http://yamxcx.oss-cn-shenzhen.aliyuncs.com/xcx/pz.png"/></view>
+            <view class="text">
+                <view class="title">图文</view>
+                <view class="space"></view>
+                <view class="desc">拍照或相册上传</view>
+            </view>
+        </view>
+
+        <view class='publish_article_video line' bindtap='jumpPublishArticleVideo'>
+            <view class="icon"><image src="http://yamxcx.oss-cn-shenzhen.aliyuncs.com/xcx/spwz.png" /></view>
+            <view class="text">
+                <view class="title">视频</view>
+                <view class="space"></view>
+                <view class="desc">拍摄或视频库上传</view>
+            </view>
+        </view>
+
+    </view>
+</view>
+
+<view class='close_publish_page' bindtap='closePublishPage' wx:if="{{!closeBack}}">
+    <image src='http://yamxcx.oss-cn-shenzhen.aliyuncs.com/xcx/ft_close.png'></image>
+</view>
