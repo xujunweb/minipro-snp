@@ -90,7 +90,8 @@ Component({
         url: '/pages/detail/video/video?id=' + this.data.item.id
       })
     },
-
+    //防止点击穿透 背景层
+    preventD: function () { },
     /**
      * 更新浏览数量
      */

@@ -1,2 +1,104 @@
 <!--pages/my/my.wxml-->
-<text>pages/my/my.wxml</text>
+<!-- 头部 -->
+<view class='my_head'>
+  <view class='my_head_img'>
+    <image src="{{userInfo.avatar&&userInfo.avatar?userInfo.avatar:'https://xcximg.197.com/xcx/zctx2.png'}}" alt="" mode="aspectFill" bindtouchstart="touchStart" bindtouchend="touchEnd"  bindtap="manyTap"/>
+    <button open-type="getUserInfo" bindgetuserinfo="refreshUserInfo" class="vip_refresh" lang="zh_CN">
+        <image class="refresh_btn" src="https://xcximg.197.com/xcx/refresh.png"/>
+    </button>
+  </view>
+  <view class="my_head_row">
+    <button open-type="getUserInfo" bindgetuserinfo="refreshUserInfo" class="warp_name" lang="zh_CN">
+        <text class="text">{{userInfo.nickname}}</text>
+        <!-- <image class="refresh_btn" src="http://yamxcx.oss-cn-shenzhen.aliyuncs.com/xcx/my_refreshre.png"/> -->
+    </button>
+  </view>
+  <view class='my_head_row my_head_tel' style="float: left;" wx:if='{{userInfo.nickname}}'>
+      <text class='basic_tel'>{{userInfo.type}}</text>
+      <text class='change_account' catchtap='changeAccount'>切换账号</text>
+  </view>
+</view>
+
+<!-- 我的发布/点赞评论/收藏的店/收藏的商品/优惠券 -->
+<view class='my_row_one'>
+    <view class='my_mid_row my_mid_publish' catchtap="myPublic">
+      <text>我的发布</text>
+      <image src='http://yamxcx.oss-cn-shenzhen.aliyuncs.com/pingtaixcx/next.png'/>
+    </view>
+    <!-- <view class='my_line'></view> -->
+
+    <!-- <navigator url="/subPackage/my/pages/news_list/news_list" hover-class="none">
+      <view class='my_mid_row my_mid_zan'>
+        <text>点赞评论</text>
+        <view class='my_red' wx:if='{{remindArr[0].status==2}}'></view>
+        <image src='http://yamxcx.oss-cn-shenzhen.aliyuncs.com/pingtaixcx/next.png'/>
+      </view>
+    </navigator> -->
+    <!-- <view class='my_line'></view> -->
+
+    <navigator url="/subPackage/mall/pages/fav-store/fav-store" hover-class="none">
+      <view class='my_mid_row my_mid_store_shop'>
+        <text>我的关注</text>
+        <image src='http://yamxcx.oss-cn-shenzhen.aliyuncs.com/pingtaixcx/next.png'/>
+      </view>
+    </navigator>
+    <!-- <view class='my_line'></view> -->
+
+    <navigator url="/subPackage/mall/pages/fav-product/fav-product" hover-class="none">
+      <view class='my_mid_row my_mid_store_goods'>
+        <text>我的收藏</text>
+        <image src='http://yamxcx.oss-cn-shenzhen.aliyuncs.com/pingtaixcx/next.png'/>
+      </view>
+    </navigator>
+    <!-- <view class='my_line'></view> -->
+
+    <!-- <navigator url="/subPackage/message/pages/pages/coupon_list/coupon_list" hover-class="none">
+      <view class='my_mid_row my_mid_coupon'>
+        <text>优惠券</text>
+        <image src='http://yamxcx.oss-cn-shenzhen.aliyuncs.com/pingtaixcx/next.png'/>
+      </view>
+    </navigator> -->
+
+    <!-- <navigator wx:if="{{enableSuperVip==2 && !isIOS}}" url="/subPackage/my/pages/pay-buy-record/pay-buy-record" hover-class="none">
+      <view class='my_mid_row my_mid_buy_record'>
+        <text>购买记录</text>
+        <image src='http://yamxcx.oss-cn-shenzhen.aliyuncs.com/pingtaixcx/next.png'/>
+      </view>
+    </navigator> -->
+
+</view>
+<!-- 商家入口/免费入驻/做小程序 -->
+<view class='my_row_one'>
+
+    <block>
+        <view class='my_mid_row my_mid_shop' catchtap="goMyShop">
+          <text>用户反馈</text>
+          <image src='http://yamxcx.oss-cn-shenzhen.aliyuncs.com/pingtaixcx/next.png'/>
+        </view>
+        <!-- <view class='my_line'></view> -->
+    </block>
+
+    <block>
+        <view class='my_mid_row my_mid_join' catchtap="toFreeJoin">
+          <text>系统设置</text>
+          <image src='http://yamxcx.oss-cn-shenzhen.aliyuncs.com/pingtaixcx/next.png'/>
+        </view>
+        <!-- <view class='my_line'></view> -->
+    </block>
+
+    <!-- 做一样的小程序 -->
+    <block>
+      <view class='my_mid_row my_mid_xcx' catchtap="goMakeXcx">
+          <text>联系客服</text>
+          <image src='http://yamxcx.oss-cn-shenzhen.aliyuncs.com/pingtaixcx/next.png' />
+        </view>
+    </block>
+
+</view>
+
+<view style='height: 20rpx;'></view>
+
+
+
+<!-- 授权弹窗 -->
+<authorize onShow="{{onAuthShow}}" onHide="{{onAuthHide}}" />

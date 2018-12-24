@@ -1,3 +1,6 @@
 {
-  "component": true
+  "component": true,
+  "usingComponents": {
+    "likeCom": "/components/likeCom/likeCom"
+  }
 }

@@ -1,1 +1,8 @@
-{}
+{
+  "enablePullDownRefresh": true,
+  "navigationBarTitleText": "好友圈",
+  "usingComponents": {
+    "friend-item": "/components/friend-item/friend-item",
+    "release": "/components/release/release"
+  }
+}

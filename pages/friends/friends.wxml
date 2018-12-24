@@ -1,2 +1,3 @@
 <!--pages/friends/friends.wxml-->
-<text>pages/friends/friends.wxml</text>
+<friend-item />
+<friend-item />

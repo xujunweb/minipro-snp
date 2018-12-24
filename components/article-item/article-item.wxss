@@ -81,7 +81,7 @@
   float: left;
 }
 .goods_row .goods_row_image_2{
-  line-height: 1rpx;
+  line-height: 1rpx;margin-bottom: 30rpx;
 }
 .goods_row .goods_row_image_2 image{
   width: 100%;
@@ -327,10 +327,15 @@ display: -webkit-box;
 }
 .contact_2{
   position: absolute;
-  width: 65rpx;
-  height: 59rpx;
+  width: 90rpx;
+  height: 50rpx;
   right: 0;
   top: 9.5rpx;
+  background: #9da3f1;
+  color: #fff;
+  font-size: 24rpx;
+  line-height: 50rpx;text-align: center;
+  border-radius: 50rpx;
 }
 .contact_2 image{
   width: 45rpx;

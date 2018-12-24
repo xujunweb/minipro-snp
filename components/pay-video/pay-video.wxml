@@ -11,10 +11,23 @@
             <view class="play-icon"></view>                                  
         </view>
     </view>
-    <view class="info-count" data-index="{{item.id}}" bindtap="jumpToPage">
-        <text>播放  {{item.viewNum}}</text>  
-        <text wx:if="{{ item.hasBuy == 2}}">已购买</text> 
-        <text wx:elif="{{ item.hasShared == 2}}">已转发</text> 
-        <text style="color: #ff6000;" wx:elif="{{ item.hasBuy == 1 && item.hasShared == 1}}">{{item.price===0?"免费":"￥"+u.formatMoney2(item.price)}} </text> 
-    </view> 
+    <view class='userInfo'>
+      <view class='info'>
+        <view class='avatar'>
+          <image src='{{item.user.avatar}}' mode="aspectFill" class='item_originLogo'></image>
+        </view>
+        <view>
+          <view class='name'>{{item.user.nickname}}</view>
+          <view class='type'>{{item.user.type}}</view>
+        </view>
+      </view>
+      <button data-img="{{item.shareCoverImage}}" data-item="{{item}}" catchtap="preventD" class="item_share">关注</button>
+    </view>
+    
+    <likeCom item="{{item}}" />
+
+    <!-- <view class="info-count" data-index="{{item.id}}" bindtap="jumpToPage">
+        <text>评论  {{item.comment}}</text>  
+        <text style="color: #ff6000;">点赞{{item.like}} </text> 
+    </view>  -->
 </view>

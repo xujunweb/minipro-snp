@@ -27,6 +27,9 @@ newPage({//引入监听全局每个页面的生命周期
     })
     wx.eventBus.on('showOnAuthShow', () => {
       that.showOnAuthShow()
+      that.setData({
+        userInfo: app.globalData.userInfo
+      })
     })
   },
   onHide: function (that) {

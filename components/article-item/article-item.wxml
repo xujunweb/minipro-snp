@@ -15,7 +15,7 @@
                   <view class="goods_row_info_r_b">{{item.user.type}}</view>
                 </view>
                  <view class='contact_2' data-index='{{i}}'>
-                    <image src='http://yamxcx.oss-cn-shenzhen.aliyuncs.com/pingtaixcx/wechat.png'></image>
+                    关注
                 </view>
             </view>
         </block>
@@ -36,13 +36,8 @@
         </block>
         <view class="goods_row_4" wx:if="{{item.address}}" data-item="{{item}}">{{item.address}}</view>
 
-        <view class="goods_row_5" style="margin-top: {{item.hasRedPacket==2 ? '13rpx' : '30rpx'}}">
-          <view class='goods_row_5_ll'><text>{{item.comment}}</text></view>
-          <view class='goods_row_pl'><text>{{item.comment ? item.comment : 0}}</text></view>
-          <view class='{{item.likeStatus == 1 ? "goods_row_dz_2" : "goods_row_dz_1"}}' data-index="{{i}}" data-moment-id="{{item.id}}" data-like-status="{{item.likeStatus}}" data-user-type="{{item.userType}}" data-like-id="{{item.likeId}}" catchtap="onPraise">
-              <text>{{item.likes.length > 0 ? item.likes.length : "赞"}}</text>
-          </view>
-        </view>
+        <likeCom item="{{item}}" height="90" border="true" />
+        
     </view>
 </view>
 
