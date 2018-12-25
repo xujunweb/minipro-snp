@@ -10,8 +10,9 @@
             <view class="goods_right" style="min-height:90rpx">
                 <view class="goods_right_a">
                     <view class="goods_orgname">{{artInfo.user.nickname?artInfo.user.nickname:"微信用户"}}</view>
-                    <view class='contact_2'>
-                        <image src='http://yamxcx.oss-cn-shenzhen.aliyuncs.com/pingtaixcx/wechat.png'></image>
+                    <view class='type'>{{artInfo.type||'头条用户'}}</view>
+                    <view class='contact_2' catchtap='followUser' wx:if="{{artInfo.user.id != userInfo.id}}">
+                        {{isfollow?'取消关注':'关注'}}
                     </view>
                 </view>
             </view>
@@ -19,7 +20,8 @@
         <view class="goods_row">
             <!--    2：信息，4文章-->
             <view>
-                <view class="goods_right_b" wx:if="artInfo.content != ''" style="margin-top:-4rpx;">
+                <view class='goods_title'>{{artInfo.title}}</view>
+                <view class="goods_right_b" wx:if="artInfo.content != ''">
                     <text selectable="true">{{artInfo.content}}</text>
                 </view>
                 <view class="goods_right_c" wx:if="{{artInfo.img_urls.length}}" style="margin-top:30rpx;">
@@ -41,7 +43,7 @@
     <!-- 评论 -->
     <block>
         <view id="discussTop" class="discuss-top" />
-        <discuss lilikeStatuskes="{{artInfo.articleInfo.like}}" artid="{{artInfo.id}}" page="goods"  bindscollcommnet="scollCommnet" likeNum="{{artInfo.like}}" news-id="{{id}}" moment-id="{{id}}"/>
+        <discuss likeStatus="{{artInfo.articleInfo.like}}" artid="{{artInfo.id}}" page="goods"  bindscollcommnet="scollCommnet" likeNum="{{artInfo.like}}" news-id="{{id}}" moment-id="{{id}}"/>
         <view id="discussBottom" style=" width: 100%;background-color: #f4f4f4" />
     </block>
 </view>

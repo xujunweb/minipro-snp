@@ -26,7 +26,7 @@ page {
   position: absolute;
   top: 50%;
   left: 0;
-  margin-top: -35rpx;
+  margin-top: -41rpx;
 }
 
 .goods_left .head_img {
@@ -65,10 +65,15 @@ page {
 
 .contact_2 {
   position: absolute;
-  width: 65rpx;
-  height: 59rpx;
+  padding: 0 30rpx;
+  height: 50rpx;
   right: 0;
-  top: 15.5rpx;
+  top: 9.5rpx;
+  background: #9da3f1;
+  color: #fff;
+  font-size: 24rpx;
+  line-height: 50rpx;text-align: center;
+  border-radius: 50rpx;
 }
 
 .contact_2 image {
@@ -87,15 +92,15 @@ page {
 }
 
 .goods_right_a {
-  display: flex;
-  display: -webkit-flex;
   position: relative;
 }
-
+.goods_right_a .type{
+  font-size: 24rpx;color: #999;
+}
 .goods_right_a view {
-  display: line-block;
+  /* display: line-block;
   line-height: 38rpx;
-  box-sizing: border-box;
+  box-sizing: border-box; */
 }
 
 .goods_orgname {
@@ -137,7 +142,7 @@ page {
 }
 
 .goods_right_b {
-  font-size: 32rpx;
+  font-size: 26rpx;
   color: #333;
   line-height: 40rpx;
   margin-bottom: 20rpx;
@@ -301,7 +306,7 @@ page {
 .goods_title {
   font-size: 34rpx;
   color: #222;
-  padding: 0 31rpx 22rpx 32rpx;
+  padding: 0 0rpx 22rpx 0rpx;
   line-height: 56rpx;
   font-weight: 500;
   word-break: break-all;

@@ -1,5 +1,6 @@
 // pages/detail/article/article.js
 import { updateArticle, getByArticleId} from '../../../api/article.js'
+import { followUser} from '../../../api/user.js'
 let app = getApp()
 Page({
 
@@ -9,6 +10,7 @@ Page({
   data: {
     id:"",  //文章id
     artInfo:null, //文章信息
+    isfollow:false,
   },
 
   /**
@@ -19,7 +21,9 @@ Page({
       this.setData({
         id:options.id
       })
-      this.getByArticleId(options.id)
+      app.pageByFollow().then(() => {
+        this.getByArticleId(options.id)
+      })
     }
   },
 
@@ -44,9 +48,16 @@ Page({
       id: id,
     }).then((res)=>{
       res.data.img_urls = res.data.img_urls.split(',')
+      this.data.artInfo = res.data
       this.setData({
         artInfo:res.data
       })
+      var followList = wx.getStorageSync('followUser')
+      if (this.data.artInfo.user) {
+        this.setData({
+          isfollow: followList[this.data.artInfo.user.id] ? true : false
+        })
+      }
     })
   },
   //跳转到指定评论位置
@@ -69,6 +80,19 @@ Page({
     wx.previewImage({
       current: e.currentTarget.dataset.src, // 当前显示图片的http链接
       urls: this.data.artInfo.img_urls, // 需要预览的图片http链接列表
+    })
+  },
+  //关注用户
+  followUser: function () {
+    followUser({
+      is_follow: this.data.isfollow ? '0' : '1',
+      user_id: this.data.artInfo.user.id,
+      follow_user_id: app.globalData.userInfo.id,
+    }).then((res) => {
+      console.log('关注用户---')
+      this.setData({
+        isfollow: !this.data.isfollow
+      })
     })
   },
   /**

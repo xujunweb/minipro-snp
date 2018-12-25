@@ -15,6 +15,10 @@ function ajax(options) {
       data: options.data,
       success: (res) => {
         if (res.statusCode !== 200 || res.data.code !== 100) {
+          wx.showToast({
+            title: '操作异常' + res.data.code,
+            icon: 'none'
+          })
           reject(res.data)
           return
         }

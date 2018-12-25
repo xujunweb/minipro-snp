@@ -1,5 +1,6 @@
 //app.js
 import { getOpenId, getNewUserInfo, userUpdate } from './api/global.js'
+import { pageByFollow } from './api/user.js'
 import { newPage, eventBus } from './utils/global-life-cycle.js'
 import env from './utils/config.js'
 
@@ -49,9 +50,6 @@ newPage({//引入监听全局每个页面的生命周期
 App({
   onLaunch: function () {
     // 展示本地存储能力
-    var logs = wx.getStorageSync('logs') || []
-    logs.unshift(Date.now())
-    wx.setStorageSync('logs', logs)
     wx.eventBus = eventBus  //将发布订阅模式挂载到wx.eventBus上
     //环境配置
     wx.envConfig = env[env.mode]
@@ -85,8 +83,8 @@ App({
   //获取openid
   getOpenId: function (data) {
     return new Promise((resolve, reject)=>{
-      if(this.globalData.openid){
-        resolve(this.globalData.openid)
+      if(this.globalData.userInfo){
+        resolve(this.globalData.userInfo)
         return
       }
       wx.login({
@@ -98,7 +96,7 @@ App({
             this.globalData.openid = res.data.openid
             this.globalData.userInfo = { ...res.data}
             wx.eventBus.trigger('updataUser', { ...res.data })
-            resolve(res)
+            resolve(res.data)
           }).catch((res)=>{
             reject(res)
           })
@@ -156,6 +154,32 @@ App({
       ...data
     }).then((res)=>{
       wx.eventBus.trigger('updataUser', { ...data })
+    })
+  },
+  /**
+   * 当前登录人关注了哪些用户
+   * 
+   */
+  pageByFollow:function(){
+    return new Promise((resolve, reject) => {
+      this.getOpenId().then((userInfo)=>{
+        if (wx.getStorageSync('followUser')) {
+          resolve()
+          return
+        }
+        pageByFollow({
+          pageNum: 1,
+          pageSize: 1000,
+          follow_user_id: userInfo.id,
+        }).then((res) => {
+          var followMap = {}
+          for (let i = 0, user; user = res.data.list[i]; i++) {
+            followMap[user.user_id] = user
+          }
+          wx.setStorageSync('followUser', followMap)
+          resolve()
+        })
+      })
     })
   },
 })

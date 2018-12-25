@@ -17,7 +17,10 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    this.pageByArticle()
+    //先获取该用户关注了哪些用户
+    app.pageByFollow().then(() => {
+      this.pageByArticle()
+    })
   },
   /**
    * 生命周期函数--监听页面初次渲染完成
@@ -46,8 +49,8 @@ Page({
     pageByArticle({
       pageNum:this.data.thisp,
       pageSize:8,
-      status:0, //审核状态
       type:'1',
+      login_user_id: app.globalData.userInfo.id,
     }).then((res)=>{
       console.log(res)
       this.data.lastPage = res.data.lastPage

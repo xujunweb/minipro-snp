@@ -12,13 +12,13 @@
         <view class="bg-white">
             <view class="info_title"><text>{{artInfo.title}}</text></view>
             <view class='info_top'>
-                <text class='origin_time'>发布时间：{{artInfo.createTime}}</text>
+                <text class='origin_time'>发布时间：{{artInfo.insert_time}}</text>
             </view>
         </view>
         <!-- @todo 评论点赞 -->
         <block wx:if="{{artInfo}}">
             <view id="discussTop" />
-            <discuss bindinputComment="inputComment" bindchangeVideoHeight="changeVideoHeight" bindchangeVideoHeight1="changeVideoHeight1" comments="{{plateInfo.payMediaCommentDtos}}" lilikeStatuskes="{{artInfo.articleInfo.like}}" bind:commentsLen='commentsLen' artid="{{artInfo.id}}" page="plate-video" bindscollcommnet="scollCommnet" likeNum="{{artInfo.like}}" moment-id="{{artInfo.id}}" isCanCommom="{{isDiscuss}}"/>
+            <discuss bindinputComment="inputComment" bindchangeVideoHeight="changeVideoHeight" bindchangeVideoHeight1="changeVideoHeight1" comments="{{plateInfo.payMediaCommentDtos}}" likeStatus="{{artInfo.articleInfo.like}}" bind:commentsLen='commentsLen' artid="{{artInfo.id}}" page="plate-video" bindscollcommnet="scollCommnet" likeNum="{{artInfo.like}}" moment-id="{{artInfo.id}}" isCanCommom="{{isDiscuss}}"/>
             <view id="discussBottom" style="height:90rpx; width: 100%;background-color: #f4f4f4"/>
         </block>
     </scroll-view>

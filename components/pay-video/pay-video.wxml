@@ -18,10 +18,12 @@
         </view>
         <view>
           <view class='name'>{{item.user.nickname}}</view>
-          <view class='type'>{{item.user.type}}</view>
+          <view class='type'>{{item.user.type||'头条用户'}}</view>
         </view>
       </view>
-      <button data-img="{{item.shareCoverImage}}" data-item="{{item}}" catchtap="preventD" class="item_share">关注</button>
+      <!-- <button data-img="{{item.shareCoverImage}}" data-item="{{item}}" catchtap="preventD" class="item_share" catchtap='followUser' wx:if="{{item.user.id != userId}}">
+        {{isfollow?'取消关注':'关注'}}
+      </button> -->
     </view>
     
     <likeCom item="{{item}}" />

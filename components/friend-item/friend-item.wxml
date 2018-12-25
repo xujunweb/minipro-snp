@@ -12,7 +12,7 @@
         <view catchtap="jumpToNext" data-id="{{item.id}}" data-userType="{{item.userType}}" data-org-id="{{item.orgId}}" data-is-news="{{item.article}}">
             <view class="goods_right_a">
                 <view catchtap="jumpToShop" data-type="{{item.userType}}" data-orgid="{{item.orgId}}" data-is-created="{{item.isCreated}}" data-publish-by="{{item.publishBy}}">
-                    <view class="goods_orgname">{{item.user.nickname}}</view>
+                    <view class="goods_orgname">{{item.user.nickname}}<text class=''>{{item.user.type||'头条用户'}}</text></view>
                 </view>
                 <view class="goods_set_top" wx:if="{{item.topStatus==2}}">顶</view>
                 <!-- <view class='contact_2' catchtap="jumpPersonLetterHim" data-index='{{i}}'>

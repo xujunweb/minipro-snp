@@ -1,5 +1,6 @@
 
 var app = getApp();
+import { followUser } from '../../api/user.js'
 Component({
   /**
    * 组件的属性列表
@@ -34,7 +35,17 @@ Component({
     title:'',
     openid:'',
   },
-
+  attached: function () {
+    var followList = wx.getStorageSync('followUser')
+    if (this.data.item.user) {
+      this.setData({
+        isfollow: followList[this.data.item.user.id] ? true : false
+      })
+    }
+    this.setData({
+      userId: app.globalData.userInfo.id
+    })
+  },
   /**
    * 组件的方法列表
    */
@@ -108,6 +119,19 @@ Component({
       };
       // payPlateUpdateViewNumM(tJsons);
    },
+    //关注用户
+    followUser: function () {
+      followUser({
+        is_follow: this.data.isfollow ? '0' : '1',
+        user_id: this.data.item.user.id,
+        follow_user_id: app.globalData.userInfo.id,
+      }).then((res) => {
+        console.log('关注用户---')
+        this.setData({
+          isfollow: !this.data.isfollow
+        })
+      })
+    },
 
   },
   ready:function(){

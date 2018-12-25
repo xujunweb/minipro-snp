@@ -14,8 +14,8 @@
     </button>
   </view>
   <view class='my_head_row my_head_tel' style="float: left;" wx:if='{{userInfo.nickname}}'>
-      <text class='basic_tel'>{{userInfo.type}}</text>
-      <text class='change_account' catchtap='changeAccount'>切换账号</text>
+      <text class='basic_tel'>{{userInfo.type||'头条用户'}}</text>
+      <!-- <text class='change_account' catchtap='changeAccount'>切换账号</text> -->
   </view>
 </view>
 

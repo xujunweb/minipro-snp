@@ -1,3 +1,7 @@
 <!--pages/friends/friends.wxml-->
 <friend-item />
 <friend-item />
+
+
+<!-- 授权弹窗 -->
+<authorize onShow="{{onAuthShow}}" onHide="{{onAuthHide}}" />

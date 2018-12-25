@@ -49,8 +49,8 @@
         <!-- 有商品的情况下 -->
         <view class="goods" wx:if="{{userInfo.openid}}" style='overflow:hidden;'>
             <!-- 贴吧样式 -->
-            <!-- <article-item shop-list="{{shopList}}" bindpraise="onPraise" bindspread="onSpread"></article-item> -->
-            <article-item bindpraise="onPraise" bindspread="onSpread" shopList="{{articlelist}}"></article-item>
+            <!-- <article-item shop-list="{{shopList}}" bindpraise="onPraise" bindspread="onSpread" wx:if="{{shopList}}"></article-item> -->
+            <article-item bindpraise="onPraise" bindspread="onSpread" wx:for="{{articlelist}}" item="{{item}}" wx:key="{{index}}" wx:if="{{articlelist.length}}"></article-item>
             <!-- 上拉加载动画 -->
             <view class="loading" wx:if="{{showLoading}}">
                 <image src="http://yamxcx.oss-cn-shenzhen.aliyuncs.com/one-shop-one-mini-app/loading.png"></image>

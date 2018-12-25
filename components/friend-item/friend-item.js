@@ -1,4 +1,5 @@
 // components/friend-item/friend-item.js
+var app = getApp()
 Component({
   /**
    * 组件的属性列表
@@ -28,7 +29,15 @@ Component({
    * 组件的初始数据
    */
   data: {
-    animation:''
+    animation:'',
+    discussInfo: {//点击评论相关数据(评论操作)
+      inputShow: false,//是否显示输入框
+      goodsId: 0,//评论的商品ID
+      inputText: '',//输入框内容
+      placeHolder: "请输入评论内容",//评论的输入框提示
+      shopListIndex: '',//shopList的index索引
+      userType: 1,
+    },
   },
 
   /**
@@ -75,19 +84,14 @@ Component({
      */
     showDiscussInput: function (ev) {
       var that = this;
-      app.userInfoMiddleWare().then((data) => {
-        if (!data.isGetUserInfo) {
+      app.isAuthorize().then((data) => {
+        if (!data) {
           //发布显示授权弹窗的事件(自定义的微信方法)
           wx.eventBus.trigger('showOnAuthShow')
         } else {
           //这里执行需要授权后才能执行的代码//添加访问记录
-          app.addRecord();
-          var nowClickId = ev.currentTarget.dataset.nowid;
-          var goodsId = ev.currentTarget.dataset.goodsid;
-          var userType = ev.currentTarget.dataset.usertype;
-
           clearTimeout(outTime)
-          var outTime = setTimeout(function () {
+          var outTime = setTimeout( ()=> {
             if (!that.data.discussInfo.inputShow) {
 
               var animation = wx.createAnimation({
@@ -97,17 +101,12 @@ Component({
 
               that.animation = animation;
               animation.translateX(360).step()
-              that.data.shopList[nowClickId].animationData = that.animation.export();
-              that.data.shopList[nowClickId].animationDataShow = false;//已经隐藏
-              that._setData(that.data)
-
-              that.data.discussInfo.inputShow = true;
+              this.data.item.animationData = that.animation.export();
+              this.data.item.animationDataShow = false;//已经隐藏
+              this.data.discussInfo.inputShow = true;
               // that.data.discussInfo.inputText = ''; 
-              that.data.discussInfo.placeHolder = "请输入评论内容";
-              that.data.discussInfo.goodsId = goodsId;
-              that.data.discussInfo.shopListIndex = nowClickId;
-              that.data.discussInfo.userType = userType;
-              that._setData(that.data);
+              this.data.discussInfo.placeHolder = "请输入评论内容";
+              this.setData(this.data);
             }
           }, 300)
 
@@ -120,11 +119,9 @@ Component({
      *评论输入保存状态
     */
     DiscussInputState: function (e) {
-
-      var that = this;
       var value = e.detail.value;
-      that.data.discussInfo.inputText = value;
-      that._setData(that.data);
+      this.data.discussInfo.inputText = value;
+      this.setData(that.data);
     },
     /**
      *发送评论
@@ -140,10 +137,8 @@ Component({
           showCancel: false,
           content: '请输入评论内容',
           success: function (res) {
-
           }
         })
-
         return;
       }
 
@@ -262,13 +257,9 @@ Component({
      * 隐藏评论输入框
      */
     hideDiscussInput: function () {
-      var that = this;
-      that.data.discussInfo.inputShow = false;
-      that.data.discussInfo.goodsId = 0;
-      that.data.discussInfo.inputText = '';
-      that.data.discussInfo.shopListIndex = '';
-      that.data.discussInfo.userType = 1;
-      that._setData(that.data);
+      this.data.discussInfo.inputShow = false;
+      this.data.discussInfo.inputText = '';
+      this.setData(this.data);
     },
   }
 })

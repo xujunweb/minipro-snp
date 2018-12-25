@@ -18,9 +18,14 @@ export const getByArticleId = (data)=>{
 }
 //文章列表查询
 export const pageByArticle = (data) => {
+  let app = getApp()
   return ajax({
     url: wx.envConfig.host + 'article/pageByArticle',
-    data: { ...data },
+    data: {
+      state: '0', 
+      status: '0', 
+      ...data
+    },
     method: 'post',
     loading:true,
   })
