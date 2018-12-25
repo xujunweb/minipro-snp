@@ -14,11 +14,20 @@ Page({
     textareaNum: 0,  //文本框字的个数
     article: '',
     nickName:'',  //用户昵称
-    shareFree: 1,   //是否已转发标识  1：否，2：是
-    isOpen: 1,   //支付开通状态  1:不开通，2：开通
     title:'', //标题
+    article_type:'',  //文章类型
+    category:'',  //文章分类
+    mapType: {
+      0: '资讯',
+      1: '朋友圈',
+      2: '题目'
+    },
+    classMap:{}
   },
   onLoad: function (e) {
+    this.setData({
+      classMap: app.globalData.classMap
+    })
   },
   onShow: function (e) {
   },
@@ -96,7 +105,9 @@ Page({
         type: '0',
         content: this.data.content,
         img_urls: this.data.postImgList.join(','),
-        cover_urls: this.data.postImgList[0]
+        cover_urls: this.data.postImgList[0],
+        category: this.data.category,
+        article_type: this.data.article_type
       }
       insertArticle(data).then((res) => {
         console.log(res)
@@ -137,8 +148,8 @@ Page({
   },
   //判断文本框和图片列表
   taBlurImgList: function () {
-    const {title, content} = this.data;
-    if (!title || !content) {
+    const { title, content, category, article_type} = this.data;
+    if (!title || !content || !category || !article_type) {
       //禁止发布
       this.setData({ usedDisabled: false });
     }else{
@@ -174,5 +185,45 @@ Page({
       }
     }
     return len;
+  },
+  //选择类型
+  chooseType:function(){
+    var typeArry = []
+    for(let i in this.data.mapType){
+      typeArry[i] = this.data.mapType[i]
+    }
+    wx.showActionSheet({
+      itemList: typeArry,
+      success:(res)=>{
+        console.log(res)
+        this.setData({
+          article_type: ''+res.tapIndex
+        })
+        this.taBlurImgList()
+      },
+      fail:(err)=>{
+        console.log(err)
+      }
+    })
+  },
+  //选择分类
+  chooseClass: function () {
+    var typeArry = []
+    for (let i in this.data.classMap) {
+      typeArry[i] = this.data.classMap[i]
+    }
+    wx.showActionSheet({
+      itemList: typeArry,
+      success: (res) => {
+        console.log(res)
+        this.setData({
+          category: '' + res.tapIndex
+        })
+        this.taBlurImgList()
+      },
+      fail: (err) => {
+        console.log(err)
+      }
+    })
   },
 });

@@ -134,12 +134,12 @@
 
 /* 会员样式新增 */
 .vip_row{ margin:  0 auto; box-sizing: border-box; display: flex; flex-direction: row; justify-content: space-between; }
-.vip_sub_row{ padding: 30rpx 30rpx 32rpx 40rpx; display: flex; flex-direction: column; justify-content: space-between; }
+.vip_sub_row{ padding: 20rpx 30rpx 20rpx 40rpx; display: flex; flex-direction: column; justify-content: space-between; }
 .vip_sub_row1{ padding-left: 0; }
-.blance{ font-size: 36rpx; color: #222; line-height: 70rpx; }
+.blance{ font-size: 32rpx; color: #222; line-height: 50rpx; }
 .sub_title{ font-size: 22rpx; color: #9ea3ad; margin-top: 20rpx; line-height: 22rpx;}
-.vip_btn{  width: 304rpx; text-align: center; height: 70rpx; line-height: 70rpx;	background: linear-gradient(to left, #efc370,	#ffde93);	border-radius: 35px; }
-.vip_btn text{ font-size: 28rpx; color: #24190f; display: inline-block; background: url(https://xcximg.197.com/xcx/crown1.png) no-repeat left center; background-size: 33rpx 27rpx; padding-left: 43rpx; }
+.vip_btn{padding: 0 30rpx; text-align: center; height: 50rpx; line-height: 50rpx;	background: linear-gradient(to left, #efc370,	#ffde93);	border-radius: 35px;font-size: 28rpx; color: #24190f; }
+
 .vip_refresh {margin: 0;padding: 0;background: none;line-height: inherit; height: 34rpx; width: 34rpx; position: absolute; right: 0; bottom: 0;}
 .vip_refresh::after { border: none;}
 .vip_refresh .refresh_btn {

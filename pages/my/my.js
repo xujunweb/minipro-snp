@@ -1,4 +1,7 @@
 // pages/my/my.js
+import { listByUserSignIn, signIn} from '../../api/user.js'
+import { GetTime} from '../../utils/util.js'
+var app = getApp()
 Page({
 
   /**
@@ -26,9 +29,31 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
-
+    this.listByUserSignIn()
   },
-
+  //获取用户今天是否签到
+  listByUserSignIn:function(){
+    app.getOpenId().then((userInfo)=>{
+      listByUserSignIn({
+        user_id: userInfo.id,
+        day_date: GetTime(new Date().getTime(), 'Y-M-D'),
+      }).then((res) => {
+        console.log(res)
+      })
+    })
+    
+  },
+  //签到
+  signIn:function(){
+    signIn({
+      user_id: app.globalData.userInfo.id
+    }).then((res)=>{
+      wx.showToast({
+        title: '签到成功',
+      })
+      console.log(res)
+    })
+  },
   /**
    * 生命周期函数--监听页面隐藏
    */
@@ -56,11 +81,4 @@ Page({
   onReachBottom: function () {
 
   },
-
-  /**
-   * 用户点击右上角分享
-   */
-  onShareAppMessage: function () {
-
-  }
 })

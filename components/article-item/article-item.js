@@ -8,6 +8,7 @@ Component({
       isfollow:false,
       isLikeDisabled:false,
       userId:'',
+      classMap:{}
     },
     properties: { // 属性名
       item: {
@@ -40,7 +41,8 @@ Component({
         })
       }
       this.setData({
-        userId: app.globalData.userInfo.id
+        userId: app.globalData.userInfo.id,
+        classMap:app.globalData.classMap,
       })
     },
     methods: {

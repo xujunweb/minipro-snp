@@ -32,8 +32,8 @@ function formatLocation(longitude, latitude) {
 
 function GetTime(str,format){
     var date = new Date(str);
-    var Y = date.getFullYear() + '.';
-    var M = (date.getMonth()+1 < 10 ? '0'+(date.getMonth()+1) : date.getMonth()+1) + '.';
+    var Y = date.getFullYear() + '-';
+    var M = (date.getMonth()+1 < 10 ? '0'+(date.getMonth()+1) : date.getMonth()+1) + '-';
     var D = date.getDate()<10? '0'+(date.getDate()):date.getDate();
     var hh = (parseInt(date.getHours())>9?date.getHours():'0'+date.getHours()) + ':';
     var mm = (parseInt(date.getMinutes())>9?date.getMinutes():"0"+date.getMinutes()) + ':';

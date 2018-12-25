@@ -19,6 +19,17 @@
   </view>
 </view>
 
+<!-- 积分 -->
+<view class='my_row_one vip_row'>
+  <view class="vip_sub_row">
+    <view class="blance">积分：{{0}}</view>
+  </view>
+  <view class="vip_sub_row vip_sub_row1" catchtap="signIn">
+    <view class="vip_btn">签到</view>
+  </view>
+
+</view>
+
 <!-- 我的发布/点赞评论/收藏的店/收藏的商品/优惠券 -->
 <view class='my_row_one'>
     <view class='my_mid_row my_mid_publish' catchtap="myPublic">
@@ -68,25 +79,19 @@
 
 </view>
 <!-- 商家入口/免费入驻/做小程序 -->
-<view class='my_row_one'>
-
+<!-- <view class='my_row_one'>
     <block>
         <view class='my_mid_row my_mid_shop' catchtap="goMyShop">
           <text>用户反馈</text>
           <image src='http://yamxcx.oss-cn-shenzhen.aliyuncs.com/pingtaixcx/next.png'/>
         </view>
-        <!-- <view class='my_line'></view> -->
     </block>
-
     <block>
         <view class='my_mid_row my_mid_join' catchtap="toFreeJoin">
           <text>系统设置</text>
           <image src='http://yamxcx.oss-cn-shenzhen.aliyuncs.com/pingtaixcx/next.png'/>
         </view>
-        <!-- <view class='my_line'></view> -->
     </block>
-
-    <!-- 做一样的小程序 -->
     <block>
       <view class='my_mid_row my_mid_xcx' catchtap="goMakeXcx">
           <text>联系客服</text>
@@ -94,7 +99,7 @@
         </view>
     </block>
 
-</view>
+</view> -->
 
 <view style='height: 20rpx;'></view>
 

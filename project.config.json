@@ -37,12 +37,24 @@
 			"list": []
 		},
 		"miniprogram": {
-			"current": 0,
+			"current": 2,
 			"list": [
 				{
 					"id": -1,
 					"name": "好友圈",
-					"pathName": "pages/release/aticle/aticle"
+					"pathName": "pages/release/aticle/aticle",
+					"query": ""
+				},
+				{
+					"id": -1,
+					"name": "发表图文",
+					"pathName": "pages/release/aticle/aticle",
+					"query": ""
+				},
+				{
+					"id": -1,
+					"name": "我的",
+					"pathName": "pages/my/my"
 				}
 			]
 		}

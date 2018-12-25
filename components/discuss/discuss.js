@@ -10,7 +10,7 @@ Component({
       type: String,
       value: null,
       observer: function (newVal, oldVal) {
-        if (newVal !== oldVal) {
+        if (newVal !== oldVal && newVal) {
           this.pageByArticleComment(1)
         }
       }

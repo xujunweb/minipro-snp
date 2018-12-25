@@ -28,3 +28,21 @@ export const pageByFollow = (data) => {
     method: 'post',
   })
 }
+
+//查询用户签到信息
+export const listByUserSignIn = (data) => {
+  return ajax({
+    url: wx.envConfig.host + 'user/listByUserSignIn',
+    data: { ...data },
+    method: 'post',
+  })
+}
+//用户签到
+export const signIn = (data) => {
+  return ajax({
+    url: wx.envConfig.host + 'user/signIn',
+    data: { ...data },
+    method: 'post',
+  })
+}
+

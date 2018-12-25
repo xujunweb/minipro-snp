@@ -8,7 +8,7 @@
     background-color: white;
   }
   .comment_and_praise .tab view{
-    width: 50%;
+    width: 30%;
     text-align: center;
     height: 91rpx;
     line-height: 91rpx;

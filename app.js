@@ -79,6 +79,14 @@ App({
   globalData: {
     userInfo: null,
     isCouldAuth: 0,//用户是否点击了允许授权 0:首次进入;1:点击了允许;2:点击了拒绝
+    classMap: {
+      0: '学生',
+      1: '老师',
+      2: '家长',
+      3: '教育',
+      4: '动漫',
+      5: '音乐'
+    }
   },
   //获取openid
   getOpenId: function (data) {

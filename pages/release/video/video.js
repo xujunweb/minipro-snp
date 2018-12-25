@@ -10,8 +10,18 @@ Page({
     title: '', //标题
     width:'', //视频宽
     height:'',  //视频高
+    article_type: '',  //文章类型
+    category: '',  //文章分类
+    mapType: {
+      0: '资讯',
+      1: '朋友圈'
+    },
+    classMap: {}
   },
   onLoad: function (e) {
+    this.setData({
+      classMap: app.globalData.classMap
+    })
   },
   onShow: function (e) {
   },
@@ -83,7 +93,9 @@ Page({
       title: this.data.title,
       type: '1',
       img_urls: url.url,
-      cover_urls: url.cover_url
+      cover_urls: url.cover_url,
+      category: this.data.category,
+      article_type: this.data.article_type
     }
     insertArticle(data).then((res) => {
       console.log(res)
@@ -103,8 +115,8 @@ Page({
   },
   //判断文本框和图片列表
   taBlurImgList: function () {
-    const { title, videoUrl } = this.data;
-    if (!title || !videoUrl) {
+    const { title, videoUrl,category, article_type } = this.data;
+    if (!title || !videoUrl || !category || !article_type) {
       //禁止发布
       this.setData({ usedDisabled: false });
     } else {
@@ -124,5 +136,45 @@ Page({
   //获取标题
   getTitle: function (e) {
     this.setData({ title: e.detail.value });
+  },
+  //选择类型
+  chooseType: function () {
+    var typeArry = []
+    for (let i in this.data.mapType) {
+      typeArry[i] = this.data.mapType[i]
+    }
+    wx.showActionSheet({
+      itemList: typeArry,
+      success: (res) => {
+        console.log(res)
+        this.setData({
+          article_type: '' + res.tapIndex
+        })
+        this.taBlurImgList()
+      },
+      fail: (err) => {
+        console.log(err)
+      }
+    })
+  },
+  //选择分类
+  chooseClass: function () {
+    var typeArry = []
+    for (let i in this.data.classMap) {
+      typeArry[i] = this.data.classMap[i]
+    }
+    wx.showActionSheet({
+      itemList: typeArry,
+      success: (res) => {
+        console.log(res)
+        this.setData({
+          category: '' + res.tapIndex
+        })
+        this.taBlurImgList()
+      },
+      fail: (err) => {
+        console.log(err)
+      }
+    })
   },
 });

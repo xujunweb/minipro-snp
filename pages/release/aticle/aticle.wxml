@@ -28,19 +28,31 @@
         </view>
     </view>
     <!--副内容输入-->
-    <!-- <view class='contact_us' style='overflow:hidden;width:100%;'>
-        <view class='contact_us_li' bindtap='openLocationAddress'>
+    <view class='contact_us' style='overflow:hidden;width:100%;'>
+        <view class='contact_us_li' bindtap='chooseType'>
             <image src="http://yamxcx.oss-cn-shenzhen.aliyuncs.com/pingtaixcx/address.png" alt="" style="width:24rpx; height:24rpx; margin:34rpx 20rpx 0 0;"></image>
             <view class="contact_us_li_address">
-                <input type="text" placeholder='请选择您的位置信息' disabled="true" maxlength="50" placeholder-style="color:#aaa;" class="in_address" value="{{address}}" />
+                <input type="text" placeholder='请选择文章类型' disabled="true" maxlength="50" placeholder-style="color:#aaa;" class="in_address" value="{{mapType[article_type]}}" />
             </view>
             <abcd><image src="../../../image/otherImages/next.png" alt="" /></abcd>
         </view>
-        <view class='contact_us_li'>
+        <!-- <view class='contact_us_li' bindtap='openLocationAddress'>
+            <image src="http://yamxcx.oss-cn-shenzhen.aliyuncs.com/pingtaixcx/address.png" alt="" style="width:24rpx; height:24rpx; margin:34rpx 20rpx 0 0;"></image>
+            <view class="contact_us_li_address">
+                <input type="text" placeholder='请选择您的位置' disabled="true" maxlength="50" placeholder-style="color:#aaa;" class="in_address" value="{{address}}" />
+            </view>
+            <abcd><image src="../../../image/otherImages/next.png" alt="" /></abcd>
+        </view> -->
+        <!-- <view class='contact_us_li'>
             <image src="http://yamxcx.oss-cn-shenzhen.aliyuncs.com/pingtaixcx/phone_num.png" alt="" style="width:24rpx; height:24rpx; margin:32rpx 16rpx 0 0;"></image>
             <input type="number" placeholder='请输入标题' placeholder-style="color:#aaa;" value="{{phone}}" class='in_tel' maxlength="20" bindinput='getPhone' />
+        </view> -->
+        <view class='contact_us_li' bindtap='chooseClass' style="border-bottom: 1px solid #fff;">
+            <image src="http://yamxcx.oss-cn-shenzhen.aliyuncs.com/pingtaixcx/sort.png" alt="" style="width:24rpx; height:24rpx; margin:32rpx 20rpx 0 0;"></image>
+            <input type="text" placeholder='请选择发布分类' disabled="true" maxlength="50" placeholder-style="color:#aaa;" class="in_address" value="{{classMap[category]}}" />
+            <abcd><image src="../../../image/otherImages/next.png" alt="" /></abcd>
         </view>
-    </view> -->
+    </view>
 
     <!--协议-->
     <!-- <view class="agreement" bindtap="radioChange">

@@ -16,29 +16,8 @@
 <view class="container" style="background-color:#f4f4f4;">
 
     <view class="classification {{platformInfo.enableMomentsRedPacket==2&&isOpen == 2?'':'classification2'}} {{isFixed ? 'fixed' : ''}}">
-        <view class="scroll-view-item_H" data-id="0" bindtap="ClickTab">
-            <text class="{{id == 0 ? 'cur' : ''}}">推荐</text>
-        </view>
-        <view class="scroll-view-item_H" data-id="9" bindtap="follow">
-            <text class="{{id == 9 ? 'cur' : ''}}">关注</text>
-        </view>
-        <view class="scroll-view-item_H" data-id="3" bindtap="ClickTab">
-            <text class="{{id == 3 ? 'cur' : ''}}">学生</text>
-        </view>
-        <view class="scroll-view-item_H" data-id="4" bindtap="ClickTab">
-            <text class="{{id == 4 ? 'cur' : ''}}">老师</text>
-        </view>
-        <view class="scroll-view-item_H" data-id="99" bindtap="ClickTab">
-            <text class="{{id == 99 ? 'cur' : ''}}">家长</text>
-        </view>
-        <view class="scroll-view-item_H" data-id="3" bindtap="jumpPersonCardList">
-            <text>教育</text>
-        </view>
-        <view class="scroll-view-item_H" data-id="99" bindtap="ClickTab">
-            <text class="{{id == 99 ? 'cur' : ''}}">动漫</text>
-        </view>
-        <view class="scroll-view-item_H" data-id="99" bindtap="ClickTab">
-            <text class="{{id == 99 ? 'cur' : ''}}">音乐</text>
+        <view class="scroll-view-item_H" data-id="{{item.id}}" bindtap="ClickTab" wx:for="{{classMap}}" wx:key="{{index}}">
+            <text class="{{selectClass == item.id ? 'cur' : ''}}">{{item.text}}</text>
         </view>
         <view class="scroll-view-item_H" data-id="99" bindtap="ClickTab">
             <text class="{{id == 99 ? 'cur' : ''}}">上头条</text>
@@ -57,12 +36,6 @@
                 <text>加载中...</text>
             </view>
         </view>
-    </view>
-
-    <!--没有动态的情况下  -->
-    <view wx:if="{{noData && !recommendPayNoData}}" style="margin-top:100rpx;">
-      <!-- <view class="text">暂无动态</view> -->
-      <default_page onShow="{{onShow}}" params="{{authParams02}}"></default_page>
     </view>
     <!--<view class='no_collection_card' wx:if='{{noData && id != 9}}' style="margin-top:100rpx;">
         <default_page onShow="{{onShow}}" params="{{authParams}}"></default_page>
