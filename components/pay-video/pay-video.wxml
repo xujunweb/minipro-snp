@@ -1,16 +1,4 @@
 <view class="video-item" data-index="{{item.id}}">
-    <view class="video-info" data-index="{{item.id}}" bindtap="jumpToPage">
-        <text class="text-ellipsis">{{item.title}}</text>     
-    </view>
-    <view class="video-content" data-index="{{item.id}}" data-item="{{item}}" data-pay="{{item.hasBuy == 1 && item.hasShared == 1}}">
-        <text  wx:if="{{item.tag}}" class="label">{{item.tag}}</text>
-        <video class="video" wx:if="{{curPlayIdx == item.id}}" id='{{"video-"+item.id}}' data-index="{{item.id}}" bindplay="videoPlay2" bindended="videoEnd" bindtimeupdate="videoUpdate" src="{{item.img_urls}}" controls="true" custom-cache="false" autoplay="true"></video>
-        <view class="cover" wx:else catchtap="videoPlay">
-            <image class="model-img" mode="aspectFill" src="{{item.cover_urls}}"></image>
-            <view class="mask-img"></view>
-            <view class="play-icon"></view>                                  
-        </view>
-    </view>
     <view class='userInfo'>
       <view class='info'>
         <view class='avatar'>
@@ -25,7 +13,18 @@
         {{isfollow?'取消关注':'关注'}}
       </button> -->
     </view>
-    
+    <view class="video-info" data-index="{{item.id}}" bindtap="jumpToPage">
+        <text class="text-ellipsis">{{item.title}}</text>     
+    </view>
+    <view class="video-content" data-index="{{item.id}}" data-item="{{item}}" data-pay="{{item.hasBuy == 1 && item.hasShared == 1}}">
+        <text  wx:if="{{item.tag}}" class="label">{{item.tag}}</text>
+        <video class="video" wx:if="{{curPlayIdx == item.id}}" id='{{"video-"+item.id}}' data-index="{{item.id}}" bindplay="videoPlay2" bindended="videoEnd" bindtimeupdate="videoUpdate" src="{{item.img_urls}}" controls="true" custom-cache="false" autoplay="true"></video>
+        <view class="cover" wx:else catchtap="videoPlay">
+            <image class="model-img" mode="aspectFill" src="{{item.cover_urls}}"></image>
+            <view class="mask-img"></view>
+            <view class="play-icon"></view>                                  
+        </view>
+    </view>
     <likeCom item="{{item}}" />
 
     <!-- <view class="info-count" data-index="{{item.id}}" bindtap="jumpToPage">

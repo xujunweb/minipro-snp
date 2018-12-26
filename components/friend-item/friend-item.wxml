@@ -54,7 +54,7 @@
                 <!-- 点赞和评论操作按钮 -->
                 <view class="discuss-box s-discuss-box">
                     <view class="discuss-btn-list">
-                        <view class="discuss-btn-list-box" animation="{{item.animationData}}">
+                        <view animation="{{item.animationData}}" class="discuss-btn-list-box {{item.animationDataShow?'':'hide'}}">
                             <view wx:if="{{item.articleInfo.like!=1}}" class="discuss-btn-list-item discuss-icon-dz"
                                   data-nowclickid="{{i}}" data-goodsId="{{item.id}}" data-usertype="{{item.userType}}"
                                   catchtap="likeChange">赞

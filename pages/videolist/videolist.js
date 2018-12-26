@@ -55,10 +55,16 @@ Page({
     }).then((res)=>{
       console.log(res)
       this.data.lastPage = res.data.lastPage
-      this.setData({
-        articlelist: [...this.data.articlelist, ...res.data.list]
-      })
-      if (resf) wx.stopPullDownRefresh()
+      if (resf) {
+        this.setData({
+          articlelist: [...res.data.list]
+        })
+        wx.stopPullDownRefresh()
+      } else {
+        this.setData({
+          articlelist: [...this.data.articlelist, ...res.data.list]
+        })
+      }
     })
   },
 

@@ -31,7 +31,7 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
-    this.pageByArticle()
+    this.pageByArticle(true)
   },
 
   /**
@@ -75,15 +75,25 @@ Page({
     }).then((res) => {
       console.log(res)
       this.data.lastPage = res.data.lastPage
-      this.setData({
-        articlelist: [...this.data.articlelist, ...res.data.list]
-      })
-      if (resf) wx.stopPullDownRefresh()
+      if (resf) {
+        this.setData({
+          articlelist: [...res.data.list]
+        })
+        wx.stopPullDownRefresh()
+      } else {
+        this.setData({
+          articlelist: [...this.data.articlelist, ...res.data.list]
+        })
+      }
     })
   },
   //删除文章
-  deleArticle(index){
-    console.log('要删除的索引',index)
+  deleArticle(e){
+    console.log('要删除的索引',e)
+    this.data.articlelist.splice(e.detail.index,1)
+    this.setData({
+      articlelist: this.data.articlelist
+    })
   },
   /**
    * 页面相关事件处理函数--监听用户下拉动作

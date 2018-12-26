@@ -73,30 +73,37 @@ Component({
         // this.data.discussInfo.shopListIndex = nowClickId;
 
         if (!this.data.item.animationDataShow) {
-          this.data.animation.translateX('-100%').step();
-          this.data.item.animationData = this.data.animation.export();
           this.data.item.animationDataShow = true;//已经显示
+          this.setData(this.data,()=>{
+            this.data.animation.translateX('-100%').step();
+            this.data.item.animationData = this.data.animation.export();
+            this.setData(this.data)
+          })
         }
         else {
           this.data.animation.translateX(360).step()
           this.data.item.animationData = this.data.animation.export();
-          this.data.item.animationDataShow = false;//已经隐藏
-          // that._setData(that.data)
+          this.setData(this.data,()=>{
+            this.data.item.animationDataShow = false;//已经隐藏
+            this.setData(this.data)
+          })
         }
         //隐藏其他的
         // this.data.item.animationDataShow = false
         // animation.translateX(360).step()
         // this.data.item.animationData = this.data.animation.export();
         // this.data.item.animationDataShow = false;//已经隐藏
-        this.setData(this.data)
+        // this.setData(this.data)
       }
     },
     jumpToNext:function(){
       if (this.data.item.animationDataShow){
         this.data.animation.translateX(360).step()
         this.data.item.animationData = this.data.animation.export();
-        this.data.item.animationDataShow = false;//已经隐藏
-        this.setData(this.data)
+        this.setData(this.data, () => {
+          this.data.item.animationDataShow = false;//已经隐藏
+          this.setData(this.data)
+        })
       }
     },
     delGoods: function (e) { //删除好友圈
@@ -120,7 +127,7 @@ Component({
         update_author: this.data.item.id,
       }).then(()=>{
         //删除成功，通知父级删除对应索引的
-        this.triggerEvent('deleArticle',this.data.arIndex)
+        this.triggerEvent('deleArticle', { index: this.data.arIndex})
       })
     },
     /**

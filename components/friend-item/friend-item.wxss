@@ -16,6 +16,7 @@
   position: absolute;
   top:30rpx; left: 0;
 }
+
 .goods_row .goods_left .head_img{
   width: 80rpx;
   height: 80rpx;
@@ -543,4 +544,7 @@
 
 .goods_row:first-of-type .contact_2{
   top: 20rpx;
+}
+.hide{
+  display: none;
 }
