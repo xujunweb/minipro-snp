@@ -17,3 +17,6 @@ page{
   background: #f4f4f4;
   height: 100%;
 }
+.mainColor{
+  color: #9da3f1;
+}

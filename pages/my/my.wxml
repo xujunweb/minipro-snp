@@ -8,15 +8,12 @@
     </button>
   </view>
   <view class="my_head_row">
-    <button open-type="getUserInfo" bindgetuserinfo="refreshUserInfo" class="warp_name" lang="zh_CN">
-        <text class="text">{{userInfo.nickname}}</text>
-        <!-- <image class="refresh_btn" src="http://yamxcx.oss-cn-shenzhen.aliyuncs.com/xcx/my_refreshre.png"/> -->
-    </button>
+    {{userInfo.nickname}}<text class='basic_tel'>{{userMap[userInfo.type]||'头条用户'}}</text>
   </view>
-  <view class='my_head_row my_head_tel' style="float: left;" wx:if='{{userInfo.nickname}}'>
-      <text class='basic_tel'>{{userMap[userInfo.type]||'头条用户'}}</text>
-      <!-- <text class='change_account' catchtap='changeAccount'>切换账号</text> -->
-  </view>
+  <!-- <view class='my_head_row my_head_tel' wx:if='{{userInfo.nickname}}'>
+      
+      <text class='change_account' catchtap='changeAccount'>切换账号</text>
+  </view> -->
 </view>
 
 <!-- 积分 -->

@@ -86,7 +86,7 @@ page{
   font-size:28rpx;
   color: #222;
 }
-.scroll-view-item_H text.cur{ color:#ff7800; font-weight: 600;  }
+.scroll-view-item_H text.cur{ color:#9da3f1; font-weight: 600;  }
 .card_rank button { 
   display: inline-block; width: auto; color: #666; font-size: 28rpx; border:none;
 }

@@ -73,12 +73,12 @@ Component({
         // this.data.discussInfo.shopListIndex = nowClickId;
 
         if (!this.data.item.animationDataShow) {
-          animation.translateX('-100%').step();
+          this.data.animation.translateX('-100%').step();
           this.data.item.animationData = this.data.animation.export();
           this.data.item.animationDataShow = true;//已经显示
         }
         else {
-          animation.translateX(360).step()
+          this.data.animation.translateX(360).step()
           this.data.item.animationData = this.data.animation.export();
           this.data.item.animationDataShow = false;//已经隐藏
           // that._setData(that.data)
@@ -90,7 +90,14 @@ Component({
         // this.data.item.animationDataShow = false;//已经隐藏
         this.setData(this.data)
       }
-
+    },
+    jumpToNext:function(){
+      if (this.data.item.animationDataShow){
+        this.data.animation.translateX(360).step()
+        this.data.item.animationData = this.data.animation.export();
+        this.data.item.animationDataShow = false;//已经隐藏
+        this.setData(this.data)
+      }
     },
     delGoods: function (e) { //删除好友圈
       var that = this;
@@ -193,10 +200,12 @@ Component({
           title: '评论成功',
         })
         //给评论数组插入一条数据
-        that.data.item.comments.unshift({
+        that.data.item.articleComment.unshift({
           article_id: this.data.item.id,
           user_id: app.globalData.userInfo.id,
-          id:res.data.id
+          id:res.data,
+          content: that.data.discussInfo.inputText.trim(),
+          nickname: app.globalData.userInfo.nickname,
         })
         that.hideDiscussInput();
       })
@@ -239,32 +248,58 @@ Component({
     /**
      * 点击点赞
      */
-    clickToLick: function (e) {
-
-      //添加访问记录
-      app.addRecord();
-
-      var goodsId = e.currentTarget.dataset.goodsid;
-      var index = e.currentTarget.dataset.nowclickid;
+    likeChange: function (e) {
       var that = this;
-      var userType = e.currentTarget.dataset.usertype;
-
-      console.log(e.currentTarget.dataset)
-
-      DiscoverListLikesOnM({
-        data: {
-          momentId: goodsId,
-          openId: app.globalData.openid,
-          userType: userType,
-          xcxId: app.globalData.xcxId,
-        },
-        ele: that,
-        index: index,
-        fn: function () {
-          that.showDiscuss(e);
+      if (this.data.isLikeDisabled) {
+        return false; //防止点击多次
+      }
+      that.setData({
+        isLikeDisabled: true, //控制按钮不可用
+      });
+      var url = '';
+      var data = {};
+      that.setData({
+        reClick: true
+      });
+      var is_like = '0'
+      if (!this.data.item.articleInfo || this.data.item.articleInfo.like == '0') {
+        is_like = '1'
+      }
+      articleLike({
+        is_like: is_like,
+        article_id: this.data.item.id,
+        user_id: app.globalData.userInfo.id
+      }).then((res) => {
+        wx.showToast({
+          title: '操作成功'
+        })
+        if (!this.data.item.articleInfo) {
+          this.data.item.articleInfo = {
+            like: is_like
+          }
+        } else {
+          this.data.item.articleInfo.like = is_like
         }
+        if (is_like != 1){
+          this.data.item.like = this.data.item.like - 1
+          //点赞列表减去一个
+          this.data.item.articleLike = this.data.item.articleLike.filter((arr,index)=>{
+            return arr.user_id !== app.globalData.userInfo.id
+          })
+        }else{
+          this.data.item.like + 1
+          //点赞列表添加一个点赞记录
+          this.data.item.articleLike.push({
+            avatar: app.globalData.userInfo.avatar,
+            user_id: app.globalData.userInfo.id,
+          })
+        }
+        this.setData({
+          reClick: false,
+          isLikeDisabled: false,
+          item: this.data.item
+        })
       })
-
     },
     /**
      * 取消点赞
