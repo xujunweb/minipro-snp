@@ -1,7 +1,7 @@
 
 .clear{clear:both;}
 .j_page{
-  background: #f4f4f4;height: 100%;
+  background: #f4f4f4;padding-bottom: 100rpx;
 }
 /*想法*/
 .conception{width:100%; margin:0 auto; background-color:#fff;overflow: hidden;margin-top: 20rpx;}

@@ -29,7 +29,6 @@
   right:-2rpx;
 }
 .goods_row .goods_right{
-  width:100%;
   box-sizing: border-box;
   padding-left: 132rpx;
   padding-right: 30rpx;

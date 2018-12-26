@@ -97,7 +97,7 @@ Page({
       type: '0',
       login_user_id: app.globalData.userInfo.id,
       category: category,
-      article_type:'1',
+      article_type:'0',
     }).then((res) => {
       console.log(res)
       this.data.lastPage = res.data.lastPage

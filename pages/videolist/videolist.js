@@ -1,5 +1,5 @@
 // pages/videolist/videolist.js
-import { pageByArticle, articleLike} from '../../api/article.js'
+import { pageByArticle} from '../../api/article.js'
 var app = getApp()
 Page({
 
@@ -32,11 +32,11 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
-    
+    this.pageByArticle()
   },
   //分页加载文章列表
   pageByArticle:function(resf){
-    if (this.data.thisp > this.data.lastPage){
+    if (this.data.thisp > this.data.lastPage && this.data.lastPage != 0){
       this.setData({
         noMore:true
       })
@@ -51,6 +51,7 @@ Page({
       pageSize:8,
       type:'1',
       login_user_id: app.globalData.userInfo.id,
+      article_type: '0',
     }).then((res)=>{
       console.log(res)
       this.data.lastPage = res.data.lastPage

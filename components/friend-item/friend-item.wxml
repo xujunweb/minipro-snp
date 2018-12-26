@@ -1,18 +1,13 @@
 <wxs src="../../utils/util.wxs" module="u" />
 <view class="goods_row {{i == 0?'first':''}} {{i == shopList.length - 1?'last':''}}">
     <view class="goods_left">
-        <image class="head_img" mode="aspectFill" src="{{item.avatar?item.avatar:'https://xcximg.197.com/xcx/zctx2.png'}}"></image>
-
-        <image class="symbol_img" wx:if="{{item.userType==2}}"
-               src="http://yamxcx.oss-cn-shenzhen.aliyuncs.com/one-shop-one-mini-app/platform_dis/symbol.png"></image>
-        <image src='http://yamxcx.oss-cn-shenzhen.aliyuncs.com/pingtaixcx/mprz.png' class='card_label'
-               wx:if="{{item.isCreated == 2}}"></image>
+        <image class="head_img" mode="aspectFill" src="{{item.user.avatar?item.user.avatar:'https://xcximg.197.com/xcx/zctx2.png'}}"></image>
     </view>
     <view class="goods_right">
         <view catchtap="jumpToNext" data-id="{{item.id}}" data-userType="{{item.userType}}" data-org-id="{{item.orgId}}" data-is-news="{{item.article}}">
             <view class="goods_right_a">
                 <view catchtap="jumpToShop" data-type="{{item.userType}}" data-orgid="{{item.orgId}}" data-is-created="{{item.isCreated}}" data-publish-by="{{item.publishBy}}">
-                    <view class="goods_orgname">{{item.user.nickname}}<text class=''>{{item.user.type||'头条用户'}}</text></view>
+                    <view class="goods_orgname">{{item.user.nickname}}<text class=''>{{userMap[item.user.type]||'头条用户'}}</text></view>
                 </view>
                 <view class="goods_set_top" wx:if="{{item.topStatus==2}}">顶</view>
                 <!-- <view class='contact_2' catchtap="jumpPersonLetterHim" data-index='{{i}}'>
@@ -39,9 +34,9 @@
                 </block>
             </view>
 
-            <view class="goods_row_information_spread" wx:if="{{item.content}}" catchtap="onSpread" data-index="{{i}}"
+            <!-- <view class="goods_row_information_spread" wx:if="{{item.content}}" catchtap="onSpread" data-index="{{i}}"
                   data-descr-is-hide="{{item.descrIsHide}}">{{item.descrIsHide ? "全文" : "收起"}}
-            </view>
+            </view> -->
 
             <view class="video_link" wx:if="{{item.article && item.article.type == 2}}">
                 <image mode="aspectFill" class="cover" src="{{item.article.cover}}"/>
@@ -51,9 +46,9 @@
 
             <view class="goods_address" catchtap="seeShopMap" wx:if="{{item.address}}" data-item="{{item}}">{{item.address}}</view>
             <view class="goods_time">
-                <text>{{item.insert_time}}</text>
+                <text>发布于：{{item.insert_time}}</text>
                 <text class='goods_read'>{{item.like}}</text>
-                <text class="goods_del" catchtap="delGoods" wx:if="{{item.belongTo==1}}" data-id="{{item.id}}">删除</text>
+                <text class="goods_del" catchtap="delGoods" wx:if="{{item.insert_author==userId}}" data-id="{{item.id}}">删除</text>
             </view>
             <view class="goods_right_d">
                 <!-- 点赞和评论操作按钮 -->
@@ -80,38 +75,47 @@
                     <view class="discuss-btn" style="display: flex;position: absolute;" data-nowclickid="{{i}}" catchtap="showDiscuss"></view>
                 </view>
 
-                <view class="discuss-container" wx:if="{{item.comments.length>0||item.likes.length>0}}">
+                <view class="discuss-container" wx:if="{{item.articleComment.length>0||item.articleLike.length>0}}">
                     <view class="discuss-block">
-                        <view class="line-view" wx:if="{{item.comments.length>0&&item.likes.length>0}}"></view>
+                        <!-- 点赞列表start -->
+                        <view class="like-list" wx:if="{{item.articleLike.length>0}}" wx:key="item">
+                            <view class="like-item like-icon">
+                                <image src="http://yamxcx.oss-cn-shenzhen.aliyuncs.com/one-shop-one-mini-app/3bei_like.png"></image>
+                            </view>
+                            <view class="like-item like-image-view like-list-view">
+                                <image wx:for="{{item.articleLike}}" wx:key="index" wx:for-index="jj" wx:if="{{jj<8}}"
+                                       src="{{item.avatar?item.avatar:'https://xcximg.197.com/xcx/zctx2.png'}}" mode="aspectFill"></image>
+                            </view>
+                            <view class="like-item like-count" wx:if="{{item.articleLike.length>7}}">等{{item.articleLike.length}}人</view>
+                        </view>
+                        <!-- 点赞列表end -->
+                        <view class="line-view" wx:if="{{item.articleComment.length>0&&item.articleLike.length>0}}"></view>
                         <!-- 评论列表start -->
-                        <view class="discuss-list" wx:if="{{item.comments.length>0}}">
-                            <view wx:for="{{item.comments}}" wx:key="id" wx:for-item="info" wx:for-index="j">
-                                <view wx:if="{{info.belongTo==1&&j<4}}" class="discuss-item discuss-list-item"
-                                      data-outindex="{{i}}" data-selfindex="{{j}}" catchtap="delDiscuss"
-                                      data-id="{{info.id}}" data-usertype="{{item.userType}}"
-                                      data-belongto="{{info.belongTo}}">
-                                    <text class="discuss-name">{{info.nickName?info.nickName:'微信用户'}}</text>：<text>{{info.comment}}</text>
+                        <view class="discuss-list" wx:if="{{item.articleComment.length>0}}">
+                            <view wx:for="{{item.articleComment}}" wx:key="id" wx:for-item="info" wx:for-index="j">
+                                <view class="discuss-item discuss-list-item" data-info="{{info}}" data-index="{{j}}" catchtap="delDiscuss">
+                                    <text class="discuss-name">{{info.nickName?info.nickName:'微信用户'}}</text>：<text>{{info.content}}</text>
                                 </view>
-                                <view wx:if="{{info.belongTo==2&&j<4}}" class="discuss-item discuss-list-item"
+                                <!-- <view wx:if="{{info.belongTo==2&&j<4}}" class="discuss-item discuss-list-item"
                                       data-outindex="{{i}}" data-selfindex="{{j}}" data-id="{{info.id}}"
                                       data-belongto="{{info.belongTo}}">
                                     <text class="discuss-name">{{info.nickName?info.nickName:'微信用户'}}</text>：<text>{{info.comment}}</text>
-                                </view>
+                                </view> -->
                             </view>
                             <!--显示最后一条数据开始-->
-                            <view wx:if="{{item.comments.length>4}}" class="discuss-item discuss-list-item"
+                            <!-- <view wx:if="{{item.comments.length>4}}" class="discuss-item discuss-list-item"
                                   data-outindex="{{i}}" data-selfindex="{{(item.comments.length-1)}}"
                                   catchtap="delDiscuss" data-id="{{item.comments[(item.comments.length-1)].id}}"
                                   data-usertype="{{item.userType}}"
                                   data-belongto="{{item.comments[(item.comments.length-1)].belongTo}}">
                                 <text class="discuss-name">{{item.comments[(item.comments.length-1)].nickName?item.comments[(item.comments.length-1)].nickName:'微信用户'}}</text>：<text>{{item.comments[(item.comments.length-1)].comment}}</text>
-                            </view>
+                            </view> -->
                             <!--显示最后一条数据结束-->
-                            <view wx:if="{{item.comments.length>5}}" class="discuss-item discuss-item-result">查看所有{{item.comments.length}}条评论</view>
+                            <!-- <view wx:if="{{item.comments.length>5}}" class="discuss-item discuss-item-result">查看所有{{item.comments.length}}条评论</view> -->
                         </view>
                         <!-- 评论列表end -->
-                        <image wx:if="{{item.comments.length>0||item.likes.length>0}}" class="like-bg"
-                               src="http://yamxcx.oss-cn-shenzhen.aliyuncs.com/pingtaixcx/top_arrow.png"></image>
+                        <!-- <image wx:if="{{item.comments.length>0||item.likes.length>0}}" class="like-bg"
+                               src="http://yamxcx.oss-cn-shenzhen.aliyuncs.com/pingtaixcx/top_arrow.png"></image> -->
                     </view>
                 </view>
             </view>

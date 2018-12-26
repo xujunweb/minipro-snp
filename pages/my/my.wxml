@@ -14,7 +14,7 @@
     </button>
   </view>
   <view class='my_head_row my_head_tel' style="float: left;" wx:if='{{userInfo.nickname}}'>
-      <text class='basic_tel'>{{userInfo.type||'头条用户'}}</text>
+      <text class='basic_tel'>{{userMap[userInfo.type]||'头条用户'}}</text>
       <!-- <text class='change_account' catchtap='changeAccount'>切换账号</text> -->
   </view>
 </view>
@@ -22,10 +22,10 @@
 <!-- 积分 -->
 <view class='my_row_one vip_row'>
   <view class="vip_sub_row">
-    <view class="blance">积分：{{0}}</view>
+    <view class="blance">积分：{{userInfo.score}}</view>
   </view>
   <view class="vip_sub_row vip_sub_row1" catchtap="signIn">
-    <view class="vip_btn">签到</view>
+    <view class="vip_btn">{{isSignIn?'已签到':'签到'}}</view>
   </view>
 
 </view>
@@ -47,7 +47,7 @@
     </navigator> -->
     <!-- <view class='my_line'></view> -->
 
-    <navigator url="/subPackage/mall/pages/fav-store/fav-store" hover-class="none">
+    <navigator url="/pages/my/like/like" hover-class="none">
       <view class='my_mid_row my_mid_store_shop'>
         <text>我的关注</text>
         <image src='http://yamxcx.oss-cn-shenzhen.aliyuncs.com/pingtaixcx/next.png'/>
@@ -55,7 +55,7 @@
     </navigator>
     <!-- <view class='my_line'></view> -->
 
-    <navigator url="/subPackage/mall/pages/fav-product/fav-product" hover-class="none">
+    <navigator url="/pages/my/like/like" hover-class="none">
       <view class='my_mid_row my_mid_store_goods'>
         <text>我的收藏</text>
         <image src='http://yamxcx.oss-cn-shenzhen.aliyuncs.com/pingtaixcx/next.png'/>
@@ -79,27 +79,27 @@
 
 </view>
 <!-- 商家入口/免费入驻/做小程序 -->
-<!-- <view class='my_row_one'>
+<view class='my_row_one'>
     <block>
-        <view class='my_mid_row my_mid_shop' catchtap="goMyShop">
+        <view class='my_mid_row my_mid_shop' catchtap="myPublic">
           <text>用户反馈</text>
           <image src='http://yamxcx.oss-cn-shenzhen.aliyuncs.com/pingtaixcx/next.png'/>
         </view>
     </block>
     <block>
-        <view class='my_mid_row my_mid_join' catchtap="toFreeJoin">
+        <view class='my_mid_row my_mid_join' catchtap="myPublic">
           <text>系统设置</text>
           <image src='http://yamxcx.oss-cn-shenzhen.aliyuncs.com/pingtaixcx/next.png'/>
         </view>
     </block>
     <block>
-      <view class='my_mid_row my_mid_xcx' catchtap="goMakeXcx">
+      <view class='my_mid_row my_mid_xcx' catchtap="myPublic">
           <text>联系客服</text>
           <image src='http://yamxcx.oss-cn-shenzhen.aliyuncs.com/pingtaixcx/next.png' />
         </view>
     </block>
 
-</view> -->
+</view>
 
 <view style='height: 20rpx;'></view>
 

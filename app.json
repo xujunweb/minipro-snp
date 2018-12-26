@@ -9,7 +9,8 @@
     "pages/friends/friends",
     "pages/videolist/videolist",
     "pages/detail/article/article",
-    "pages/detail/video/video"
+    "pages/detail/video/video",
+    "pages/my/like/like"
   ],
   "window": {
     "backgroundTextStyle": "dark",

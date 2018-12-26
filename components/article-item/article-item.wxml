@@ -12,7 +12,7 @@
                       <view class="goods_row_info_r_t_name">{{item.user.nickname}}</view>
                       <view class="goods_row_info_r_t_top" wx:if="{{item.topStatus == 2}}">顶</view>
                   </view>
-                  <view class="goods_row_info_r_b">{{item.user.type||'头条用户'}}</view>
+                  <view class="goods_row_info_r_b">{{userMap[item.user.type]||'头条用户'}}</view>
                 </view>
                  <!-- <view class='contact_2' data-index='{{i}}' catchtap='followUser' wx:if="{{item.user.id != userId}}">
                     {{isfollow?'取消关注':'关注'}}

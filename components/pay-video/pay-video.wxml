@@ -18,7 +18,7 @@
         </view>
         <view>
           <view class='name'>{{item.user.nickname}}</view>
-          <view class='type'>{{item.user.type||'头条用户'}}</view>
+          <view class='type'>{{userMap[item.user.type]||'头条用户'}}</view>
         </view>
       </view>
       <!-- <button data-img="{{item.shareCoverImage}}" data-item="{{item}}" catchtap="preventD" class="item_share" catchtap='followUser' wx:if="{{item.user.id != userId}}">

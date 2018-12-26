@@ -1,7 +1,5 @@
 <!--pages/friends/friends.wxml-->
-<friend-item />
-<friend-item />
-
+<friend-item wx:for="{{articlelist}}" wx:key="{{index}}" wx:if="{{articlelist.length}}" item="{{item}}" arIndex="{{index}}" bind:deleArticle="deleArticle" />
 
 <!-- 授权弹窗 -->
 <authorize onShow="{{onAuthShow}}" onHide="{{onAuthHide}}" />

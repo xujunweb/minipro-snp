@@ -34,8 +34,13 @@ Component({
     getUserInfo: function (e) {
       if (e.detail.userInfo) {
         app.globalData.isCouldAuth = 1; //标记用户点击允许授权
-        let tempUserInfo = { ...app.globalData.userInfo, nickname: e.detail.userInfo.nickName, avatar: e.detail.userInfo.avatarUrl}
-        app.updataUser(tempUserInfo);
+        let tempUserInfo = { 
+          ...app.globalData.userInfo, 
+          nickname: e.detail.userInfo.nickName, 
+          avatar: e.detail.userInfo.avatarUrl,
+        }
+        // app.updataUser(tempUserInfo);
+        this.chooseType(tempUserInfo)
         this.closePopup();
         if (this.data.isCallBack) {
           this.triggerEvent('backhandle', { userInfo: e.detail.userInfo }, {});
@@ -50,6 +55,20 @@ Component({
     // 设置是否关闭弹框
     setDataValue: function (value) {
       this.setData({ isClose: value })
+    },
+    //选择身份
+    chooseType: function (tempUserInfo){
+      wx.showActionSheet({
+        itemList:['教师','家长','学生','头条用户(默认)'],
+        itemColor:'',
+        success:(res)=>{
+          console.log(res.tapIndex)
+          app.updataUser({ ...tempUserInfo, type:''+ res.tapIndex})
+        },
+        fail:()=>{
+          app.updataUser({ ...tempUserInfo, type: '3' })
+        }
+      })
     },
     /**
      * 点击弹框内容区域

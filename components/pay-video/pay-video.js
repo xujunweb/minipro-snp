@@ -34,6 +34,8 @@ Component({
     videoId:'',    //视频的一些信息
     title:'',
     openid:'',
+    classMap:{},
+    userMap:{},
   },
   attached: function () {
     var followList = wx.getStorageSync('followUser')
@@ -43,7 +45,9 @@ Component({
       })
     }
     this.setData({
-      userId: app.globalData.userInfo.id
+      userId: app.globalData.userInfo.id,
+      classMap: app.globalData.classMap,
+      userMap: app.globalData.userMap,
     })
   },
   /**

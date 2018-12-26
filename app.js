@@ -21,6 +21,9 @@ newPage({//引入监听全局每个页面的生命周期
         userInfo: app.globalData.userInfo
       })
     }
+    that.setData({
+      userMap: app.globalData.userMap
+    })
     wx.eventBus.on('updataUser', (userInfo) => {
       that.setData({
         userInfo: userInfo
@@ -86,6 +89,12 @@ App({
       3: '教育',
       4: '动漫',
       5: '音乐'
+    },
+    userMap:{
+      0:'教师',
+      1:'家长',
+      2:'学生',
+      3:'头条用户'
     }
   },
   //获取openid
@@ -161,7 +170,9 @@ App({
       user_id: this.globalData.userInfo.id,
       ...data
     }).then((res)=>{
-      wx.eventBus.trigger('updataUser', { ...data })
+      this.getUserInfo().then((res)=>{
+        wx.eventBus.trigger('updataUser', { ...res })
+      })
     })
   },
   /**

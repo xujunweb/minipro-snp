@@ -1,4 +1,5 @@
 // components/friend-item/friend-item.js
+import { delComment, addComment, articleLike, updateArticle } from '../../api/article.js'
 var app = getApp()
 Component({
   /**
@@ -23,6 +24,10 @@ Component({
         title:'标题标题标题',
       }
     },
+    arIndex:{
+      type:Number,
+      value:''
+    }
   },
 
   /**
@@ -37,9 +42,17 @@ Component({
       placeHolder: "请输入评论内容",//评论的输入框提示
       shopListIndex: '',//shopList的index索引
       userType: 1,
+      userMap:{},
+      classMap:{},
     },
   },
-
+  attached:function(){
+    this.setData({
+      userId: app.globalData.userInfo.id,
+      classMap: app.globalData.classMap,
+      userMap: app.globalData.userMap,
+    })
+  },
   /**
    * 组件的方法列表
    */
@@ -78,6 +91,30 @@ Component({
         this.setData(this.data)
       }
 
+    },
+    delGoods: function (e) { //删除好友圈
+      var that = this;
+      wx.showModal({
+        title: '删除提醒',
+        content: '确定删除该动态？',
+        confirmColor: "#ff7800",
+        success: function (res) {
+          if (res.confirm) {
+            that.confirmDelGoods();
+          }
+        }
+      });
+    },
+
+    confirmDelGoods: function () { //确认删除
+      updateArticle({
+        id:this.data.item.id,
+        state:'1',
+        update_author: this.data.item.id,
+      }).then(()=>{
+        //删除成功，通知父级删除对应索引的
+        this.triggerEvent('deleArticle',this.data.arIndex)
+      })
     },
     /**
      * 显示评论输入框
@@ -121,7 +158,7 @@ Component({
     DiscussInputState: function (e) {
       var value = e.detail.value;
       this.data.discussInfo.inputText = value;
-      this.setData(that.data);
+      this.setData(this.data);
     },
     /**
      *发送评论
@@ -142,19 +179,26 @@ Component({
         return;
       }
 
-      DiscoverListCommentPublishM({
-        data: {
-          comment: that.data.discussInfo.inputText.trim(),
-          momentId: that.data.discussInfo.goodsId,
-          openId: app.globalData.openid,
-          userType: userType,
-          xcxId: app.globalData.xcxId,
-        },
-        ele: that,
-        fn: function (msg) {
-          (typeof msg == 'string') && app.showDialog(that, msg, 3000);
-          that.hideDiscussInput();
-        }
+      let pJsons = {
+        article_id: this.data.item.id,
+        user_id: app.globalData.userInfo.id,
+        content: that.data.discussInfo.inputText.trim()
+      };
+      console.log('pJsons=', pJsons);
+      addComment(pJsons).then((res) => {
+        this.setData({
+          comment: ''
+        })
+        wx.showToast({
+          title: '评论成功',
+        })
+        //给评论数组插入一条数据
+        that.data.item.comments.unshift({
+          article_id: this.data.item.id,
+          user_id: app.globalData.userInfo.id,
+          id:res.data.id
+        })
+        that.hideDiscussInput();
       })
     },
     /**
@@ -162,32 +206,28 @@ Component({
      */
     delDiscuss: function (e) {
       var that = this;
-      var belongto = e.currentTarget.dataset.belongto;
-      var outindex = e.currentTarget.dataset.outindex;
-      var selfindex = e.currentTarget.dataset.selfindex;
-      var id = e.currentTarget.dataset.id;
-      var userType = e.currentTarget.dataset.usertype;
-
-      if (belongto == 1) {
+      var info = e.currentTarget.dataset.info
+      var index = e.currentTarget.dataset.index
+      if (info.user_id == this.data.userId) {
         wx.showModal({
           title: '删除提醒',
           content: '确定删除该评论？',
           confirmColor: "#ff7800",
-          success: function (res) {
+          success:  (res)=> {
             if (res.confirm) {
               console.log('用户点击确定')
-              DiscoverListCommentDelM({
-                data: {
-                  id: id,
-                  userType: userType,
-                  xcxId: app.globalData.xcxId,
-                  openId: app.globalData.openid
-                },
-                ele: that,
-                fn: function () {
-                  that.data.shopList[outindex].comments.splice(selfindex, 1);
-                  that._setData(that.data)
-                }
+              delComment({
+                article_id: info.article_id,
+                id: info.id,
+                user_id: info.user_id,
+              }).then(()=>{
+                wx.showToast({
+                  title: '删除成功',
+                })
+                this.data.item.articleComment.splice(index,1)
+                this.setData({
+                  item: this.data.item
+                })
               })
             } else if (res.cancel) {
 

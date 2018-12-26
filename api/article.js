@@ -24,7 +24,7 @@ export const pageByArticle = (data) => {
     data: {
       state: '0', 
       status: '0', 
-      article_type:'1',
+      article_type:'0',
       ...data
     },
     method: 'post',
