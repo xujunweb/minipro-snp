@@ -1,0 +1,6 @@
+{
+  "navigationBarTitleText": "题目详情",
+  "usingComponents": {
+    "discuss": "/components/discuss/discuss"
+  }
+}

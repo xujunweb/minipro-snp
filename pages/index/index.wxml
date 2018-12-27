@@ -23,7 +23,15 @@
             <text class="{{id == 99 ? 'cur' : ''}}">上头条</text>
         </view>
     </view>
-
+    <!-- 热搜区域 -->
+    <view class='hotseach'>
+      <view class='hot_title'>少年头条热搜</view>
+      <view class='hotcontent'>
+        <view class='hot' wx:for="{{hotList}}" wx:key="{{index}}">
+          {{index+1}}.{{item.title}}
+        </view>
+      </view>
+    </view>
     <view>
         <!-- 有商品的情况下 -->
         <view class="goods" wx:if="{{userInfo.openid}}" style='overflow:hidden;'>

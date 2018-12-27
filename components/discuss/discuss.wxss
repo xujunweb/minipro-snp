@@ -16,8 +16,18 @@
     color: #222;
   }
   .comment_and_praise .tab .tab_active{
-    color: #ff7800;
+    color: #9da3f1;
     font-weight: bold;
+  }
+  .comment_and_praise .tab .tab_r{
+    display: flex;color: #9da3f1;
+    align-items: center;justify-content:center;
+  }
+  .comment_and_praise .tab .tab_r image{
+    width: 40rpx;height: 40rpx;margin-right: 10rpx;
+  }
+  .comment_and_praise .tab .tab_r text{
+    font-size: 30rpx;margin-top: 5rpx;
   }
   .comment_and_praise .comment_list{
     padding:0 30rpx;

@@ -1,11 +1,17 @@
 /* components/release.wxss */
 /* 发布按钮 */
 .release_view { 
-  position: fixed; width: 118rpx; height: 118rpx; 
-  bottom: 52rpx; right: 22rpx; z-index: 99;
+  position: fixed;
+  background: #fff;
+  border-radius: 100rpx;
+  /* width: 90rpx; height: 90rpx; */
+  bottom: 80rpx; right: 50rpx; z-index: 99;
 
   /* background: url("http://yamxcx.oss-cn-shenzhen.aliyuncs.com/xcx/fxft.png") no-repeat; */
-  background: url(http://yamxcx.oss-cn-shenzhen.aliyuncs.com/xcx/publish_yellow.png) no-repeat;
+  /* background: url(http://yamxcx.oss-cn-shenzhen.aliyuncs.com/xcx/publish_yellow.png) no-repeat; */
 
-  background-size: 118rpx 118rpx;
+  /* background-size: 118rpx 118rpx; */
+  transform:rotate(44deg);
+  display: flex;justify-content: center;align-items:center;
+
 }

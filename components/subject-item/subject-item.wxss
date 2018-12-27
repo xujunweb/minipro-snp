@@ -1,0 +1,35 @@
+/* components/subject-item/subject-item.wxss */
+.subject{
+  padding: 30rpx 30rpx;
+  background: #fff;
+  margin-bottom: 20rpx;
+}
+.subject .title{
+  display: flex;align-items: center;
+  justify-content: space-between;
+  font-size: 30rpx;
+}
+.subject .title .text{
+  max-width: 400rpx;
+}
+.subject .icon{
+  display: flex;
+  align-items: center;
+  font-size: 28rpx;color: #9da3f1;
+}
+.subject .icon image{
+  width: 50rpx;height: 50rpx;margin-right: 5rpx;
+}
+.subject .content{
+  margin: 20rpx 0;
+  color: rgb(78, 76, 76);
+  font-size: 28rpx;
+}
+.subject .button{
+  background: #9da3f1;
+  font-size: 32rpx;height: 70rpx;line-height: 70rpx;
+  color: #fff;
+}
+.subject .button::after{
+  border: none;
+}

@@ -10,7 +10,9 @@
     "pages/videolist/videolist",
     "pages/detail/article/article",
     "pages/detail/video/video",
-    "pages/my/like/like"
+    "pages/my/like/like",
+    "pages/subject/subject",
+    "pages/detail/subject/subject"
   ],
   "window": {
     "backgroundTextStyle": "dark",
@@ -40,6 +42,12 @@
       {
         "pagePath": "pages/friends/friends",
         "text": "好友圈",
+        "iconPath": "image/news_normal.png",
+        "selectedIconPath": "image/news_press.png"
+      },
+      {
+        "pagePath": "pages/subject/subject",
+        "text": "答题",
         "iconPath": "image/news_normal.png",
         "selectedIconPath": "image/news_press.png"
       },

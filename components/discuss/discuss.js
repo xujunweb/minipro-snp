@@ -32,6 +32,10 @@ Component({
         }
       }
     },
+    type:{  //评论类型(主要用来区分题目详情下的评论)
+      type:Number,
+      value:0,
+    },
     shareShow:{ //是否显示分享弹框
       type: Boolean,
       value: false,

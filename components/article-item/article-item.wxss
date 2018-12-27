@@ -85,6 +85,12 @@
 }
 .goods_row .content{
   margin-bottom: 30rpx;line-height: 45rpx;font-size: 26rpx;color:#222;
+  overflow:hidden;
+  text-overflow:ellipsis;
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
+  word-break:break-all;
 }
 .goods_row .goods_row_image_2 image{
   width: 100%;

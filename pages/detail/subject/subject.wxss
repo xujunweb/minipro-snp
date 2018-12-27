@@ -1,0 +1,2 @@
+/* pages/detail/subject/subject.wxss */
+@import '../article/article.wxss'

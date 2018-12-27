@@ -22,7 +22,7 @@
         <!-- 信息or图片 -->
         <block>
           <view class="goods_row_descr">
-              <text class="goods_row_descr_classify" wx:if="{{classMap[item.category]}}">#{{classMap[item.category]}}#</text>
+              <!-- <text class="goods_row_descr_classify" wx:if="{{classMap[item.category]}}">#{{classMap[item.category]}}#</text> -->
               <text class="goods_row_descr_content" capture-bind:longpress="longpress"  selectable="true">{{item.title}}</text>
           </view>
           <view class="goods_row_image_1" wx:if="{{u.strToArry(item.img_urls).length > 2}}">

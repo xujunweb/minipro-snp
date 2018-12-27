@@ -1,8 +1,11 @@
 <!-- 点赞&&评论 -->
 <view class='comment_and_praise' wx:if="{{artid}}">
     <view class='tab' id="test">
-        <view class="tab_l tab_active">评论</view>
-        <view class="tab_r ">点赞{{likeNum}}</view>
+        <view class="tab_l tab_active">{{type==2?'他们的解答':'评论'}}</view>
+        <view class="tab_r" wx:if="{{type!=2}}">
+          <image src='../../images/icon-zan.png'></image>
+          <text>{{likeNum}}</text>
+        </view>
     </view>
     <view class='comment_list'>
         <view class='comment_list_row' wx:for="{{comments}}" wx:key="id">

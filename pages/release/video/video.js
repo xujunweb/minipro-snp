@@ -39,6 +39,13 @@ Page({
       maxDuration:15, //拍摄视频的最大秒数
       success: (res) => {
         console.log('视频秒数---------',res.duration)
+        if (res.duration>15){
+          wx.showToast({
+            title: '视频过大',
+            icon: 'none'
+          })
+          return
+        }
         this.setData({
           videoUrl: res.tempFilePath,
           width: res.width,

@@ -1,0 +1,8 @@
+{
+ "enablePullDownRefresh": true,
+ "navigationBarTitleText": "答题",
+ "usingComponents": {
+    "subject-item": "/components/subject-item/subject-item",
+    "release": "/components/release/release"
+  }
+}

@@ -1,0 +1,11 @@
+<!--components/subject-item/subject-item.wxml-->
+<view class='subject'>
+  <view class='title'>
+    <view class='text'>{{item.title}}</view>
+    <view class='icon'><image src='../../images/icon-commt2.png'></image>{{item.comment}}人已解题</view>
+  </view>
+  <view class='content'>
+    {{item.content}}
+  </view>
+  <button class='button' catchtap='jumpNextPage'>解题</button>
+</view>
