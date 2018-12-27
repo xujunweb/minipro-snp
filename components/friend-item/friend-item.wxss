@@ -167,18 +167,27 @@
   margin-top: 20rpx;
   margin-bottom: 5rpx;
   clear: both;
+  display: flex;
+  align-items: center;
 }
 .goods_row .goods_right .goods_time .goods_read{
-  background: url(http://yamxcx.oss-cn-shenzhen.aliyuncs.com/pingtaixcx/view1213.png) left center / 30rpx 20rpx no-repeat;
-  padding-left: 42rpx;
+  /* background: url(http://yamxcx.oss-cn-shenzhen.aliyuncs.com/pingtaixcx/view1213.png) left center / 30rpx 20rpx no-repeat; */
+  display: flex;
+  justify-content: center;align-items: center;
   margin-left: 50rpx;
-  display: inline-block;
   height: 22rpx;
+
+}
+.goods_row .goods_right .goods_time .goods_read image{
+  height: 30rpx;width: 30rpx;margin-right: 10rpx;margin-bottom: 5rpx;
+}
+.goods_row .goods_right .goods_time .goods_read .text{
+  /* margin-top: 5rpx; */
 }
 .goods_row .goods_right .goods_time .goods_del{
    font-size:24rpx;
    line-height: 24rpx;
-   margin-top: 30rpx;
+   /* margin-top: 30rpx; */
    margin-left: 28rpx;
    color: #667494;
    display: line-block;
@@ -547,4 +556,53 @@
 }
 .hide{
   display: none;
+}
+
+
+/* 视频区 */
+.video-content{
+    overflow: hidden;
+    position: relative;
+    width: 588rpx;
+    height:410rpx;
+    border-radius: 8rpx;
+    margin-bottom: 30rpx;
+    margin-top: 30rpx;
+}
+.model-img{
+    width: 588rpx;
+    height:410rpx;
+    border-radius: 8rpx;
+}
+.video{
+    width: 588rpx;
+    height:100%;
+}
+.cover{
+    position: absolute;
+    top:0;
+    left:0;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 40;
+    border-radius: 8rpx;
+}
+.mask-img{ background: rgba(0,0,0,0.5); position: absolute; top: 0; left: 0;  width:100%; height: 100%;}
+.play-icon{ position: absolute; z-index: 2; top: 50%; left: 50%; width: 93rpx; height: 93rpx; margin-left: -60rpx; margin-top: -46rpx; background: url(http://yamxcx.oss-cn-shenzhen.aliyuncs.com/xcx/player.png) no-repeat center center; background-size: 100% 100%; }
+.label{
+    position: absolute;
+    top:8rpx;
+    left:8rpx;
+    color: #fff;
+    background: rgba(255,96,0,0.8);
+    font-size: 22rpx;
+    line-height: 32rpx;
+    height: 32rpx;
+    padding: 0 15rpx;
+    border-radius: 6rpx;
+    text-align: center;
+    z-index: 41;
 }

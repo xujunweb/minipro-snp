@@ -60,7 +60,7 @@ Component({
       let index = this.data.item.id;
       let coverImg = this.data.item.cover_urls
       let title = this.data.item.title
-      this.updateViewNum(index);
+      // this.updateViewNum(index);
       wx.setStorageSync('playIdx', index)
       this.setData({
         curPlayIdx: index,

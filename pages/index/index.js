@@ -14,28 +14,7 @@ Page({
     noMore: false, //没有更多数据了
     classMap:[],
     selectClass:99, //默认选中的分类
-    hotList: [    //热搜列表
-      {
-        title:'标题标题',
-        id:'',
-        type:'',
-      },
-      {
-        title: '标题标题2222222',
-        id: '',
-        type: '',
-      },
-      {
-        title: '标题标题2222222222222222222',
-        id: '',
-        type: '',
-      },
-      {
-        title: '标题标题2222222',
-        id: '',
-        type: '',
-      },
-    ], 
+    hotList: [], //热搜列表
   },
 
   /**
@@ -45,6 +24,7 @@ Page({
     //先获取该用户关注了哪些用户
     app.pageByFollow().then(()=>{
       this.pageByArticle(true)
+      this.getHotList()
     })
     var classMap = []
     for(let i in app.globalData.classMap){
@@ -68,7 +48,7 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
-
+  
   },
   onPageScroll(e) {
     wx.createSelectorQuery().select('.container').boundingClientRect().exec((res) => {
@@ -86,6 +66,61 @@ Page({
         }
       }
 
+    })
+  },
+  //查看热搜的详情
+  jumpDe:function(e){
+    var item = e.currentTarget.dataset.item
+    console.log(item)
+    var url = ''
+    switch (item.type){
+      case 0:
+        if (item.article_type == 2){
+          url = '/pages/detail/subject/subject?id='
+        }else{
+          url = '/pages/detail/article/article?id='
+        }
+        break
+      case 1:
+        url = '/pages/detail/video/video?id='
+        break
+      default:
+        break
+    }
+    wx.navigateTo({
+      url: url + item.id
+    })
+  },
+  //递归出一个不重复的数
+  recursive:function(map,length,list){
+    var num = parseInt(Math.random() * length)
+    if (map[num] && list[num].article_type!=1){
+      return this.recursive(map)
+    }else{
+      return num
+    }
+  },
+  //获取热搜列表
+  getHotList:function(){
+    pageByArticle({
+      pageNum: 1,
+      pageSize:50,
+      type: '',
+      login_user_id: app.globalData.userInfo.id,
+      category: '',
+      article_type: '',
+    }).then((res) => {
+      console.log(res)
+      var listMap = {}
+      var hotList = []
+      for(let i = 0;i<6;i++){
+        var num = this.recursive(listMap, res.data.list.length, res.data.list)
+        listMap[num] = true
+        hotList.push(res.data.list[num])
+      }
+      this.setData({
+        hotList:hotList
+      })
     })
   },
   //切换分类

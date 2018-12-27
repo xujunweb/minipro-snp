@@ -1,4 +1,5 @@
 <!--pages/detail/article/article.wxml-->
+<wxs src="../../../utils/util.wxs" module="u" />
 <view class="goods_content">
     <view class="goods" wx:if="{{artInfo}}">
         <!--详情-->
@@ -33,7 +34,7 @@
             <view class="clearfloat"></view>
             <view class="goods_address" catchtap="seeShopMap" data-item="{{item}}">{{artInfo.address}}</view>
             <view class="goods_time">
-                <text class='time'>发布于：{{artInfo.insert_time}}</text>
+                <text class='time'>发布于：{{u.GetTime(artInfo.insert_time)}}</text>
                 <!-- <text class="read-num">点赞 {{artInfo.like}}</text> -->
                 <text class='del' wx:if='{{artInfo.user.openid===userInfo.openid}}' catchtap='confirmDelGoods'>删除{{app.globalData.openid}}</text>
                 <!-- <text class='tel_he' catchtap="contactHe" data-tel="{{item.phone}}">评论{{artInfo.comment}}</text> -->

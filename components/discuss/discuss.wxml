@@ -1,4 +1,5 @@
 <!-- 点赞&&评论 -->
+<wxs src="../../utils/util.wxs" module="u" />
 <view class='comment_and_praise' wx:if="{{artid}}">
     <view class='tab' id="test">
         <view class="tab_l tab_active">{{type==2?'他们的解答':'评论'}}</view>
@@ -16,7 +17,7 @@
                 <view class='name'>{{item.user.nickname?item.user.nickname:'微信用户'}}</view>
                 <view class='content'>{{item.content}}</view>
                 <view class='warp'>
-                    <view class='time'>{{item.insert_time?item.insert_time:item.insert_time}}</view>
+                    <view class='time'>{{u.GetTime(item.insert_time,'Y-M-D hh:mm')}}</view>
                     <view class='del' wx:if="{{item.user.openid === openId}}" data-index="{{index}}" data-id="{{item.id}}" bindtap="deletComment">删除</view>
                 </view>
             </view>

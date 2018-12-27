@@ -1,4 +1,5 @@
 <!--pages/detail/video/video.wxml-->
+<wxs src="../../../utils/util.wxs" module="u" />
 <view class="info-box" wx:if="{{artInfo}}">
     <view class="video-box">
         <view class="video-in {{hideVideo == 2 ? 'hideVideo' : ''}}" id="video-in">
@@ -12,7 +13,7 @@
         <view class="bg-white">
             <view class="info_title"><text>{{artInfo.title}}</text></view>
             <view class='info_top'>
-                <text class='origin_time'>发布时间：{{artInfo.insert_time}}</text>
+                <text class='origin_time'>发布时间：{{u.GetTime(artInfo.insert_time)}}</text>
             </view>
         </view>
         <!-- @todo 评论点赞 -->

@@ -45,6 +45,9 @@ Component({
       userMap:{},
       classMap:{},
     },
+    curPlayIdx: 'no',       //当前播放的那一个的索引
+    isJump: true,   //是否允许等到延迟的时间后进行跳转 true为允许 false为不允许
+    videoId: '',    //视频的一些信息
   },
   attached:function(){
     this.setData({
@@ -294,7 +297,7 @@ Component({
             return arr.user_id !== app.globalData.userInfo.id
           })
         }else{
-          this.data.item.like + 1
+          this.data.item.like = this.data.item.like + 1
           //点赞列表添加一个点赞记录
           this.data.item.articleLike.push({
             avatar: app.globalData.userInfo.avatar,
@@ -342,6 +345,46 @@ Component({
       this.data.discussInfo.inputShow = false;
       this.data.discussInfo.inputText = '';
       this.setData(this.data);
+    },
+
+    videoPlay: function (e) {
+      console.log('eee===', e)
+      var that = this;
+      let index = this.data.item.id;
+      let coverImg = this.data.item.cover_urls
+      let title = this.data.item.title
+      // this.updateViewNum(index);
+      wx.setStorageSync('playIdx', index)
+      this.setData({
+        curPlayIdx: index,
+        coverImg: coverImg,
+        title: title,
+        videoId: index
+      }, () => {
+        this.triggerEvent('curPlayIdx', index);
+      });
+    },
+
+    videoUpdate: function (event) {
+      let that = this;
+      let playIdx = wx.getStorageSync('playIdx')
+      if (playIdx && playIdx != that.data.curPlayIdx) {
+        that.setData({
+          curPlayIdx: 'no'
+        })
+      }
+    },
+
+    videoEnd: function () {
+      this.setData({
+        curPlayIdx: 'no'
+      })
+    },
+
+    videoPlay2: function (e) {
+      var that = this
+      let index = this.data.item.id;
+      wx.setStorageSync('playIdx', index);
     },
   }
 })
