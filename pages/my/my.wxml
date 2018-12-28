@@ -78,12 +78,12 @@
 </view>
 <!-- 商家入口/免费入驻/做小程序 -->
 <view class='my_row_one'>
-    <block>
-        <view class='my_mid_row my_mid_shop' catchtap="myPublic">
+    <navigator url="/pages/my/feedback/feedback" hover-class="none">
+        <view class='my_mid_row my_mid_shop'>
           <text>用户反馈</text>
           <image src='http://yamxcx.oss-cn-shenzhen.aliyuncs.com/pingtaixcx/next.png'/>
         </view>
-    </block>
+    </navigator>
     <block>
         <view class='my_mid_row my_mid_join' catchtap="myPublic">
           <text>系统设置</text>

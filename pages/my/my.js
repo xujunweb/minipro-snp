@@ -89,7 +89,7 @@ Page({
     //   }
     // })
     wx.navigateTo({
-      url: '/pages/my/like/like'
+      url: '/pages/my/release/release'
     });
 
   },

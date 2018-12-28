@@ -9,6 +9,7 @@
         <view class='type'>{{item.type||'头条用户'}}</view>
       </view>
     </view>
-    <button data-item="{{item}}" data-index="{{index}}">已关注</button>
+    <button data-item="{{item}}" data-index="{{index}}" catchtap='followUser'>已关注</button>
   </view>
+  <view wx:if="{{!articlelist.length}}">暂无数据</view>
 </view>

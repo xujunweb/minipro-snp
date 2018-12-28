@@ -45,3 +45,11 @@ export const signIn = (data) => {
     method: 'post',
   })
 }
+//用户反馈
+export const feedback = (data) => {
+  return ajax({
+    url: wx.envConfig.host + 'faultFeedback/save',
+    data: { ...data },
+    method: 'post',
+  })
+}

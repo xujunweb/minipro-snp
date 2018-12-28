@@ -1,5 +1,5 @@
 // pages/my/follow/follow.js
-import { pageByFollow} from '../../../api/user.js'
+import { pageByFollow, followUser} from '../../../api/user.js'
 var app = getApp()
 Page({
 
@@ -35,6 +35,16 @@ Page({
   },
   //获取关注用户
   pageByFollow:function(resf){
+    if (this.data.thisp > this.data.lastPage && this.data.lastPage != 0) {
+      this.setData({
+        noMore: true
+      })
+      wx.showToast({
+        title: '没有更多数据了',
+        icon: 'none'
+      })
+      return
+    }
     pageByFollow({
       pageNum: this.data.thisp,
       pageSize: 20,
@@ -53,6 +63,32 @@ Page({
         this.setData({
           articlelist: [...this.data.articlelist, ...res.data.list]
         })
+      }
+    })
+  },
+  //取消关注
+  followUser: function (e) {
+    wx.showModal({
+      title: '提示',
+      content: '是否确定取消关注？',
+      success: (res) => {
+        if (res.confirm) {
+          var item = e.currentTarget.dataset.item
+          var index = e.currentTarget.dataset.index
+          followUser({
+            is_follow: '0',
+            user_id: item.user_id,
+            follow_user_id: app.globalData.userInfo.id
+          }).then((res) => {
+            //删除对应的索引
+            this.data.articlelist.splice(index, 1)
+            this.setData({
+              articlelist: [...this.data.articlelist]
+            })
+          })
+        } else if (res.cancel) {
+          console.log('用户点击取消')
+        }
       }
     })
   },
@@ -83,12 +119,5 @@ Page({
   onReachBottom: function () {
     this.data.thisp += 1
     this.pageByFollow()
-  },
-
-  /**
-   * 用户点击右上角分享
-   */
-  onShareAppMessage: function () {
-
   }
 })

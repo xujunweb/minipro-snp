@@ -1,0 +1,11 @@
+<!--pages/my/feedback/feedback.wxml-->
+<view class="conception">
+  <view class='conception_text'>
+    <textarea maxlength="400" rowspan="7" placeholder='要反馈的内容...' bindinput="bindTextAreaFocus" bindblur="bindTextAreablur" placeholder-style="color:#aaa;"></textarea>
+  </view>
+</view>
+
+<view class='bottom-submit-part'>
+  <button class='right-data-part submit-able-class button-none' hover-class="none" wx:if="{{ usedDisabled==true }}" bindtap='feedback'>提交</button>
+  <button class='right-data-part submit-disable-class button-none' style="color: #fff;background-color:#d6d6d6" hover-class="none" wx:if="{{ usedDisabled==false }}" disabled="true">提交</button>
+</view>

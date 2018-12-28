@@ -1,0 +1,23 @@
+<!--pages/my/release/release.wxml-->
+<wxs src="../../../utils/util.wxs" module="u" />
+<view class='release'>
+  <view class='title'></view>
+  <view class='list' wx:for="{{articlelist}}" wx:key="{{index}}" data-item="{{item}}" bindtap='jumpDe'>
+    <view class='top'>
+      <view class='time'>{{u.transTime(item.insert_time)}}</view>
+      <button catchtap='updateArticle' data-item="{{item}}" data-index="{{index}}">删除</button>
+    </view>
+    <view class='artitle'>{{item.title}}</view>
+    <view class='content' wx:if="{{item.content}}">{{item.content}}</view>
+    <view class='info'>
+      <view class='zan'>
+        <image src='/images/icon-zan.png'></image>
+        <text>{{item.like}}</text>
+      </view>
+      <view class='zan'>
+        <image src='/images/icon-commt.png'></image>
+        <text>{{item.comment}}</text>
+      </view>
+    </view>
+  </view>
+</view>

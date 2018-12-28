@@ -1,0 +1,48 @@
+/* pages/my/release/release.wxss */
+.release{
+  
+}
+.release .list{
+  background: #fff;padding: 30rpx;
+  margin-bottom: 20rpx;
+}
+.release .list .top{
+  padding-bottom: 10rpx;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.release .list .top .time{
+  color: #999;font-size: 26rpx;
+}
+.release .list .top button{
+  border: 2rpx solid #9da3f1;color: #9da3f1;background: #fff;
+  width: 110rpx;height:50rpx;line-height: 48rpx;font-size: 26rpx;
+}
+.artitle{
+  font-size: 32rpx;margin-top: 10rpx;line-height: 50rpx;
+}
+.content{
+  font-size: 26rpx;color: #999;line-height: 45rpx;
+  overflow:hidden;
+  text-overflow:ellipsis;
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
+  word-break:break-all;
+}
+.info{
+  border-top: 2rpx solid #f2f2f2;
+  display: flex;
+  margin-top: 20rpx;
+  padding-top: 10rpx;
+}
+.info .zan{
+  display: flex;
+  align-items: center;
+  font-size: 26rpx;color: #9da3f1;
+  margin-right: 40rpx;
+}
+.info .zan image{
+  width: 30rpx;height: 30rpx;margin-right: 10rpx;
+}

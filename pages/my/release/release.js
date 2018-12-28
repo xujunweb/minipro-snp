@@ -1,5 +1,5 @@
-// pages/my/like/like.js
-import { pageByArticleInLike, articleLike} from '../../../api/article.js'
+// pages/my/release/release.js
+import { pageByArticle, updateArticle } from '../../../api/article.js'
 var app = getApp()
 Page({
 
@@ -17,7 +17,7 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-
+    
   },
 
   /**
@@ -33,8 +33,8 @@ Page({
   onShow: function () {
     this.pageByArticle(true)
   },
-  //请求点赞的文章
-  pageByArticle: function (resf){
+  //请求发布的文章
+  pageByArticle: function (resf) {
     if (this.data.thisp > this.data.lastPage && this.data.lastPage != 0) {
       this.setData({
         noMore: true
@@ -45,13 +45,13 @@ Page({
       })
       return
     }
-    pageByArticleInLike({
+    pageByArticle({
       pageNum: this.data.thisp,
       pageSize: 8,
       login_user_id: app.globalData.userInfo.id,
+      category: '',
+      insert_author: app.globalData.userInfo.id,
       article_types: '0,2',
-      like:1,
-      like_user_id: app.globalData.userInfo.id,
     }).then((res) => {
       console.log(res)
       this.data.lastPage = res.data.lastPage
@@ -67,22 +67,22 @@ Page({
       }
     })
   },
-  //取消点赞
-  articleLike:function(e){
+  //删除文章
+  updateArticle: function (e) {
     wx.showModal({
-      title:'提示',
-      content:'是否确定取消收藏？',
-      success:(res)=>{
+      title: '提示',
+      content: '是否确定删除？',
+      success: (res) => {
         if (res.confirm) {
           var item = e.currentTarget.dataset.item
           var index = e.currentTarget.dataset.index
-          articleLike({
-            is_like: '0',
-            article_id: item.id,
-            user_id: app.globalData.userInfo.id
+          updateArticle({
+            state:1,
+            id: item.id,
+            update_author: app.globalData.userInfo.id
           }).then((res) => {
             //删除对应的索引
-            this.data.articlelist.splice(index,1)
+            this.data.articlelist.splice(index, 1)
             this.setData({
               articlelist: [...this.data.articlelist]
             })
@@ -144,5 +144,5 @@ Page({
   onReachBottom: function () {
     this.data.thisp += 1
     this.pageByArticle()
-  },
+  }
 })

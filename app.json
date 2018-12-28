@@ -1,7 +1,6 @@
 {
   "pages": [
     "pages/index/index",
-    "pages/logs/logs",
     "pages/release/aticle/aticle",
     "pages/release/video/video",
     "pages/my/my",
@@ -13,7 +12,9 @@
     "pages/my/like/like",
     "pages/subject/subject",
     "pages/detail/subject/subject",
-    "pages/my/follow/follow"
+    "pages/my/follow/follow",
+    "pages/my/release/release",
+    "pages/my/feedback/feedback"
   ],
   "window": {
     "backgroundTextStyle": "dark",

@@ -93,7 +93,7 @@ background-color:#ff7800; font-size:32rpx; color:#fff; margin-left: 30rpx; borde
 	color: #ffffff;
 }
 .submit-able-class{
-	background-color: #ff7800;
+	background-color: #9da3f1;
 }
 .submit-disable-class{
 	background-color: #d6d6d6;
