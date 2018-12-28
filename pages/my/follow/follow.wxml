@@ -1,0 +1,14 @@
+<!--pages/my/follow/follow.wxml-->
+<view class='follow'>
+  <view class='total'>全部关注{{total}}人</view>
+  <view class='followList' wx:for="{{articlelist}}" wx:key="{{index}}">
+    <view class='userInfo'>
+      <image src="{{item.avatar||'https://xcximg.197.com/xcx/zctx2.png'}}"></image>
+      <view class='user-r'>
+        <view class='name'>{{item.nickname}}</view>
+        <view class='type'>{{item.type||'头条用户'}}</view>
+      </view>
+    </view>
+    <button data-item="{{item}}" data-index="{{index}}">已关注</button>
+  </view>
+</view>

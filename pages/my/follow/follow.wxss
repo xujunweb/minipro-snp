@@ -1,0 +1,36 @@
+/* pages/my/follow/follow.wxss */
+.follow{
+  padding: 30rpx;
+  background: #fff;
+}
+.total{
+  font-size: 26rpx;color: #999;
+  margin-bottom: 20rpx;
+}
+.followList{
+  border-bottom: 2rpx solid #f2f2f2;
+  padding: 20rpx 0;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.followList .userInfo{
+  display: flex;
+  justify-content: space-between;
+  align-items: center; 
+}
+.followList .userInfo image{
+  height: 80rpx;width: 80rpx;border-radius: 80rpx;
+  margin-right: 20rpx;
+}
+.followList .userInfo .name{
+  font-size: 30rpx;line-height: 50rpx;
+}
+.followList .userInfo .type{
+  color: #999;font-size: 26rpx;
+}
+.followList button{
+  border: 1rpx solid #ccc;
+  width: 110rpx;line-height: 49rpx;height: 52rpx;font-size: 26rpx;
+  background: #fff;color: #ccc;
+}

@@ -37,7 +37,7 @@
 			"list": []
 		},
 		"miniprogram": {
-			"current": 3,
+			"current": 4,
 			"list": [
 				{
 					"id": -1,
@@ -60,7 +60,13 @@
 				{
 					"id": -1,
 					"name": "解题",
-					"pathName": "pages/subject/subject"
+					"pathName": "pages/subject/subject",
+					"query": ""
+				},
+				{
+					"id": -1,
+					"name": "我的收藏",
+					"pathName": "pages/my/like/like"
 				}
 			]
 		}

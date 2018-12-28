@@ -16,7 +16,14 @@
 page{
   background: #f4f4f4;
   height: 100%;
+  border-top: 2rpx solid #f2f2f2;
 }
 .mainColor{
   color: #9da3f1;
+}
+button{
+  padding: 0;margin: 0;
+}
+button::after{
+  border: none;
 }

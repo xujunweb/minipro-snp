@@ -17,7 +17,7 @@
                 <view class='name'>{{item.user.nickname?item.user.nickname:'微信用户'}}</view>
                 <view class='content'>{{item.content}}</view>
                 <view class='warp'>
-                    <view class='time'>{{u.GetTime(item.insert_time,'Y-M-D hh:mm')}}</view>
+                    <view class='time'>{{u.transTime(item.insert_time)}}</view>
                     <view class='del' wx:if="{{item.user.openid === openId}}" data-index="{{index}}" data-id="{{item.id}}" bindtap="deletComment">删除</view>
                 </view>
             </view>

@@ -19,7 +19,8 @@
 <!-- 积分 -->
 <view class='my_row_one vip_row'>
   <view class="vip_sub_row">
-    <view class="blance">积分：{{userInfo.score}}</view>
+    <image src='../../images/integral.png'></image>
+    <view class="blance">我的积分：{{userInfo.score}}</view>
   </view>
   <view class="vip_sub_row vip_sub_row1" catchtap="signIn">
     <view class="vip_btn">{{isSignIn?'已签到':'签到'}}</view>
@@ -44,7 +45,7 @@
     </navigator> -->
     <!-- <view class='my_line'></view> -->
 
-    <navigator url="/pages/my/like/like" hover-class="none">
+    <navigator url="/pages/my/follow/follow" hover-class="none">
       <view class='my_mid_row my_mid_store_shop'>
         <text>我的关注</text>
         <image src='http://yamxcx.oss-cn-shenzhen.aliyuncs.com/pingtaixcx/next.png'/>

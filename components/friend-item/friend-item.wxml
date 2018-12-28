@@ -53,7 +53,7 @@
 
       <view class="goods_address" catchtap="seeShopMap" wx:if="{{item.address}}" data-item="{{item}}">{{item.address}}</view>
       <view class="goods_time">
-        <text>发布于：{{u.GetTime(item.insert_time)}}</text>
+        <text>发布于：{{u.transTime(item.insert_time)}}</text>
         <view class='goods_read'>
           <image src='../../images/icon-zan.png'></image>
           <text class='text'>{{item.like}}</text>

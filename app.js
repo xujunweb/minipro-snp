@@ -177,12 +177,12 @@ App({
   },
   /**
    * 当前登录人关注了哪些用户
-   * 
+   * @strorage  是否优先使用本地缓存(默认优先)
    */
-  pageByFollow:function(){
+  pageByFollow:function(strorage){
     return new Promise((resolve, reject) => {
       this.getOpenId().then((userInfo)=>{
-        if (wx.getStorageSync('followUser')) {
+        if (!strorage && wx.getStorageSync('followUser')) {
           resolve()
           return
         }

@@ -1,4 +1,21 @@
 <!--pages/my/like/like.wxml-->
+<wxs src="../../../utils/util.wxs" module="u" />
 <view class='content'>
-  暂无内容
+  <view class='likeList' wx:for="{{articlelist}}" wx:key="{{index}}" bindtap='jumpDe' data-item="{{item}}">
+    <view class='title'>
+      <view class='user'>
+        <image src="{{item.user.avatar||'https://xcximg.197.com/xcx/zctx2.png'}}"></image>
+        {{item.user.nickname||'微信用户'}}
+      </view>
+      <button catchtap='articleLike' data-item="{{item}}" data-index="{{index}}">删除</button>
+    </view>
+    <view class='list-content'>
+      {{item.title}}
+    </view>
+    <view class='time'>
+      {{u.transTime(item.insert_time)}}
+    </view>
+  </view>
+  <view wx:if="{{!articlelist.length}}">暂无数据</view>
 </view>
+

@@ -140,7 +140,8 @@
 
 /* 会员样式新增 */
 .vip_row{ margin:  0 auto; box-sizing: border-box; display: flex; flex-direction: row; justify-content: space-between; }
-.vip_sub_row{ padding: 20rpx 30rpx 20rpx 40rpx; display: flex; flex-direction: column; justify-content: space-between; }
+.vip_sub_row{ padding: 20rpx 30rpx 20rpx 30rpx;display: flex;align-items: center; }
+.vip_sub_row image{width: 38rpx;height: 38rpx;margin-right: 17rpx;}
 .vip_sub_row1{ padding-left: 0; }
 .blance{ font-size: 32rpx; color: #222; line-height: 50rpx; }
 .sub_title{ font-size: 22rpx; color: #9ea3ad; margin-top: 20rpx; line-height: 22rpx;}

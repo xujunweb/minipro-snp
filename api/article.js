@@ -39,6 +39,14 @@ export const articleLike = (data) => {
     method: 'post',
   })
 }
+//查询我的点赞
+export const pageByArticleInLike = (data) => {
+  return ajax({
+    url: wx.envConfig.host + 'article/pageByArticleInLike',
+    data: { state: '0', status:'0',...data },
+    method: 'post',
+  })
+}
 //修改文章信息
 export const updateArticle = (data) => {
   return ajax({

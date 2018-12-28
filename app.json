@@ -12,7 +12,8 @@
     "pages/detail/video/video",
     "pages/my/like/like",
     "pages/subject/subject",
-    "pages/detail/subject/subject"
+    "pages/detail/subject/subject",
+    "pages/my/follow/follow"
   ],
   "window": {
     "backgroundTextStyle": "dark",

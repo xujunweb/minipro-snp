@@ -1,4 +1,39 @@
 /* pages/my/like/like.wxss */
 .content{
-  font-size: 40rpx;text-align: center;line-height: 300rpx;
+  /* padding: 30rpx 20rpx; */
+}
+.likeList{
+  background: #fff;
+  /* border: 2rpx solid #9da3f1;border-radius: 20rpx; */
+  margin-bottom: 20rpx;
+  padding: 30rpx;
+}
+.likeList .title{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  /* border-bottom: 2rpx solid #9da3f1; */
+}
+.user{
+  display: flex;align-items: center;
+  font-size: 28rpx;
+}
+.user image{
+  width: 60rpx;
+  height: 60rpx;
+  border-radius: 60rpx;
+  margin-right: 20rpx;
+}
+.likeList .title text{
+  color: #999;font-size: 28rpx;
+}
+.likeList .title button{
+  border: 2rpx solid #9da3f1;color: #9da3f1;background: #fff;
+  width: 110rpx;height:50rpx;line-height: 48rpx;font-size: 26rpx;
+}
+.list-content{
+  font-size: 30rpx;line-height: 45rpx;padding: 20rpx 0;
+}
+.time{
+  font-size: 24rpx;color: #999;
 }

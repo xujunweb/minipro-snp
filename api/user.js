@@ -45,4 +45,3 @@ export const signIn = (data) => {
     method: 'post',
   })
 }
-
