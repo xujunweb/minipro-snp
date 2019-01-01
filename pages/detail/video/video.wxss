@@ -44,5 +44,35 @@
 .space20 {height: 20rpx; background-color: #f4f4f4;}
 .hideVideo, .inputHide{ display:none !important }
 
-
+.item_share{font-size: 28rpx; color: #9da3f1; height: 50rpx;line-height: 48rpx; border: 1px solid #9da3f1; border-radius: 35rpx; padding:0 30rpx; margin: 0; background: #fff;}
+.item_originLogo {
+  height:80rpx;
+  width:80rpx;
+  border-radius:80rpx;
+  margin-right:15rpx;
+  flex-shrink:0;
+}
+.userInfo{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 30rpx;
+  margin-top: 20rpx;
+  margin-bottom: 10rpx;
+}
+.userInfo .info{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.userInfo .info .name{
+  font-size: 26rpx;
+}
+.userInfo .info .follow{
+  display: inline-block;color: #9da3f1;border-radius: 50rpx;
+  padding: 2rpx 15rpx;font-size: 24rpx;margin-left: 10rpx;border: 2rpx solid #9da3f1;
+}
+.userInfo .info .type{
+  font-size: 24rpx;color: #999;
+}
  @import "/components/discuss/discuss.wxss";

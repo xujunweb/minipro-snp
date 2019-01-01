@@ -15,28 +15,15 @@ Page({
     classMap:[],
     selectClass:99, //默认选中的分类
     hotList: [], //热搜列表
+    seachText:'',
+    isSeach:false,
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    //先获取该用户关注了哪些用户
-    app.pageByFollow().then(()=>{
-      this.pageByArticle(true)
-      this.getHotList()
-    })
-    var classMap = []
-    for(let i in app.globalData.classMap){
-      classMap[i] = { id: i, text: app.globalData.classMap[i]}
-    }
-    this.setData({
-      classMap: [
-        ...[{id:99,text:'全部'},{id:98,text:'关注'}],
-        // ...[{id:99,text:'全部'}],
-        ...classMap
-      ]
-    })
+    
   },
   /**
    * 生命周期函数--监听页面初次渲染完成
@@ -48,7 +35,31 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
-  
+    //先获取该用户关注了哪些用户
+    app.pageByFollow().then(() => {
+      this.pageByArticle(true)
+      this.getHotList()
+    })
+    var classMap = []
+    for (let i in app.globalData.classMap) {
+      classMap[i] = { id: i, text: app.globalData.classMap[i] }
+    }
+    this.setData({
+      classMap: [
+        ...[{ id: 99, text: '推荐' }, { id: 98, text: '关注' }],
+        // ...[{id:99,text:'全部'}],
+        ...classMap
+      ]
+    })
+  },
+  inputText:function(e){
+    this.setData({
+      seachText: e.detail.value
+    })
+  },
+  seachList:function(){
+    this.data.thisp = 1
+    this.pageByArticle(true)
   },
   onPageScroll(e) {
     wx.createSelectorQuery().select('.container').boundingClientRect().exec((res) => {
@@ -158,7 +169,6 @@ Page({
       }
     }
     //获取本地的关注用户
-    
     pageByArticle({
       pageNum: this.data.thisp,
       pageSize: 8,
@@ -166,13 +176,15 @@ Page({
       login_user_id: app.globalData.userInfo.id,
       category: category,
       article_type:'0',
+      title:this.data.seachText,
       insert_authors: followUserArry.join(','),    //关注的用户组
     }).then((res) => {
       console.log(res)
       this.data.lastPage = res.data.lastPage
       if (resf){
         this.setData({
-          articlelist: [...res.data.list]
+          articlelist: [...res.data.list],
+          isSeach: this.data.seachText
         })
         wx.stopPullDownRefresh()
       }else{
@@ -207,7 +219,14 @@ Page({
   /**
    * 用户点击右上角分享
    */
-  onShareAppMessage: function () {
-
+  onShareAppMessage: function (e) {
+    console.log(e)
+    if (e.from === 'button'){
+      return {
+        title:e.target.dataset.item.title,
+        imageUrl: e.target.dataset.item.cover_urls,
+        path: '/pages/detail/article/article?id=' + e.target.dataset.item.id
+      }
+    }
   }
 })

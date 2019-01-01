@@ -1,0 +1,210 @@
+/* components/new-video/new-video.wxss */
+.text-ellipsis{
+    overflow: hidden; text-overflow: ellipsis; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical;  word-break: break-all;
+  }
+.info-count{
+    display: flex;
+    justify-content: space-between;
+    color: #999;
+    font-size: 24rpx;
+    line-height: 24rpx;
+    padding: 30rpx 0;
+}
+/* 视频列表区域 */
+.video-item{
+  background: #fff;
+  box-sizing: border-box;
+  overflow: hidden;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  /* padding-bottom: 20rpx; */
+}
+.video-info{
+    font-size: 34rpx;
+    color: #000;
+    line-height: 42rpx;
+    padding: 0 30rpx;
+    padding-bottom: 20rpx;
+}
+.item_originLogo {
+  height:80rpx;
+  width:80rpx;
+  border-radius:80rpx;
+  flex-shrink:0;
+}
+
+.video-content{
+    overflow: hidden;
+    position: relative;
+    display: flex;
+    width: 100%;
+    height: 100%;
+    flex-grow: 1;
+    /* margin-bottom: 15rpx; */
+}
+.video{
+    width: 100%;
+    height:100%;
+    flex-grow: 1;
+}
+
+
+
+.header{
+  margin-top: 20rpx;
+}
+.commts{
+  color: #fff;
+  background-color:rgba(0,0,0,0.6);
+  position: fixed;
+  bottom:0rpx;
+  height: 1000rpx;
+  overflow-y: scroll;
+  width: 100%;
+}
+.coverView{
+  position: fixed;
+  bottom:100rpx;
+  color: #fff;
+  width: 200rpx;right: 0;
+  display: flex;
+  flex-direction: column;
+  font-size: 26rpx;
+  justify-content: center;
+  align-content: center;
+  align-items: center;
+  text-align: center;
+}
+.coverIn{
+  width: 200rpx;height: 50rpx;background: #fff;
+}
+.center{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  flex-direction: column;
+}
+.guz{
+  margin-top: -15rpx;
+  width: 30rpx;height: 30rpx;
+}
+.more{
+  margin-top: 20rpx;
+}
+.more .img{
+  width: 55rpx;height: 55rpx;
+}
+.more .close{
+  width: 64rpx;height: 64rpx;
+  transform:rotate(45deg);
+}
+.more .username{
+  margin-top: 5rpx;
+}
+.more .share{
+  background:none;
+}
+
+.com-title{
+  text-align: center;
+  font-size: 28rpx;line-height: 60rpx;
+  margin-top: 14rpx;
+}
+.com-close{
+  width: 50rpx;height: 50rpx;
+  position: absolute;
+  right: 20rpx;top: 20rpx;
+}
+.comment_list_row{
+    display: flex;
+    display: -webkit-flex;
+    flex-direction: row;
+    padding: 0 30rpx;
+    padding-top: 30rpx;
+  }
+.comment_list_row .comment_list_l{
+    margin-right: 20rpx;
+  }
+.comment_list_row .comment_list_l .img{
+    width: 58rpx;
+    height: 58rpx;
+    border-radius: 50%;
+  }
+.comment_list_row .comment_list_r{
+    border-bottom: 1rpx solid #e2e2e2;
+    padding-bottom: 20rpx;
+    flex-flow: 1;
+  }
+.comment_list_row:last-of-type .comment_list_r{
+    border-bottom: 0;
+  }
+.comment_list_row .comment_list_r .name{
+    font-size: 26rpx;
+    color: #fff;
+    margin-bottom: 9rpx;
+    line-height: 26rpx;
+  }
+.comment_list_row .comment_list_r .time{
+  font-size: 24rpx;
+}
+.comment_list_row .comment_list_r .content{
+    font-size: 28rpx;
+    color: #fff;
+    line-height:36rpx;
+    margin-bottom: 20rpx;
+    list-style:none;
+    word-wrap:break-word;/*支持IE，chrome，FF*/
+    width: 610rpx;
+  }
+.comment_list_row .comment_list_r .warp{
+    line-height: 24rpx;
+    display: flex;
+    display: -webkit-flex;
+    flex-direction: row;
+  }
+.comment_list_row .comment_list_r .warp view{
+    font-size: 24rpx;
+    color: #fff;
+  }
+.comment_list_row .comment_list_r .warp .del{
+    color: #fff;
+    margin-left: 40rpx;
+    font-size: 24rpx;
+}
+
+
+.footer{
+    /* position: fixed;
+    left: 0;
+    bottom: 0; */
+    background-color: #fff;
+    width: 100%;
+    padding: 10rpx 30rpx;
+    display: flex;
+    display: -webkit-flex;
+    flex-direction: row;
+    z-index: 999;
+    box-sizing: border-box;
+  }
+  .footer.focus{
+    padding: 15rpx 20rpx 25rpx 20rpx;
+  }
+  .iphone_x{
+    padding-bottom: 80rpx;
+  }
+   .iphone_x.focus{
+    padding: 15rpx 20rpx 75rpx 20rpx;
+  }
+  .footer input{
+    width:100%;
+    height: 70rpx;
+    color: #000;
+    line-height: 70rpx;
+    font-size: 28rpx;
+    padding-left: 19rpx; padding-right: 14rpx;
+    border:2rpx solid #ddd;
+    border-radius: 40rpx;
+    box-sizing: border-box;
+  }

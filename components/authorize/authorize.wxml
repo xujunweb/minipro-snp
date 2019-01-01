@@ -13,11 +13,12 @@
                         <text>请在稍后的提示框中点击“允许”</text>
                     </view>
                     <view class="image_box">
-                        <image class="img" src="http://yamxcx.oss-cn-shenzhen.aliyuncs.com/xcx/main-authorize3.png" />
+                        <!-- <image class="img" src="http://yamxcx.oss-cn-shenzhen.aliyuncs.com/xcx/main-authorize3.png" /> -->
+                        <image class="img" src="../../images/sq.png" />
                     </view>
                 </view>
                 <view class="btn_box"  catchtap="hideAlert">
-                      <button open-type="getUserInfo" bindgetuserinfo="getUserInfo" lang="zh_CN" class="button-none sure-btn">我知道了</button>
+                      <button open-type="getUserInfo" bindgetuserinfo="getUserInfo" lang="zh_CN" class="button-none sure-btn">授权登陆</button>
                 </view>
             </view>
         </view>

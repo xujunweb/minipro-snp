@@ -1,5 +1,6 @@
 // pages/detail/video/video.js
 import { updateArticle, getByArticleId } from '../../../api/article.js'
+import { followUser } from '../../../api/user.js'
 let app = getApp()
 Page({
 
@@ -21,9 +22,12 @@ Page({
   onLoad: function (options) {
     if (options.id) {
       this.setData({
-        id: options.id
+        id: options.id,
+        userId: app.globalData.userInfo.id,
       })
-      this.getByArticleId(options.id)
+      app.pageByFollow().then(() => {
+        this.getByArticleId(options.id)
+      })
     }
   },
 
@@ -48,10 +52,17 @@ Page({
       id: id,
     }).then((res) => {
       res.data.img_urls = res.data.img_urls.split(',')
+      this.data.artInfo = res.data
       this.setData({
         artInfo: res.data
       })
       this.getVideoHeight()
+      var followList = wx.getStorageSync('followUser')
+      if (this.data.artInfo.user) {
+        this.setData({
+          isfollow: followList[this.data.artInfo.user.id] ? true : false
+        })
+      }
     })
   },
   //跳转到指定评论位置
@@ -108,39 +119,24 @@ Page({
                 openId: "",
                 userId: 0
               };
-              //解决scrollview不能滚动的问题，故多加一条空数据再删除
-              // if (tmpPlateInfo.comment > 3) {
-              //   setTimeout(function () {
-              //     tmpPlateInfo.comment.length += 1
-              //     console.log('add ++++++++');
-              //     that.setData({
-              //       artInfo: tmpPlateInfo
-              //     }, () => {
-              //       setTimeout(function () {
-              //         let tmpPlateInfo2 = that.data.artInfo;
-              //         let dIndex = -1;
-              //         tmpPlateInfo2.payMediaCommentDtos.map((item, index) => {
-              //           if (item.id == 0) {
-              //             dIndex = index;
-              //           }
-              //         });
-              //         console.log('dIndex=', dIndex);
-              //         if (dIndex > -1) {
-              //           tmpPlateInfo2.payMediaCommentDtos.splice(dIndex, 1);
-              //           // console.log('tmpPlateInfo2=',tmpPlateInfo2);
-              //           that.setData({
-              //             artInfo: tmpPlateInfo2
-              //           });
-              //         }
-              //       }, 500);
-              //     });
-              //   }, 1500);
-              // }
             }
           });
         }
       });
     });
+  },
+  //关注用户
+  followUser: function () {
+    followUser({
+      is_follow: this.data.isfollow ? '0' : '1',
+      user_id: this.data.artInfo.user.id,
+      follow_user_id: app.globalData.userInfo.id,
+    }, this.data.artInfo.user).then((res) => {
+      console.log('关注用户---')
+      this.setData({
+        isfollow: !this.data.isfollow
+      })
+    })
   },
   /**
    * 生命周期函数--监听页面隐藏

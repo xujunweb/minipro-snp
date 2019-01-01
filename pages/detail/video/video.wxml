@@ -1,48 +1,66 @@
 <!--pages/detail/video/video.wxml-->
 <wxs src="../../../utils/util.wxs" module="u" />
 <view class="info-box" wx:if="{{artInfo}}">
-    <view class="video-box">
-        <view class="video-in {{hideVideo == 2 ? 'hideVideo' : ''}}" id="video-in">
-            <video id="myVideo" class="video-item" src="{{artInfo.img_urls}}" autoplay controls bindtimeupdate="videoUpdate"></video>
-            >
-        </view>
+  <view class="video-box">
+    <view class="video-in {{hideVideo == 2 ? 'hideVideo' : ''}}" id="video-in">
+      <video id="myVideo" class="video-item" src="{{artInfo.img_urls}}" autoplay controls></video>
+      >
     </view>
-    <view class="block-space  {{hideVideo == 2 ? 'hideVideo' : ''}}" style="{{spaceStyle}}"></view>
+  </view>
+  <view class="block-space  {{hideVideo == 2 ? 'hideVideo' : ''}}" style="{{spaceStyle}}"></view>
 
-    <scroll-view scroll-y="true" class="text-box" style="{{scrollStyle}}" scroll-with-animation="true" scroll-top="{{scrollTop}}">
-        <view class="bg-white">
-            <view class="info_title"><text>{{artInfo.title}}</text></view>
-            <view class='info_top'>
-                <text class='origin_time'>发布时间：{{u.transTime(artInfo.insert_time)}}</text>
-            </view>
+  <scroll-view scroll-y="true" class="text-box" style="{{scrollStyle}}" scroll-with-animation="true" scroll-top="{{scrollTop}}">
+    <view class="bg-white">
+      <view class="info_title">
+        <text>{{artInfo.title}}</text>
+      </view>
+      <view class='userInfo'>
+        <view class='info'>
+          <view class='avatar'>
+            <image src='{{artInfo.user.avatar}}' mode="aspectFill" class='item_originLogo'></image>
+          </view>
+          <view>
+            <view class='name'>{{artInfo.user.nickname}}</view>
+            <view class='type'>{{userMap[artInfo.user.type]||'头条用户'}}</view>
+          </view>
         </view>
-        <!-- @todo 评论点赞 -->
-        <block wx:if="{{artInfo}}">
-            <view id="discussTop" />
-            <discuss bindinputComment="inputComment" bindchangeVideoHeight="changeVideoHeight" bindchangeVideoHeight1="changeVideoHeight1" comments="{{plateInfo.payMediaCommentDtos}}" likeStatus="{{artInfo.articleInfo.like}}" bind:commentsLen='commentsLen' artid="{{artInfo.id}}" page="plate-video" bindscollcommnet="scollCommnet" likeNum="{{artInfo.like}}" moment-id="{{artInfo.id}}" isCanCommom="{{isDiscuss}}"/>
-            <view id="discussBottom" style="height:90rpx; width: 100%;background-color: #f4f4f4"/>
-        </block>
-    </scroll-view>
-
-    <!-- 评论输入框 -->
-    <view class="footer {{isIPhoneX?'iphone_x':''}} {{isShow ? '' : 'inputHide'}}">
-        <input placeholder='写评论' maxlength="200" bindtap="inputFocus" value="{{inputComment}}" adjust-position="{{false}}" disabled/>
-        <block>
-            <view class="comment {{artInfo.comment == 0?'no_num':artInfo.comment<10?'one_data':''}} {{artInfo.comment > 0 ? 'comment_2' : ''}}"
-                catchtap="scollCommnet">{{artInfo.comment == 0 ? (artInfo.comment>0?artInfo.comment:'') : artInfo.comment}}</view>
-            <view class="like-img" bindtap="likeChange1">
-                <image class="img" src="http://yamxcx.oss-cn-shenzhen.aliyuncs.com/xcx/{{likeStatus==1?'like_yes.png':'like_no.png'}}"></image>
-            </view>
-            <button class="share_btn" open-type="share"></button>
-        </block>
+        <button data-img="{{item.shareCoverImage}}" data-item="{{item}}" catchtap="preventD" class="item_share" catchtap='followUser' wx:if="{{artInfo.user.id != userId}}">
+        {{isfollow?'取消关注':'关注'}}
+      </button>
+      </view>
+      <view class='info_top'>
+        <text class='origin_time'>发布时间：{{u.transTime(artInfo.insert_time)}}</text>
+      </view>
     </view>
+    <!-- @todo 评论点赞 -->
+    <block wx:if="{{artInfo}}">
+      <view id="discussTop" />
+      <discuss bindinputComment="inputComment" bindchangeVideoHeight="changeVideoHeight" bindchangeVideoHeight1="changeVideoHeight1" comments="{{plateInfo.payMediaCommentDtos}}" likeStatus="{{artInfo.articleInfo.like}}" bind:commentsLen='commentsLen' artid="{{artInfo.id}}"
+        page="plate-video" bindscollcommnet="scollCommnet" likeNum="{{artInfo.like}}" moment-id="{{artInfo.id}}" isCanCommom="{{isDiscuss}}" />
+      <view id="discussBottom" style="height:90rpx; width: 100%;background-color: #f4f4f4" />
+    </block>
+  </scroll-view>
 
-    <!-- subPackage/news/pages/news_detail/news_detail -->
+  <!-- 评论输入框 -->
+  <view class="footer {{isIPhoneX?'iphone_x':''}} {{isShow ? '' : 'inputHide'}}">
+    <input placeholder='写评论' maxlength="200" bindtap="inputFocus" value="{{inputComment}}" adjust-position="{{false}}" disabled/>
+    <block>
+      <view class="comment {{artInfo.comment == 0?'no_num':artInfo.comment<10?'one_data':''}} {{artInfo.comment > 0 ? 'comment_2' : ''}}" catchtap="scollCommnet">{{artInfo.comment == 0 ? (artInfo.comment>0?artInfo.comment:'') : artInfo.comment}}</view>
+      <view class="like-img" bindtap="likeChange1">
+        <image class="img" src="http://yamxcx.oss-cn-shenzhen.aliyuncs.com/xcx/{{likeStatus==1?'like_yes.png':'like_no.png'}}"></image>
+      </view>
+      <button class="share_btn" open-type="share"></button>
+    </block>
+  </view>
+
+  <!-- subPackage/news/pages/news_detail/news_detail -->
 </view>
 
 
 <!-- 内容被删除时显示页面 -->
 <view class="del_goods_page" wx:if="{{isDel}}">
-    <view class="warn_icon"><icon type="warn" color="#d7d7d7" size="78"/></view>
-    <view class="del_desc">该发布内容已被管理员删除</view>
+  <view class="warn_icon">
+    <icon type="warn" color="#d7d7d7" size="78" />
+  </view>
+  <view class="del_desc">该发布内容已被管理员删除</view>
 </view>

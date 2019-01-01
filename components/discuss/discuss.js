@@ -108,7 +108,7 @@ Component({
     pageByArticleComment:function(p){
       pageByArticleComment({
         pageNum:p,
-        pageSize:10,
+        pageSize:100,
         article_id:this.data.artid,
       }).then((res)=>{
         if(p === 1){
@@ -231,19 +231,6 @@ Component({
               //删除评论成功，重新刷新评论列表
               this.pageByArticleComment(1)
             })
-            // delCommentInPlate({
-            //   data: params,
-            //   ele: that,
-            //   fn: function () {
-            //     let { comments } = that.data;
-            //     comments.splice(index, 1);
-            //     that.setData({ comments }, () => {
-            //       if (that.data.page == 'plate-video') {
-            //         that.triggerEvent('commentsLen', that.data.comments);
-            //       }
-            //     });
-            //   }
-            // });
           } else if (res.cancel) {
 
           }

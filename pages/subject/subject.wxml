@@ -1,4 +1,4 @@
 <!--pages/subject/subject.wxml-->
 <subject-item wx:for="{{articlelist}}" item="{{item}}" wx:if="{{articlelist.length}}" wx:key="{{index}}" />
 
-<release />
+<release  type='0' artype='2' />

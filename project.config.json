@@ -12,7 +12,7 @@
 		"autoAudits": false
 	},
 	"compileType": "miniprogram",
-	"libVersion": "2.4.2",
+	"libVersion": "2.4.3",
 	"appid": "wx90600c670bac0a86",
 	"projectname": "%E5%B0%91%E5%B9%B4%E6%B4%BE",
 	"debugOptions": {
@@ -37,7 +37,7 @@
 			"list": []
 		},
 		"miniprogram": {
-			"current": 4,
+			"current": 5,
 			"list": [
 				{
 					"id": -1,
@@ -66,7 +66,13 @@
 				{
 					"id": -1,
 					"name": "我的收藏",
-					"pathName": "pages/my/like/like"
+					"pathName": "pages/my/like/like",
+					"query": ""
+				},
+				{
+					"id": -1,
+					"name": "全屏视频",
+					"pathName": "pages/newvideo/newvideo"
 				}
 			]
 		}

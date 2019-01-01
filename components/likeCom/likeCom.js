@@ -77,5 +77,6 @@ Component({
         })
       })
     },
+    catup:function(){}
   }
 })

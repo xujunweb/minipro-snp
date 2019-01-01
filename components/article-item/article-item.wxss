@@ -1,4 +1,9 @@
-.goods_warp{ margin-bottom: 20rpx;}
+.goods_warp{ 
+  margin:10rpx;
+  border: 1rpx solid #e2e2e2;
+  border-radius: 10rpx;
+  overflow: hidden;
+}
 .goods_row{ background-color: #fff; padding: 30rpx 30rpx 0rpx 30rpx;  position: relative; margin-bottom: 10rpx;}
 .goods_row .goods_row_info{
   display: flex;
@@ -12,7 +17,7 @@
   position: relative;
 }
 .goods_row .goods_row_info .goods_row_info_l .goods_row_info_l_avatar{
-  height: 70rpx; width: 70rpx; border-radius: 35rpx;
+  height: 80rpx; width: 80rpx; border-radius: 80rpx;
 }
 .goods_row .goods_row_info .goods_row_info_l .goods_row_info_l_sign{
   width: 29rpx; height: 29rpx;
@@ -72,11 +77,11 @@
   word-break: break-all;
 }
 .goods_row .goods_row_image_1{
-  overflow: hidden; width: 705rpx;margin-bottom: 30rpx;
+  overflow: hidden;margin-bottom: 30rpx;
 }
 .goods_row .goods_row_image_1 image{
-  width: 220rpx;
-  height: 220rpx;
+  width: 208rpx;
+  height: 208rpx;
   margin-right:15rpx;
   float: left;
 }
@@ -94,7 +99,7 @@
 }
 .goods_row .goods_row_image_2 image{
   width: 100%;
-  height: 398rpx;
+  height: 300rpx;
 }
 .goods_row .goods_row_information{
   margin-top: 20rpx;

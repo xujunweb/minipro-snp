@@ -95,7 +95,7 @@ App({
       1:'家长',
       2:'学生',
       3:'头条用户'
-    }
+    },
   },
   //获取openid
   getOpenId: function (data) {

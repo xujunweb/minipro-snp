@@ -18,9 +18,10 @@ Page({
     },
     classMap: {}
   },
-  onLoad: function (e) {
+  onLoad: function (op) {
     this.setData({
-      classMap: app.globalData.classMap
+      classMap: app.globalData.classMap,
+      article_type: op.artype
     })
   },
   onShow: function (e) {

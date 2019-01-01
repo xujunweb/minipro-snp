@@ -14,7 +14,8 @@
     "pages/detail/subject/subject",
     "pages/my/follow/follow",
     "pages/my/release/release",
-    "pages/my/feedback/feedback"
+    "pages/my/feedback/feedback",
+    "pages/newvideo/newvideo"
   ],
   "window": {
     "backgroundTextStyle": "dark",
@@ -25,38 +26,38 @@
   },
   "tabBar": {
     "color": "#666666",
-    "selectedColor": "#fe6519",
+    "selectedColor": "#9da3f1",
     "borderStyle": "#e6e6e6",
     "backgroundColor": "#fff",
     "list": [
       {
         "pagePath": "pages/index/index",
         "text": "首页",
-        "iconPath": "image/discovery_normal.png",
-        "selectedIconPath": "image/discovery_press.png"
+        "iconPath": "images/sy.png",
+        "selectedIconPath": "images/sy_press.png"
       },
       {
-        "pagePath": "pages/videolist/videolist",
+        "pagePath": "pages/newvideo/newvideo",
         "text": "视频",
-        "iconPath": "image/news3_normal.png",
-        "selectedIconPath": "image/news3_press.png"
+        "iconPath": "images/sp.png",
+        "selectedIconPath": "images/sp_press.png"
       },
       {
         "pagePath": "pages/friends/friends",
         "text": "好友圈",
-        "iconPath": "image/news_normal.png",
-        "selectedIconPath": "image/news_press.png"
+        "iconPath": "images/py.png",
+        "selectedIconPath": "images/py_press.png"
       },
       {
         "pagePath": "pages/subject/subject",
         "text": "答题",
-        "iconPath": "image/news_normal.png",
-        "selectedIconPath": "image/news_press.png"
+        "iconPath": "images/jt.png",
+        "selectedIconPath": "images/jt_press.png"
       },
       {
         "pagePath": "pages/my/my",
-        "iconPath": "image/me_normal.png",
-        "selectedIconPath": "image/me_press.png",
+        "iconPath": "images/wd.png",
+        "selectedIconPath": "images/wd_press.png",
         "text": "我的"
       }
     ]

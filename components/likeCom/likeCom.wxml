@@ -1,8 +1,17 @@
 <!--components/likeCom/likeCom.wxml-->
 <view class="goods_row_5" style="border-top:{{border?'1rpx solid #e2e2e2':'none'}};height:{{height?height+'rpx':'50rpx'}}">
-  <view class='goods_row_pl'><text>{{item.comment ? item.comment : 0}}</text></view>
-  <view class='{{item.articleInfo.like == 1 ? "goods_row_dz_2" : "goods_row_dz_1"}}' data-index="{{i}}" data-moment-id="{{item.id}}" data-like-status="{{item.likeStatus}}" data-user-type="{{item.userType}}" data-like-id="{{item.likeId}}" catchtap="likeChange">
-      <text>{{item.like > 0 ? item.like : "赞"}}</text>
+  <view class='item goods_row_pl'>
+    <image src='../../images/icon-commt.png'></image>
+    <text>{{item.comment ? item.comment : 0}}</text>
   </view>
-  <view class='goods_row_5_ll'><text>{{item.comment}}</text></view>
+  <view class='item {{item.articleInfo.like == 1 ? "goods_row_dz_2" : "goods_row_dz_1"}}' data-index="{{i}}" data-moment-id="{{item.id}}" data-like-status="{{item.likeStatus}}" data-user-type="{{item.userType}}" data-like-id="{{item.likeId}}">
+    <image src='../../images/icon-zan.png'></image>
+    <text>{{item.like}}</text>
+  </view>
+  <view class='item goods_row_5_ll'>
+    <button open-type='share' hover-class="none" class='button' catchtap='catup' data-item="{{item}}">
+      <image src='../../images/zf.png'></image>
+    </button>
+    <!-- <text>{{item.comment}}</text> -->
+  </view>
 </view>

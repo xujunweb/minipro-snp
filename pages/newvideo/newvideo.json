@@ -1,0 +1,8 @@
+{
+  "enablePullDownRefresh": true,
+  "navigationBarTitleText": "视频",
+  "usingComponents": {
+    "pay-video": "/components/new-video/new-video",
+    "release": "/components/release/release"
+  }
+}

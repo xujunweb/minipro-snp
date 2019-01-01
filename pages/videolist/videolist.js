@@ -17,10 +17,7 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    //先获取该用户关注了哪些用户
-    app.pageByFollow().then(() => {
-      this.pageByArticle()
-    })
+    
   },
   /**
    * 生命周期函数--监听页面初次渲染完成
@@ -32,7 +29,10 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
-    this.pageByArticle()
+    //先获取该用户关注了哪些用户
+    app.pageByFollow().then(() => {
+      this.pageByArticle(true)
+    })
   },
   //分页加载文章列表
   pageByArticle:function(resf){
@@ -92,7 +92,14 @@ Page({
   /**
    * 用户点击右上角分享
    */
-  onShareAppMessage: function () {
-
+  onShareAppMessage: function (e) {
+    console.log(e)
+    if (e.from === 'button') {
+      return {
+        title: e.target.dataset.item.title,
+        imageUrl: e.target.dataset.item.cover_urls,
+        path: '/pages/detail/video/video?id=' + e.target.dataset.item.id
+      }
+    }
   }
 })

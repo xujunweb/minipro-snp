@@ -1,7 +1,7 @@
 import ajax from '../utils/ajax.js'
 
 //关注用户
-export const followUser = (data) => {
+export const followUser = (data,user) => {
   return ajax({
     url: wx.envConfig.host + 'user/follow',
     data: { ...data },
@@ -11,7 +11,7 @@ export const followUser = (data) => {
     wx.showToast({
       title: '操作成功',
     })
-    obj[data.user_id] = data.is_follow == 1
+    obj[data.user_id] = data.is_follow == 1?user:false
     wx.setStorageSync('followUser', {
       ...wx.getStorageSync('followUser'),
       ...obj

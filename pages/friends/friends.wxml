@@ -4,4 +4,4 @@
 <!-- 授权弹窗 -->
 <authorize onShow="{{onAuthShow}}" onHide="{{onAuthHide}}" />
 <!-- 发布按钮 -->
-<release />
+<release artype='1' />

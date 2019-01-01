@@ -3,26 +3,35 @@
   display: flex; display: -webkit-flex; align-items: center;
   margin-top: 0rpx; width: 100%; height: 50rpx;box-sizing: border-box;
 }
-.goods_row_5 view{
+.goods_row_5 view.item{
   width: 33.3%;
   text-align: center;
   line-height: 36rpx;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.goods_row_5 view.item image{
+  width: 40rpx;height: 40rpx;margin-right: 10rpx;float: left;
+}
+.goods_row_5 view.item .button{
+  background: none;width: 42rpx;height: 42rpx;
 }
 .goods_row_5 view text{
   display: inline-block;
-  background: url(http://yamxcx.oss-cn-shenzhen.aliyuncs.com/pingtaixcx/view.png) left center / 36rpx 24rpx no-repeat;
-  padding-left: 45rpx;
+  /* background: url(http://yamxcx.oss-cn-shenzhen.aliyuncs.com/pingtaixcx/view.png) left center / 36rpx 24rpx no-repeat; */
+  /* padding-left: 45rpx; */
   font-size: 24rpx;
   color: #888;
 }
 .goods_row_5 .goods_row_pl text{
-  background: url(http://yamxcx.oss-cn-shenzhen.aliyuncs.com/pingtaixcx/com.png) left center / 32rpx 26rpx no-repeat;
-  padding-left: 44rpx;
+  /* background: url(http://yamxcx.oss-cn-shenzhen.aliyuncs.com/pingtaixcx/com.png) left center / 32rpx 26rpx no-repeat; */
+  /* padding-left: 44rpx; */
 }
 .goods_row_5 .goods_row_dz_1 text{
-  background: url(http://yamxcx.oss-cn-shenzhen.aliyuncs.com/pingtaixcx/like.png) left center / 29rpx 26rpx no-repeat;
-  padding-left: 39rpx;
+  /* background: url(http://yamxcx.oss-cn-shenzhen.aliyuncs.com/pingtaixcx/like.png) left center / 29rpx 26rpx no-repeat; */
+  /* padding-left: 39rpx; */
 }
 .goods_row_5 .goods_row_dz_2 text{
-  background: url(http://yamxcx.oss-cn-shenzhen.aliyuncs.com/pingtaixcx/like_dian.png) left center / 29rpx 26rpx no-repeat;
+  /* background: url(http://yamxcx.oss-cn-shenzhen.aliyuncs.com/pingtaixcx/like_dian.png) left center / 29rpx 26rpx no-repeat; */
 }

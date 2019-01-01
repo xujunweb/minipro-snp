@@ -10,9 +10,9 @@
 .popup_warp_bg .head .text {font-size: 34rpx;color: #222222;font-weight: 400;}
 .popup_warp_bg .body {}
 .popup_warp_bg .body .image_box {width: 100%;margin-top: 20rpx;}
-.popup_warp_bg .body .img {display: block;width: 434rpx; height: 364rpx; margin: 0 auto; margin-left: 115rpx;}
+.popup_warp_bg .body .img {display: block;width: 300rpx; height: 300rpx; margin: 0 auto;}
 .popup_warp_bg .body .text1 {padding: 10rpx 0;}
 .popup_warp_bg .body .text1 text { display: block; text-align: center;line-height: 40rpx; font-size: 26rpx;color: #555555;}
 .popup_warp_bg .btn_box {display: block; width: 100%; height: 82rpx;margin-top: 40rpx;}
-.popup_warp_bg .sure-btn {display: block; width: 460rpx; height: 82rpx;margin: 0 auto;line-height: 82rpx;text-align: center;color: #ffffff;font-size: 30rpx;-moz-border-radius: 10rpx;-o-border-radius: 50rpx;-webkit-border-radius: 50rpx;border-radius: 50rpx;background: #ff7800; letter-spacing: 4rpx;}
+.popup_warp_bg .sure-btn {display: block; width: 460rpx; height: 82rpx;margin: 0 auto;line-height: 82rpx;text-align: center;color: #ffffff;font-size: 30rpx;-moz-border-radius: 10rpx;-o-border-radius: 50rpx;-webkit-border-radius: 50rpx;border-radius: 50rpx;background: #9da3f1; letter-spacing: 4rpx;}
 .popup_warp_bg .sure-btn::after {border: none;}

@@ -5,4 +5,4 @@
 
 
 <!-- 发布按钮 -->
-<release />
+<release  type='1' artype='0' />

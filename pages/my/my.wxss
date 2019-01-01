@@ -1,24 +1,26 @@
 /* pages/my/my.wxss */
 /* 头部 */
 .my_head {
-  padding-top: 30rpx;
-  width: 100%;position: relative;
+  padding: 30rpx;
+  position: relative;
   display: flex;align-content: center;
-  justify-content: center;
-  flex-direction: column;
-  padding-bottom: 30rpx;
+  justify-content: space-between;
+}
+.left-content{
+  display: flex;
+  /* align-items: center; */
 }
 .my_head_img {
-  width: 200rpx; height: 200rpx;
-  margin: 0 auto;
+  width: 120rpx; height: 120rpx;
   text-align: center;
   position: relative;
+  margin-right: 20rpx;
 }
 .my_head_img image {
-  width: 200rpx; height: 200rpx; border-radius: 300rpx; background-color:#f4f4f4;
+  width: 100%; height: 100%; border-radius: 300rpx; background-color:#f4f4f4;
 }
 .my_head_row {
-  display: inline-block; height: 45rpx; line-height: 40rpx;text-align: center;
+  display: inline-block; height: 45rpx; line-height: 40rpx;
   margin-top: 20rpx; color: #666; font-size: 34rpx;margin-bottom: 6rpx;
 }
 /* .user_info .user_name{
@@ -26,10 +28,8 @@
   text-align: center;
 } */
 .my_head_row .basic_tel {
-  display: inline-block;
   font-size: 28rpx;
   color: #666;
-  margin-left: 20rpx;
 }
 .my_head_row button {margin: 0;padding: 0;background: none;line-height: inherit;text-align: left; height: 45rpx;}
 .my_head_row button::after { border: none;}
@@ -80,11 +80,25 @@
   background-repeat: no-repeat;
   background-position: left center;
   background-size: 35rpx 35rpx;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  border-bottom: 2rpx solid #f4f4f4;
 }
-.my_mid_row text{ margin-left: 53rpx; }
-.my_mid_row image {
+.my_row_one .noborder{
+  border-bottom: none;
+}
+.my_mid_row .left{
+  display: flex;
+  align-items: center;
+}
+.my_mid_row .left image{
+  width: 38rpx;height: 38rpx;margin-right: 20rpx;
+}
+.my_mid_row text{ }
+.my_mid_row image.arrow {
   width: 14rpx; height: 25rpx;
-  position: absolute; right: 0; top: 50%; margin-top: -12.5rpx;
+  /* position: absolute; right: 0; top: 50%; margin-top: -12.5rpx; */
 }
 .my_mid_row .my_red{
   position: absolute; width: 18rpx; height: 18rpx;
@@ -94,35 +108,35 @@
 .my_line{ margin: 0 30rpx; height: 1rpx; background-color: #e2e2e2; }
 /* 我的名片 */
 .my_mid_card {
-  background-image: url(http://yamxcx.oss-cn-shenzhen.aliyuncs.com/pingtaixcx/myCard.png);
+  /* background-image: url(http://yamxcx.oss-cn-shenzhen.aliyuncs.com/pingtaixcx/myCard.png); */
 }
 /* 商家入口 */
 .my_mid_shop {
-  background-image: url(http://yamxcx.oss-cn-shenzhen.aliyuncs.com/xcx/sjrk.png);
+  /* background-image: url(http://yamxcx.oss-cn-shenzhen.aliyuncs.com/xcx/sjrk.png); */
 }
 /* 点赞评论 */
 .my_mid_zan{
-  background-image: url(http://yamxcx.oss-cn-shenzhen.aliyuncs.com/xcx/wdxxre.png);
+  /* background-image: url(http://yamxcx.oss-cn-shenzhen.aliyuncs.com/xcx/wdxxre.png); */
 }
 /* 我的发布 */
 .my_mid_publish {
-  background-image: url(http://yamxcx.oss-cn-shenzhen.aliyuncs.com/xcx/wdfb.png);
+  /* background-image: url(http://yamxcx.oss-cn-shenzhen.aliyuncs.com/xcx/wdfb.png); */
 }
 /* 收藏的店铺 */
 .my_mid_store_shop{
-  background-image: url(http://yamxcx.oss-cn-shenzhen.aliyuncs.com/xcx/scdp2.png);
+  /* background-image: url(http://yamxcx.oss-cn-shenzhen.aliyuncs.com/xcx/scdp2.png); */
 }
 /* 收藏的商品 */
 .my_mid_store_goods{
-  background-image: url(http://yamxcx.oss-cn-shenzhen.aliyuncs.com/xcx/scsp.png);
+  /* background-image: url(http://yamxcx.oss-cn-shenzhen.aliyuncs.com/xcx/scsp.png); */
 }
 /* 优惠券 */
 .my_mid_coupon{
-  background-image: url(http://yamxcx.oss-cn-shenzhen.aliyuncs.com/xcx/yhq2.png);
+  /* background-image: url(http://yamxcx.oss-cn-shenzhen.aliyuncs.com/xcx/yhq2.png); */
 }
 /* 我的钱包 */
 .my_mid_wallet{
-  background-image: url(http://yamxcx.oss-cn-shenzhen.aliyuncs.com/xcx/wdqb.png);
+  /* background-image: url(http://yamxcx.oss-cn-shenzhen.aliyuncs.com/xcx/wdqb.png); */
 }
 /* 购买记录 */
 .my_mid_buy_record{
@@ -130,11 +144,11 @@
 }
 /* 免费入驻 */
 .my_mid_join{
-  background-image: url(http://yamxcx.oss-cn-shenzhen.aliyuncs.com/xcx/mfrz2.png);
+  /* background-image: url(http://yamxcx.oss-cn-shenzhen.aliyuncs.com/xcx/mfrz2.png); */
 }
 /* 小程序 */
 .my_mid_xcx{
-  background-image: url(http://yamxcx.oss-cn-shenzhen.aliyuncs.com/xcx/zxcx.png);
+  /* background-image: url(http://yamxcx.oss-cn-shenzhen.aliyuncs.com/xcx/zxcx.png); */
 }
 
 

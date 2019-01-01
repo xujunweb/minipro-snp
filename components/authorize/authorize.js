@@ -46,7 +46,7 @@ Component({
           this.triggerEvent('backhandle', { userInfo: e.detail.userInfo }, {});
         }
       } else { //用户点击了拒绝
-        this.closePopup();
+        // this.closePopup();
         this.triggerEvent('backhandle', { userInfo: { avatarUrl: "", nickname: "微信用户" } }, {});
         app.globalData.isCouldAuth = 2; //标记用户点击拒绝授权
       }

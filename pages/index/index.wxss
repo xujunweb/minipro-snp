@@ -1,5 +1,5 @@
 page{
-  background-color: #fff; 
+  /* background-color: #fff;  */
   position:relative;
 } 
 /* 头部start */
@@ -11,28 +11,33 @@ page{
 }
 /* 搜索 */
 .search-container {
-  height: 104rpx;
   box-sizing: border-box;
-  padding: 20rpx 30rpx; 
+  padding: 10rpx 10rpx;
+  position: relative;
 }
 .search-view {
-  width: 610rpx; height: 64rpx; line-height: 64rpx; 
-  border-radius: 64rpx; background-color: #f2f2f2; 
+  height: 64rpx; line-height: 64rpx;
+  padding:0 70rpx;padding-right: 90rpx;
+  border-radius: 10rpx; background-color: #fff;
+  font-size: 26rpx;
+  border: 2rpx solid #e2e2e2;
 }
 .search-text {
-  background-image: url(http://yamxcx.oss-cn-shenzhen.aliyuncs.com/xcx/search1.png);
-  background-repeat: no-repeat; background-size: 26rpx 26rpx; background-position: 0 6rpx;
-  position: absolute; top: 32rpx; left: 60rpx; font-size: 26rpx; color: rgba(102,102,102,0.9);
-  padding-left: 40rpx;
+  /* background-image: url(http://yamxcx.oss-cn-shenzhen.aliyuncs.com/xcx/search1.png); */
+  /* background-repeat: no-repeat; background-size: 26rpx 26rpx; background-position: 0 6rpx; */
+  position: absolute; top: 15rpx; left: 20rpx;z-index: 1;
+}
+.search-text image{
+  width:60rpx;height: 60rpx;
 }
 .share_code_bg .share_code{
-  background: url(http://yamxcx.oss-cn-shenzhen.aliyuncs.com/xcx/code_icon1.png) no-repeat;
+  /* background: url(http://yamxcx.oss-cn-shenzhen.aliyuncs.com/xcx/code_icon1.png) no-repeat; */
   position: absolute;
-  background-size: 54rpx 50rpx;
-  top: 28rpx;
-  right: -15rpx;
-  width: 100rpx;
-  height: 54rpx;
+  /* background-size: 54rpx 50rpx; */
+  top: 18rpx;margin-right: 10px;line-height: 54rpx;
+  right: 0rpx;border-left: 2rpx solid #f2f2f2;color: #9da3f1;
+  width: 75rpx;font-size: 30rpx;padding-left:12rpx;font-weight: bold;
+  height: 54rpx;text-align: center;
 }
 .platform_info_item { flex: 1 }
 .fx_banner{ position: relative; width: 100%; height: 280rpx; margin: 20rpx auto; }
@@ -71,6 +76,7 @@ page{
   background-color: white;
   display: flex; padding-left: 0; justify-content:space-around;
   border-bottom: 1rpx solid #e2e2e2;
+  border-top: 1rpx solid #e2e2e2;
 }
 .classification.fixed {
   position: fixed; left: 0; top: 0;
@@ -78,7 +84,7 @@ page{
 }
 .classification .scroll-view-item_H{
   width: auto; text-align: center;
-  position: static; line-height: 90rpx; height: 89rpx;
+  position: static; line-height: 60rpx; height: 70rpx;
 }
 .classification .scroll-view-item_H text { 
   display: inline-block; 
@@ -88,9 +94,6 @@ page{
 .scroll-view-item_H text.cur{ color:#9da3f1; font-weight: 600;  }
 .card_rank button { 
   display: inline-block; width: auto; color: #666; font-size: 28rpx; border:none;
-}
-.classification2 .scroll-view-item_H text {
-  /* margin: 0 42rpx; */
 }
 
 
@@ -357,6 +360,9 @@ page{
 .hotseach{
   background: #fff;
   padding: 20rpx 30rpx;
+  margin: 0 10rpx;
+  border: 1rpx solid #e2e2e2;
+  border-radius: 10rpx;
   margin-bottom: 10rpx;
 }
 .hotseach .hot_title{

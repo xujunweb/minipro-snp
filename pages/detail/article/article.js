@@ -88,7 +88,7 @@ Page({
       is_follow: this.data.isfollow ? '0' : '1',
       user_id: this.data.artInfo.user.id,
       follow_user_id: app.globalData.userInfo.id,
-    }).then((res) => {
+    }, this.data.artInfo.user).then((res) => {
       console.log('关注用户---')
       this.setData({
         isfollow: !this.data.isfollow

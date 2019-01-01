@@ -1,0 +1,55 @@
+<wxs src="../../utils/util.wxs" module="u" />
+<view class="video-item" data-index="{{item.id}}">
+  <view class="video-content" data-index="{{item.id}}" data-item="{{item}}" data-pay="{{item.hasBuy == 1 && item.hasShared == 1}}">
+    <video class="video" id='{{"video-"+item.id}}' data-index="{{item.id}}" src="{{item.img_urls}}" controls="true" custom-cache="false" autoplay="true">
+    <!-- 文章信息 -->
+      <cover-view class='coverView'>
+        <cover-view class='more center' bindtap='fabu'>
+          <cover-image class='img close' src="../../images/close.png" />
+        </cover-view>
+        <cover-view class='header center' bindtap='followUser'>
+          <cover-image class='item_originLogo' src='{{item.user.avatar}}' />
+          <!-- <cover-view class='username'>{{userMap[item.user.type]}}</cover-view> -->
+          <cover-image wx:if="{{isfollow}}" class='guz' src='../../images/v-gz.png'></cover-image>
+        </cover-view>
+        <cover-view class='more center' bindtap='likeChange'>
+          <cover-image class='img' src="../../images/{{item.articleInfo.like == 1?'v-sc-p':'v-sc'}}.png" />
+          <cover-view class='username'>{{item.like}}</cover-view>
+        </cover-view>
+        <cover-view class='more center' bindtap='clickEvent'>
+          <cover-image class='img' src="../../images/v-pl.png" />
+          <cover-view class='username'>{{item.comment}}</cover-view>
+        </cover-view>
+        <cover-view class='more center'>
+          <button class='share' open-type='share' hover-class='none'>
+            <cover-image class='img' src='../../images/v-cf.png' />
+          </button>
+        </cover-view>
+        <cover-view class='more center' bindtap='nextVideo'>
+            下一个
+        </cover-view>
+      </cover-view>
+      <!-- 评论 -->
+      <cover-view class='commts' wx:if="{{iscomment}}">
+        <cover-view class='com-title'>{{total}}条评论</cover-view>
+        <cover-image class='com-close' src='../../images/close.png' bindtap='closeCom'></cover-image>
+        <cover-view class='comment_list_row' wx:for="{{comments}}" wx:key="id">
+          <cover-view class='comment_list_l'>
+            <cover-image src="{{item.user.avatar?item.user.avatar:'https://xcximg.197.com/xcx/zctx2.png'}}" mode="aspectFill" class='img'></cover-image>
+          </cover-view>
+          <cover-view class='comment_list_r'>
+            <cover-view class='name'>{{item.user.nickname?item.user.nickname:'微信用户'}}</cover-view>
+            <cover-view class='content'>{{item.content}}</cover-view>
+            <cover-view class='warp'>
+              <cover-view class='time'>{{u.transTime(item.insert_time)}}</cover-view>
+              <cover-view class='del' wx:if="{{item.user.openid === openId}}" data-index="{{index}}" data-id="{{item.id}}" bindtap="deletComment">删除</cover-view>
+            </cover-view>
+          </cover-view>
+        </cover-view>
+      </cover-view>
+    </video>
+  </view>
+  <view wx:if="{{iscomment}}" class="footer {{isIPhoneX?'iphone_x':''}} {{footerShow ? '' : 'hide'}}" style="bottom:{{boardHeigt + 'px'}}">
+    <input type='text' class='pl' placeholder='写评论' cursor-spacing="20" bindinput="commentChange" value="{{comment}}" bindconfirm="sendDiscuss" confirm-type="发表" bindfocus="inputFocus" bindblur="inputBlur" maxlength="200" />
+  </view>
+</view>

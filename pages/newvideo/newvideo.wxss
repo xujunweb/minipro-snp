@@ -1,0 +1,4 @@
+/* pages/newvideo/newvideo.wxss */
+page{
+  height: 100%;
+}
