@@ -16,7 +16,10 @@
     "pages/my/release/release",
     "pages/my/feedback/feedback",
     "pages/newvideo/newvideo",
-    "pages/subject/bodies/bodies"
+    "pages/subject/bodies/bodies",
+    "pages/detail/bodies/bodies",
+    "pages/subject/check/check",
+    "pages/audiolist/audiolist"
   ],
   "window": {
     "backgroundTextStyle": "dark",
@@ -50,8 +53,8 @@
         "selectedIconPath": "images/py_press.png"
       },
       {
-        "pagePath": "pages/subject/subject",
-        "text": "答题",
+        "pagePath": "pages/subject/check/check",
+        "text": "培训",
         "iconPath": "images/jt.png",
         "selectedIconPath": "images/jt_press.png"
       },

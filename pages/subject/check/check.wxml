@@ -1,0 +1,12 @@
+<!--pages/subject/check/check.wxml-->
+<view class='check'>
+  <navigator hover-class='none' url='/pages/subject/subject'>
+    <button class='check-button' hover-class='none'>解题</button>
+  </navigator>
+  <navigator hover-class='none' url='/pages/subject/bodies/bodies'>
+    <button class='check-button' hover-class='none'>教育机构</button>
+  </navigator>
+  <navigator hover-class='none' url='/pages/audiolist/audiolist'>
+    <button class='check-button' hover-class='none'>在线音频</button>
+  </navigator>
+</view>

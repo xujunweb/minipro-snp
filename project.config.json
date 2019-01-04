@@ -37,7 +37,7 @@
 			"list": []
 		},
 		"miniprogram": {
-			"current": 6,
+			"current": 8,
 			"list": [
 				{
 					"id": -1,
@@ -78,7 +78,19 @@
 				{
 					"id": -1,
 					"name": "教育机构",
-					"pathName": "pages/subject/bodies/bodies"
+					"pathName": "pages/subject/bodies/bodies",
+					"query": ""
+				},
+				{
+					"id": -1,
+					"name": "机构详情",
+					"pathName": "pages/detail/bodies/bodies",
+					"query": ""
+				},
+				{
+					"id": -1,
+					"name": "培训",
+					"pathName": "pages/subject/check/check"
 				}
 			]
 		}

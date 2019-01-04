@@ -1,24 +1,24 @@
-/* pages/subject/bodies/bodies.wxss */
-.list{
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  padding: 30rpx;background: #fff;
-  border-bottom: 2rpx solid #ddd;
+/* pages/detail/bodies/bodies.wxss */
+.top{
+  background: #fff;
 }
-.list .left{
+.top image{
+  width: 100%;
+  height: 300rpx;
+}
+.left{
+  border-top: 4rpx solid #ddd;
   display: flex;
   justify-content: space-between;
   align-items: center;
   font-size: 28rpx;
-}
-.list .left image{
-  width: 200rpx;height: 200rpx;border: 1rpx solid #ddd;
-  border-radius: 10rpx;
+  padding: 30rpx;
+  background: #fff;
+  margin-bottom: 20rpx;
 }
 .content{
   color: #999;
-  width: 350rpx;
+  width: 500rpx;
   margin-left: 20rpx;
 }
 .content .title{
@@ -35,4 +35,8 @@
 .phone{
   width: 80rpx;height: 80rpx;border: 2rpx solid #9da3f1;border-radius: 80rpx;
   text-align: center;line-height: 80rpx;font-size: 28rpx;color: #9da3f1;
+}
+.jieshao{
+  color: #999;background: #fff;padding: 30rpx;font-size: 26rpx;
+  text-indent: 2em;
 }
