@@ -37,7 +37,7 @@
 			"list": []
 		},
 		"miniprogram": {
-			"current": 5,
+			"current": 6,
 			"list": [
 				{
 					"id": -1,
@@ -72,7 +72,13 @@
 				{
 					"id": -1,
 					"name": "全屏视频",
-					"pathName": "pages/newvideo/newvideo"
+					"pathName": "pages/newvideo/newvideo",
+					"query": ""
+				},
+				{
+					"id": -1,
+					"name": "教育机构",
+					"pathName": "pages/subject/bodies/bodies"
 				}
 			]
 		}

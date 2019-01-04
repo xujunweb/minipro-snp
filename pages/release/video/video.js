@@ -115,7 +115,7 @@ Page({
         })
         setTimeout(() => {
           wx.switchTab({
-            url: '/pages/videolist/videolist'
+            url: '/pages/newvideo/newvideo'
           })
         }, 2000)
       }

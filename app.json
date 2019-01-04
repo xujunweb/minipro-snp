@@ -15,7 +15,8 @@
     "pages/my/follow/follow",
     "pages/my/release/release",
     "pages/my/feedback/feedback",
-    "pages/newvideo/newvideo"
+    "pages/newvideo/newvideo",
+    "pages/subject/bodies/bodies"
   ],
   "window": {
     "backgroundTextStyle": "dark",
