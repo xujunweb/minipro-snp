@@ -1,0 +1,10 @@
+<!--components/audio/audio.wxml-->
+<view class='audio'>
+    <!-- <audio id="audioUrl" class="video" src="{{item.img_urls}}" controls author="{{item.user.nickname}}" name="少年派" ></audio> -->
+    <!-- 播放图标 -->
+    <image src='../../images/sp_press.png' bindtap='playAudio' wx:if="{{!start}}"></image>
+    <!-- 暂停图标 -->
+    <image src='../../images/sp.png' bindtap='pauseAudio' wx:if="{{start}}"></image>
+    <progress percent="{{progress}}" show-info="{{false}}" stroke-width='4' class='progress' />
+    <text>00:{{duration}}</text>
+</view>

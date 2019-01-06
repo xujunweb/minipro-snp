@@ -19,7 +19,8 @@
     "pages/subject/bodies/bodies",
     "pages/detail/bodies/bodies",
     "pages/subject/check/check",
-    "pages/audiolist/audiolist"
+    "pages/audiolist/audiolist",
+    "pages/release/audio/audio"
   ],
   "window": {
     "backgroundTextStyle": "dark",

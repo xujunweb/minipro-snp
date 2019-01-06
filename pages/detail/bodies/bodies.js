@@ -1,6 +1,5 @@
 // pages/detail/bodies/bodies.js
-import { updateArticle, getByArticleId } from '../../../api/article.js'
-import { followUser } from '../../../api/user.js'
+import { getByInstitute } from '../../../api/bodies.js'
 let app = getApp()
 Page({
 
@@ -21,9 +20,7 @@ Page({
       this.setData({
         id: options.id
       })
-      app.pageByFollow().then(() => {
-        this.getByArticleId(options.id)
-      })
+      this.getByArticleId(options.id)
     }
   },
 
@@ -43,21 +40,15 @@ Page({
 
   //获取文章信息
   getByArticleId: function (id) {
-    getByArticleId({
+    getByInstitute({
       status: '0',
       id: id,
     }).then((res) => {
-      res.data.img_urls = res.data.img_urls.split(',')
+      // res.data.img_urls = res.data.img_urls.split(',')
       this.data.artInfo = res.data
       this.setData({
         artInfo: res.data
       })
-      var followList = wx.getStorageSync('followUser')
-      if (this.data.artInfo.user) {
-        this.setData({
-          isfollow: followList[this.data.artInfo.user.id] ? true : false
-        })
-      }
     })
   },
   /**

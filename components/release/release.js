@@ -34,6 +34,9 @@ Component({
         case '1':
           url = '/pages/release/video/video?artype='
           break
+        case '2':
+          url = '/pages/release/audio/audio?artype='
+          break
         default:
           url = '/pages/release/publish/publish?artype='
       }

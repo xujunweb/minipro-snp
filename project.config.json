@@ -37,7 +37,7 @@
 			"list": []
 		},
 		"miniprogram": {
-			"current": 8,
+			"current": 10,
 			"list": [
 				{
 					"id": -1,
@@ -90,7 +90,19 @@
 				{
 					"id": -1,
 					"name": "培训",
-					"pathName": "pages/subject/check/check"
+					"pathName": "pages/subject/check/check",
+					"query": ""
+				},
+				{
+					"id": -1,
+					"name": "发布音频",
+					"pathName": "pages/release/audio/audio",
+					"query": ""
+				},
+				{
+					"id": -1,
+					"name": "音频列表",
+					"pathName": "pages/audiolist/audiolist"
 				}
 			]
 		}

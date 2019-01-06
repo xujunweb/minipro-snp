@@ -1,3 +1,4 @@
+<!--pages/release/audio/audio.wxml-->
 <wxs src="../../../utils/util.wxs" module="u" />
 <view class='j_page'>
     <view class='contact_us' style='overflow:hidden;width:100%;margin-top:0;border-top:1rpx solid #e2e2e2;'>
@@ -5,19 +6,12 @@
             <input type="text" placeholder='请输入标题' placeholder-style="color:#aaa;" value="{{title}}" class='in_tel' maxlength="40" bindinput='getTitle' bindblur="bindTextAreablur" />
         </view>
     </view>
-    <view class='videodiv' wx:if="{{videoUrl}}">
-      <video class="video" src="{{videoUrl}}" controls custom-cache="false" style='width:{{width}}rpx;height:{{height}}rpx' objectFit='cover' ></video>
-      <view class='delete' bindtap='deleteImg'>删除视频</view>
-    </view>
-
-    <view class='conception_pic' style='overflow:hidden;width:100%;' wx:if="{{!videoUrl}}">
+    <!-- <view class='conception_pic' style='overflow:hidden;width:100%;' wx:if="{{!videoUrl}}">
         <view class="img-sub">
-            <!--点击上传-->
             <image src="../../../image/otherImages/uploadfile_add.jpg" class="img-big" bindtap='getImage'></image>
             <view class='clear'></view>
         </view>
-    </view>
-
+    </view> -->
     <!--副内容输入-->
     <view class='contact_us' style='overflow:hidden;width:100%;'>
         <!-- <view class='contact_us_li' bindtap='chooseType'>
@@ -27,22 +21,22 @@
             </view>
             <abcd><image src="../../../image/otherImages/next.png" alt="" /></abcd>
         </view> -->
-        <!-- <view class='contact_us_li' bindtap='openLocationAddress'>
-            <image src="http://yamxcx.oss-cn-shenzhen.aliyuncs.com/pingtaixcx/address.png" alt="" style="width:24rpx; height:24rpx; margin:34rpx 20rpx 0 0;"></image>
-            <view class="contact_us_li_address">
-                <input type="text" placeholder='请选择您的位置' disabled="true" maxlength="50" placeholder-style="color:#aaa;" class="in_address" value="{{address}}" />
-            </view>
-            <abcd><image src="../../../image/otherImages/next.png" alt="" /></abcd>
-        </view> -->
-        <!-- <view class='contact_us_li'>
-            <image src="http://yamxcx.oss-cn-shenzhen.aliyuncs.com/pingtaixcx/phone_num.png" alt="" style="width:24rpx; height:24rpx; margin:32rpx 16rpx 0 0;"></image>
-            <input type="number" placeholder='请输入标题' placeholder-style="color:#aaa;" value="{{phone}}" class='in_tel' maxlength="20" bindinput='getPhone' />
-        </view> -->
         <view class='contact_us_li' bindtap='chooseClass' style="border-bottom: 1px solid #fff;">
             <image src="http://yamxcx.oss-cn-shenzhen.aliyuncs.com/pingtaixcx/sort.png" alt="" style="width:24rpx; height:24rpx; margin:32rpx 20rpx 0 0;"></image>
             <input type="text" placeholder='请选择发布分类' disabled="true" maxlength="50" placeholder-style="color:#aaa;" class="in_address" value="{{classMap[category]}}" />
             <abcd><image src="../../../image/otherImages/next.png" alt="" /></abcd>
         </view>
+    </view>
+
+    <view class='videodiv' wx:if="{{audioUrl}}">
+      <audio id="audioUrl" class="video" src="{{audioUrl}}" controls author="{{userInfo.nickname}}" name="本地音频" ></audio>
+      <view class='delete' bindtap='deleteImg'>删除音频</view>
+    </view>
+    <view class='startRecord' wx:if="{{!audioUrl}}">
+      <button class='start' bindtap='startRecord'>{{!record?'开始录音':'正在录音...'}}</button>
+    </view>
+    <view class='startRecord' wx:if="{{record}}">
+      <button class='end' bindtap='endRecord'>结束录音</button>
     </view>
 
 

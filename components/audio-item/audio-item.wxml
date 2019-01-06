@@ -1,0 +1,16 @@
+<!--components/audio-item/audio-item.wxml-->
+<wxs src="../../utils/util.wxs" module="u" />
+<view class='audio-item'>
+  <view class='top'>
+    <view class='userinfo'>
+      <image src='{{item.user.avatar}}'></image>
+      <view class='info'>
+        <view class='username'>{{item.user.nickname}}</view>
+        <view class='usertype'>{{userMap[item.user.type]||'头条用户'}}</view>
+      </view>
+    </view>
+    <view class='time'>{{u.transTime(item.insert_time)}}</view>
+  </view>
+  <view class='title'>{{item.title}}</view>
+  <audio item="{{item}}" />
+</view>

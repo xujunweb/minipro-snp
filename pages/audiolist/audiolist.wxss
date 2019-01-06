@@ -1,1 +1,173 @@
 /* pages/audiolist/audiolist.wxss */
+page{
+  /* background-color: #fff;  */
+  position:relative;
+} 
+/* 头部start */
+.share_code_bg{
+  width: 100%;position: relative; overflow: hidden;
+}
+.container{
+  margin-bottom: 50rpx;
+  margin-top: 72rpx;
+}
+.search-text {
+  /* background-image: url(http://yamxcx.oss-cn-shenzhen.aliyuncs.com/xcx/search1.png); */
+  /* background-repeat: no-repeat; background-size: 26rpx 26rpx; background-position: 0 6rpx; */
+  position: absolute; top: 15rpx; left: 20rpx;z-index: 1;
+}
+.search-text image{
+  width:60rpx;height: 60rpx;
+}
+.share_code_bg .share_code{
+  /* background: url(http://yamxcx.oss-cn-shenzhen.aliyuncs.com/xcx/code_icon1.png) no-repeat; */
+  position: absolute;
+  /* background-size: 54rpx 50rpx; */
+  top: 18rpx;margin-right: 10px;line-height: 54rpx;
+  right: 0rpx;border-left: 2rpx solid #f2f2f2;color: #9da3f1;
+  width: 75rpx;font-size: 30rpx;padding-left:12rpx;font-weight: bold;
+  height: 54rpx;text-align: center;
+}
+.platform_info_item { flex: 1 }
+.fx_banner{ position: relative; width: 100%; height: 280rpx; margin: 20rpx auto; }
+.fx_banner swiper { width: 100%; height: 280rpx; }
+.fx_banner image { width: 100%; height: 280rpx; }
+
+.discoverBg{ 
+  position: absolute; bottom:-10rpx; width:100%; height: 34rpx;
+}
+.discoverBg image{ display: block; width:100%; height:100%; }
+
+
+/* swiper指示点的位置样式 */
+/* .fx_banner .wx-swiper-dots.wx-swiper-dots-horizontal{
+  bottom: 40rpx; position: absolute;
+} */
+
+/* 头部end */
+
+/*icon*/
+
+.tsyl{display:flex; width:100%; background-color:#fff;flex-wrap:wrap;/*border-bottom: 20rpx solid #F4F4F4;*/overflow: hidden;padding: 10rpx 0;}
+.tsyl .tsyl_li{ text-align:center;width: 20%;margin:20rpx 0;}
+.tsyl .tsyl_li .tsyl_li_img{height: 84rpx;}
+
+.tsyl .tsyl_li .tsyl_li_img image{ width: 86rpx; height: 85rpx; border-radius: 50%;}
+
+.tsyl .tsyl_li .tsyl_li_text{padding-top:20rpx;line-height:24rpx;font-size:24rpx;color:#555;}
+
+/*分类*/
+.classification{
+  width: 100%;
+  box-sizing: border-box;
+  overflow: hidden;
+  position: relative;
+  background-color: white;
+  display: flex; padding-left: 0; justify-content:space-around;
+  border-bottom: 1rpx solid #e2e2e2;
+  border-top: 1rpx solid #e2e2e2;
+}
+.classification.fixed {
+  position: fixed; left: 0; top: 0;
+  z-index: 666; background-color: white;
+}
+.classification .scroll-view-item_H{
+  width: auto; text-align: center;
+  position: static; line-height: 60rpx; height: 70rpx;
+}
+.classification .scroll-view-item_H text { 
+  display: inline-block; 
+  font-size:28rpx;
+  color: #222;
+}
+.scroll-view-item_H text.cur{ color:#9da3f1; font-weight: 600;  }
+.card_rank button { 
+  display: inline-block; width: auto; color: #666; font-size: 28rpx; border:none;
+}
+
+
+.xz_img{
+  width: 100rpx;
+  height: 118rpx;
+  margin: 0 auto;
+  display: block;
+  margin-top:272rpx;
+}
+.bind_click {
+  margin-top:24rpx;
+  text-align: center;
+  width: 100%;
+  margin-bottom: 318rpx;
+  font-size: 26rpx;
+  color: #bababa;
+}
+.bind_click text{
+  font-weight: bold;
+  color: #888;
+}
+
+.text{
+  font-size: 30rpx;
+  margin-top:120rpx;
+  text-align: center;
+  width: 100%; color:#666;
+  margin-bottom: 602rpx;
+}
+.sign{
+  border-top:1px solid #ccc;
+  display: block;
+  margin: 0 auto;
+  text-align: center;
+  font-size: 22rpx;
+  color: #ccc;
+  width: 320rpx;
+  height: 40rpx;
+}
+.sign view{
+  background-color:#fff;
+  line-height: 32rpx;
+  width:260rpx;
+  margin:0 auto;
+  margin-top:-16rpx;
+}
+
+/*加载失败，点击重试(除一页)*/
+.tab_loading_failure{margin-bottom:0;width:100%; height:92rpx; line-height:92rpx; font-size:25rpx; background-color:#efeff4; color:#bababa; display:inline-block; text-align:center;}
+.tab_loading_failure span{color: #888;}
+
+/* 遮罩层引导页 */
+.discover_guide {
+  position: fixed; 
+  left:0; 
+  top: 0;
+  z-index: 999; 
+  width: 100%; 
+  height: 100%;
+  background: rgba(0,0,0,0.6);
+}
+.discover_guide image{
+  width: 690rpx;
+  height: 520rpx;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  margin-top: -260rpx;
+  margin-left: -345rpx;
+}
+
+.prompt{
+  background-color:#ff5500;
+  width:14rpx;        
+  height:14rpx;
+  border-radius:50%;
+  top:20rpx;
+  right:40rpx;
+  position:absolute;
+}
+
+
+
+/* loading */
+.loading2{
+    background: #fff;
+}

@@ -1,3 +1,8 @@
 {
-  "usingComponents": {}
+  "enablePullDownRefresh": true,
+  "navigationBarTitleText": "在线音频",
+  "usingComponents": {
+    "audio-item": "/components/audio-item/audio-item",
+    "release": "/components/release/release"
+  }
 }

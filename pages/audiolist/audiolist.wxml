@@ -1,2 +1,37 @@
 <!--pages/audiolist/audiolist.wxml-->
-<text>pages/audiolist/audiolist.wxml</text>
+<!--分类-->
+<view class="container">
+
+  <view class="classification fixed">
+    <view class="scroll-view-item_H" data-id="{{item.id}}" bindtap="ClickTab" wx:for="{{classMap}}" wx:key="{{index}}">
+      <text class="{{selectClass == item.id ? 'cur' : ''}}">{{item.text}}</text>
+    </view>
+  </view>
+
+  <view>
+    <!-- 有商品的情况下 -->
+    <view class="goods" wx:if="{{userInfo.openid}}" style='overflow:hidden;'>
+      <!-- 贴吧样式 -->
+      <audio-item bindpraise="onPraise" bindspread="onSpread" wx:for="{{articlelist}}" item="{{item}}" wx:key="{{index}}" wx:if="{{articlelist.length}}"></audio-item>
+      <!-- 上拉加载动画 -->
+      <view class="loading" wx:if="{{showLoading}}">
+        <image src="http://yamxcx.oss-cn-shenzhen.aliyuncs.com/one-shop-one-mini-app/loading.png"></image>
+        <text>加载中...</text>
+      </view>
+    </view>
+  </view>
+</view>
+
+<!-- 无网络 -->
+<view wx:if="{{overtime}}">
+  <view bindtap="retry">
+    <image class="xz_img" src="/image/xuanzhuan.png"></image>
+    <view class="bind_click">加载失败
+      <text>点击重试</text>
+    </view>
+  </view>
+</view>
+<!-- 发布按钮 -->
+<release type='2' artype='0' />
+<!-- 授权弹窗 -->
+<authorize onShow="{{onAuthShow}}" onHide="{{onAuthHide}}" />

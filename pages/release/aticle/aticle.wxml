@@ -29,13 +29,13 @@
     </view>
     <!--副内容输入-->
     <view class='contact_us' style='overflow:hidden;width:100%;'>
-        <view class='contact_us_li' bindtap='chooseType'>
+        <!-- <view class='contact_us_li' bindtap='chooseType'>
             <image src="http://yamxcx.oss-cn-shenzhen.aliyuncs.com/pingtaixcx/address.png" alt="" style="width:24rpx; height:24rpx; margin:34rpx 20rpx 0 0;"></image>
             <view class="contact_us_li_address">
                 <input type="text" placeholder='请选择文章类型' disabled="true" maxlength="50" placeholder-style="color:#aaa;" class="in_address" value="{{mapType[article_type]}}" />
             </view>
             <abcd><image src="../../../image/otherImages/next.png" alt="" /></abcd>
-        </view>
+        </view> -->
         <!-- <view class='contact_us_li' bindtap='openLocationAddress'>
             <image src="http://yamxcx.oss-cn-shenzhen.aliyuncs.com/pingtaixcx/address.png" alt="" style="width:24rpx; height:24rpx; margin:34rpx 20rpx 0 0;"></image>
             <view class="contact_us_li_address">

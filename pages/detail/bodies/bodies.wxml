@@ -1,17 +1,17 @@
 <!--pages/detail/bodies/bodies.wxml-->
 <view class='bod-detail'>
   <view class='top'>
-    <image class='img' src='' mode='aspectFill'></image>
+    <image class='img' src='{{artInfo.cover_urls}}' mode='aspectFill'></image>
   </view>
   <view class='left'>
     <view class='content'>
-      <view class='title'>星河教育培训（美术）</view>
-      <view class='dec'>美术、音乐、舞蹈、跆拳道</view>
-      <view class='adress'>地址：深圳市龙华区五和大道1105号</view>
+      <view class='title'>{{artInfo.name}}</view>
+      <view class='dec'>{{artInfo.type}}</view>
+      <view class='adress'>地址：{{artInfo.address}}</view>
     </view>
     <view class='phone'>电话</view>
   </view>
   <view class='jieshao'>
-    培训结构的介绍，培训结构的介绍，培训结构的介绍，培训结构的介绍，培训结构的介绍，培训结构的介绍，培训结构的介绍，培训结构的介绍，培训结构的介绍，培训结构的介绍，培训结构的介绍，培训结构的介绍，培训结构的介绍，培训结构的介绍，培训结构的介绍，培训结构的介绍，培训结构的介绍，培训结构的介绍，培训结构的介绍，培训结构的介绍，培训结构的介绍，培训结构的介绍，培训结构的介绍，培训结构的介绍，培训结构的介绍，培训结构的介绍，培训结构的介绍，培训结构的介绍，培训结构的介绍，培训结构的介绍，培训结构的介绍，
+    {{artInfo.describe}}
   </view>
 </view>

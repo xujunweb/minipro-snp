@@ -1,5 +1,5 @@
 // pages/subject/bodies/bodies.js
-import { pageByArticle, articleLike } from '../../../api/article.js'
+import { pageByInstitute } from '../../../api/bodies.js'
 var app = getApp()
 Page({
 
@@ -31,21 +31,7 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
-    //先获取该用户关注了哪些用户
-    // app.pageByFollow().then(() => {
-    //   this.pageByArticle(true)
-    // })
-    var classMap = []
-    for (let i in app.globalData.classMap) {
-      classMap[i] = { id: i, text: app.globalData.classMap[i] }
-    }
-    this.setData({
-      classMap: [
-        ...[{ id: 99, text: '全部' }, { id: 98, text: '关注' }],
-        // ...[{id:99,text:'全部'}],
-        ...classMap
-      ]
-    })
+    this.pageByArticle(true)
   },
   onPageScroll(e) {
     wx.createSelectorQuery().select('.container').boundingClientRect().exec((res) => {
@@ -87,28 +73,10 @@ Page({
       })
       return
     }
-    var category = this.data.selectClass
-    if (this.data.selectClass == 99 || this.data.selectClass == 98) {
-      category = ''
-    }
-    var followUserArry = []
-    if (this.data.selectClass == 98) { //关注
-      var followUser = wx.getStorageSync('followUser')
-      followUserArry = [app.globalData.userInfo.id]
-      for (let key in followUser) {
-        followUserArry.push(key)
-      }
-    }
-    //获取本地的关注用户
-
-    pageByArticle({
+    pageByInstitute({
       pageNum: this.data.thisp,
-      pageSize: 8,
-      type: '0',
+      pageSize: 10,
       login_user_id: app.globalData.userInfo.id,
-      category: category,
-      article_type: '2',
-      insert_authors: followUserArry.join(','),    //关注的用户组
     }).then((res) => {
       console.log(res)
       this.data.lastPage = res.data.lastPage
@@ -125,8 +93,9 @@ Page({
     })
   },
   jumpNextPage: function (e) {
+    console.log(e)
     wx.navigateTo({
-      url: '/pages/detail/bodies/bodies?id=' + ''
+      url: '/pages/detail/bodies/bodies?id=' + e.currentTarget.dataset.item.id
     });
   },
 

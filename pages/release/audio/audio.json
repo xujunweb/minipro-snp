@@ -1,0 +1,6 @@
+{
+  "navigationBarTitleText": "发布音频",
+  "usingComponents": {
+    "audio":"/components/audio/audio"
+  }
+}

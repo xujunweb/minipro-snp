@@ -1,0 +1,17 @@
+/* components/audio/audio.wxss */
+.audio{
+  display: flex;
+  justify-content: space-between;
+  align-content: center;
+  align-items: center;
+  border: 2rpx solid #ddd;
+  border-radius: 10rpx;padding: 30rpx;
+}
+.audio image{
+  width: 60rpx;height: 60rpx;
+  border-radius: 60rpx;
+}
+.progress{
+  width: 400rpx;margin: 0 20rpx;
+  margin-right: 60rpx;
+}

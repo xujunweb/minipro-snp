@@ -1,23 +1,12 @@
 <!--pages/subject/bodies/bodies.wxml-->
 <view class='bodies'>
-  <view class='list' bindtap='jumpNextPage'>
+  <view class='list' bindtap='jumpNextPage' wx:for="{{articlelist}}" data-item="{{item}}" wx:if="{{articlelist.length}}" wx:key="{{index}}">
     <view class='left'>
-      <image src=''></image>
+      <image src='{{item.cover_urls}}'></image>
       <view class='content'>
-        <view class='title'>星河教育培训（美术）</view>
-        <view class='dec'>美术、音乐、舞蹈、跆拳道</view>
-        <view class='adress'>地址：深圳市龙华区五和大道1105号</view>
-      </view>
-    </view>
-    <view class='phone'>电话</view>
-  </view>
-  <view class='list' bindtap='jumpNextPage'>
-    <view class='left'>
-      <image src=''></image>
-      <view class='content'>
-        <view class='title'>星河教育培训（美术）</view>
-        <view class='dec'>美术、音乐、舞蹈、跆拳道</view>
-        <view class='adress'>地址：深圳市龙华区五和大道1105号</view>
+        <view class='title'>{{item.name}}</view>
+        <view class='dec'>{{item.type}}</view>
+        <view class='adress'>地址：{{item.address}}</view>
       </view>
     </view>
     <view class='phone'>电话</view>

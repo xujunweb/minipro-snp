@@ -1,66 +1,74 @@
-/** 发布图文 */
+// pages/release/audio/audio.js
+/** 发布音频 */
 import { uploadFile } from '../../../api/upload.js'
 import { insertArticle } from '../../../api/article.js'
 var app = getApp();
+let recorderManager = null
+let innerAudioContext = null
 Page({
   data: {
-    videoUrl: '', //本地视频
+    audioUrl: '', //本地音频
     postvideoUrl: '', //上传的视频
     usedDisabled: false, //禁止发布
     title: '', //标题
-    width:'', //视频宽
-    height:'',  //视频高
-    article_type: '',  //文章类型
+    width: '', //视频宽
+    height: '',  //视频高
+    article_type: '0',  //文章类型
     category: '',  //文章分类
     mapType: {
       0: '资讯',
-      1: '朋友圈'
     },
-    classMap: {}
+    classMap: {},
+    record:false, //录音状态
   },
   onLoad: function (op) {
     this.setData({
       classMap: app.globalData.classMap,
       article_type: op.artype
     })
-  },
-  onShow: function (e) {
-  },
-  //选择视频
-  getImage: function () {
-    if (this.data.videoUrl) {
-      wx.showToast({
-        title: '最多选择1个',
-        icon: 'none'
+    recorderManager = wx.getRecorderManager()
+    //监听录音开始
+    recorderManager.onStart(() => {
+      console.log('recorder start')
+      this.setData({
+        record: true
       })
-      return
-    }
-    wx.chooseVideo({
-      compressed:true,  //是否压缩视频
-      maxDuration:15, //拍摄视频的最大秒数
-      success: (res) => {
-        console.log('视频秒数---------',res.duration)
-        console.log('视频信息',res)
-        if (res.duration>15){
-          wx.showToast({
-            title: '视频过大',
-            icon: 'none'
-          })
-          return
-        }
-        this.setData({
-          videoUrl: res.tempFilePath,
-          width: res.width,
-          height: res.height,
-        })
-        this.taBlurImgList()
-      }
+    })
+    //监听录音结束
+    recorderManager.onStop((res) => {
+      console.log('结束录音', res)
+      const { tempFilePath } = res
+      this.setData({
+        audioUrl: tempFilePath,
+        record: false
+      })
+      this.taBlurImgList()
+      // innerAudioContext = wx.createInnerAudioContext()
+      // innerAudioContext.src = tempFilePath
     })
   },
-  //删除视频
+  onUnload:function(){
+    innerAudioContext.destroy()
+    recorderManager = null
+  },
+  onShow: function (e) {
+    
+  },
+  //录制音频
+  startRecord:function(){
+    recorderManager.start({
+      duration:600000,
+      // audioSource:'auto',
+    })
+  },
+  //结束录制
+  endRecord:function(){
+    recorderManager.stop()
+  },
+  //删除音频
   deleteImg: function (e) {
     this.setData({
-      videoUrl: ''
+      audioUrl: ''
     })
   },
   //发布
@@ -75,22 +83,26 @@ Page({
             title: '请输入标题'
           })
         }
-        if (!this.data.videoUrl) {
+        if (!this.data.audioUrl) {
           return wx.showToast({
-            title: '请上传视频'
+            title: '请录制音频'
           })
         }
         wx.showLoading({
           title: '发布中...',
-          mask:true,
+          mask: true,
         })
         //文件上传
         uploadFile({
-          url:'file/uploadVideo',
-          filePath: this.data.videoUrl,
+          url: 'file/uploadVideo',
+          filePath: this.data.audioUrl,
           name: 'file',
         }).then((res) => {
-          var data = JSON.parse(res.data)
+          if (typeof res.data === 'string'){
+            var data = JSON.parse(res.data)
+          }else{
+            var data = res.data
+          }
           this.continuePublish(data.data[0]);
         })
       }
@@ -100,7 +112,7 @@ Page({
   continuePublish: function (url) {
     let data = {
       title: this.data.title,
-      type: '1',
+      type: '2',
       img_urls: url.url,
       cover_urls: url.cover_url,
       category: this.data.category,
@@ -115,8 +127,8 @@ Page({
           duration: 2000
         })
         setTimeout(() => {
-          wx.switchTab({
-            url: '/pages/newvideo/newvideo'
+          wx.navigateTo({
+            url: '/pages/audiolist/audiolist',
           })
         }, 2000)
       }
@@ -124,8 +136,8 @@ Page({
   },
   //判断文本框和图片列表
   taBlurImgList: function () {
-    const { title, videoUrl,category, article_type } = this.data;
-    if (!title || !videoUrl || !category || !article_type) {
+    const { title, audioUrl, category } = this.data;
+    if (!title || !audioUrl || !category) {
       //禁止发布
       this.setData({ usedDisabled: false });
     } else {
