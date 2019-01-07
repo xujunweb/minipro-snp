@@ -44,7 +44,7 @@ Page({
     }
     this.setData({
       classMap: [
-        ...[{ id: 99, text: '推荐' }, { id: 98, text: '关注' }],
+        ...[{ id: 98, text: '关注' }, { id: 99, text: '推荐' }],
         // ...[{id:99,text:'全部'}],
         ...classMap
       ]

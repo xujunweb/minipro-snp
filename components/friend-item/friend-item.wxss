@@ -5,16 +5,20 @@
   padding-top: 30rpx;
   /* margin-bottom: 30rpx; */
   position: relative;
+  display: flex;
+  justify-content: space-between;
   background: #fff;
+  align-items: flex-start;
 }
 .goods_row .goods_left{
   margin-left: 28rpx;
+  margin-right: 28rpx;
   width: 80rpx;
   height: 80rpx;
   border-radius: 8rpx;
   background-color: #eee;
-  position: absolute;
-  top:30rpx; left: 0;
+  /* position: absolute; */
+  /* top:30rpx; left: 28rpx; */
 }
 
 .goods_row .goods_left .head_img{
@@ -31,8 +35,9 @@
 }
 .goods_row .goods_right{
   box-sizing: border-box;
-  padding-left: 132rpx;
-  padding-right: 30rpx;
+  /* padding-left: 132rpx; */
+  /* padding-right: 30rpx; */
+  margin-right: 30rpx;
 }
 .goods_row .goods_right .goods_right_a{
   margin-top:-4rpx;

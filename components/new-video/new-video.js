@@ -85,6 +85,9 @@ Component({
     nextVideo:function(){
       this.triggerEvent('nextVideo')
     },
+    befoVideo:function(){
+      this.triggerEvent('befoVideo')
+    },
     //发布
     fabu:function(){
       wx.navigateTo({

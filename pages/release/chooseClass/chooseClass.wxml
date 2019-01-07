@@ -1,0 +1,9 @@
+<!--pages/release/chooseClass/chooseClass.wxml-->
+<view class="page" >
+    <view class="content">
+        <view wx:for="{{classifyList}}" wx:key="item" data-index="{{index}}" bindtap="choose"
+              class="label {{index == classifyList.length-1?'last':''}} {{item.type == 1 || item.type == 2?'special':''}}">
+            <text>{{item.classifyName}}</text>
+        </view>
+    </view>
+</view>

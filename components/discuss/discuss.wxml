@@ -30,7 +30,7 @@
 
 <!-- 底部 -->
 <view class="footer {{inputStatus=='focus'?'focus':''}} {{isIPhoneX?'iphone_x':''}} {{footerShow ? '' : 'hide'}}" style="bottom:{{boardHeigt + 'px'}}" wx:if="{{artid}}">
-    <input type="text" class="{{page=='goods'&&momentsType!=2?'goods':''}}" focus="{{getFocus}}" placeholder='写评论' cursor-spacing="20" bindinput="commentChange" value="{{comment}}" bindconfirm="sendDiscuss" confirm-type="完成" bindfocus="inputFocus" bindblur="inputBlur" maxlength="200" adjust-position="{{false}}"/>
+    <input type="text" class="{{page=='goods'&&momentsType!=2?'goods':''}}" focus="{{getFocus}}" placeholder='写评论' cursor-spacing="20" bindinput="commentChange" value="{{comment}}" bindconfirm="sendDiscuss" confirm-type="发送" bindfocus="inputFocus" bindblur="inputBlur" maxlength="200" adjust-position="{{false}}"/>
     <block wx:if="{{inputStatus != 'focus'}}">
         <view wx:if="{{page!='goods'||momentsType==2}}" class="comment {{comments.length == 0?'no_num':comments.length<10?'one_data':''}} {{comments.length > 0 ? 'comment_2' : ''}}" catchtap="scollCommnet">{{comments.length>0?comments.length:''}}</view>
         <!-- <view wx:if="{{originType==3}}" class="comment-nums"><text>66</text></view> -->

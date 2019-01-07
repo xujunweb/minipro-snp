@@ -1,8 +1,8 @@
 <wxs src="../../../utils/util.wxs" module="u" />
 <view class='j_page'>
-    <view class='contact_us' style='overflow:hidden;width:100%;margin-top:0;border-top:1rpx solid #e2e2e2;'>
+    <view class='contact_us' style='overflow:hidden;width:100%;margin-top:0;'>
         <view class='contact_us_li'>
-            <input type="text" placeholder='请输入标题' placeholder-style="color:#aaa;" value="{{title}}" class='in_tel' maxlength="40" bindinput='getTitle' bindblur="bindTextAreablur" />
+            <input type="text" placeholder='请输入标题' placeholder-style="color:#aaa;" value="{{title}}" class='in_tel' maxlength="60" bindinput='getTitle' bindblur="bindTextAreablur" />
         </view>
     </view>
     <view class='videodiv' wx:if="{{videoUrl}}">
@@ -38,7 +38,7 @@
             <image src="http://yamxcx.oss-cn-shenzhen.aliyuncs.com/pingtaixcx/phone_num.png" alt="" style="width:24rpx; height:24rpx; margin:32rpx 16rpx 0 0;"></image>
             <input type="number" placeholder='请输入标题' placeholder-style="color:#aaa;" value="{{phone}}" class='in_tel' maxlength="20" bindinput='getPhone' />
         </view> -->
-        <view class='contact_us_li' bindtap='chooseClass' style="border-bottom: 1px solid #fff;">
+        <view class='contact_us_li' bindtap='chooseClass' style="border-bottom: 1px solid #fff;" wx:if="{{article_type!='1'}}">
             <image src="http://yamxcx.oss-cn-shenzhen.aliyuncs.com/pingtaixcx/sort.png" alt="" style="width:24rpx; height:24rpx; margin:32rpx 20rpx 0 0;"></image>
             <input type="text" placeholder='请选择发布分类' disabled="true" maxlength="50" placeholder-style="color:#aaa;" class="in_address" value="{{classMap[category]}}" />
             <abcd><image src="../../../image/otherImages/next.png" alt="" /></abcd>

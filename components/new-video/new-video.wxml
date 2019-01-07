@@ -28,6 +28,9 @@
         <cover-view class='more center' bindtap='nextVideo'>
             下一个
         </cover-view>
+        <cover-view class='more center' bindtap='befoVideo'>
+            上一个
+        </cover-view>
       </cover-view>
       <!-- 评论 -->
       <cover-view class='commts' wx:if="{{iscomment}}">

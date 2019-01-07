@@ -58,7 +58,7 @@
   color: #fff;
   background-color:rgba(0,0,0,0.6);
   position: fixed;
-  bottom:0rpx;
+  bottom:85rpx;
   height: 1000rpx;
   overflow-y: scroll;
   width: 100%;

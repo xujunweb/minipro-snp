@@ -1,0 +1,37 @@
+/* pages/release/chooseClass/chooseClass.wxss */
+.page{ background-color: #F4F4F4; border-top: 1px solid #EFEFEF;}
+.content{ background-color: white; padding-left: 28rpx}
+.content .label{ position: relative; height: 90rpx; line-height: 90rpx; border-bottom: 1px solid #EFEFEF; font-size: 32rpx}
+.content .label.last{border-bottom: none}
+.content .label.special{ color: #aaaaaa;}
+.content .label image{position: absolute; top:45rpx; right: 30rpx; margin-top: -15rpx; width:17rpx; height:30rpx; display:block}
+
+.link_view{ width: 100%; text-align: center}
+.to_top{
+    background-color:#e6e6e6; height:60rpx; line-height:60rpx;
+    display:inline-block; margin: 0 auto; margin-top: 60rpx;
+    border-radius:10rpx; font-size:28rpx;
+}
+.to_top text{ color:#999; margin-left:25rpx;   vertical-align: middle;  }
+.to_top image{ width:24rpx; height:24rpx; margin-left: 10rpx;vertical-align: middle;  }
+.to_top .to_top_tel{ color:#667494; margin-right: 25rpx; vertical-align: middle;  }
+
+.xz_img{
+    width: 100rpx;
+    height: 118rpx;
+    margin: 0 auto;
+    display: block;
+    margin-top:272rpx;
+}
+.bind_click {
+    margin-top:24rpx;
+    text-align: center;
+    width: 100%;
+    margin-bottom: 318rpx;
+    font-size: 26rpx;
+    color: #bababa;
+}
+.bind_click text{
+    font-weight: bold;
+    color: #888;
+}

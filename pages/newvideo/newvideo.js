@@ -74,7 +74,9 @@ Page({
    */
   onPullDownRefresh: function () {
     this.data.articlelist = []
-    this.data.thisp = 1
+    if (this.data.thisp != 1){
+      this.data.thisp -= 1
+    }
     this.pageByArticle(true)
   },
   //下一个视频
@@ -82,6 +84,14 @@ Page({
     this.data.thisp += 1
     this.pageByArticle()
   },
+  //上一个视频
+  befoVideo:function(){
+    if (this.data.thisp != 1) {
+      this.data.thisp -= 1
+    }
+    this.pageByArticle()
+  },
+  //
   /**
    * 页面上拉触底事件的处理函数
    */

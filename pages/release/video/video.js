@@ -21,8 +21,12 @@ Page({
   onLoad: function (op) {
     this.setData({
       classMap: app.globalData.classMap,
-      article_type: op.artype
+      article_type: op.artype,
+      category: op.category || ''
     })
+    if (op.artype == '1') {
+      this.data.category = '0'
+    }
   },
   onShow: function (e) {
   },
@@ -115,9 +119,16 @@ Page({
           duration: 2000
         })
         setTimeout(() => {
-          wx.switchTab({
-            url: '/pages/newvideo/newvideo'
-          })
+          if (this.data.article_type == '1'){
+            wx.switchTab({
+              url: '/pages/friends/friends'
+            })
+          }else{
+            wx.switchTab({
+              url: '/pages/newvideo/newvideo'
+            })
+          }
+          
         }, 2000)
       }
     })
@@ -125,7 +136,7 @@ Page({
   //判断文本框和图片列表
   taBlurImgList: function () {
     const { title, videoUrl,category, article_type } = this.data;
-    if (!title || !videoUrl || !category || !article_type) {
+    if ((!title || this.data.article_type != '1') || !videoUrl || !category || !article_type) {
       //禁止发布
       this.setData({ usedDisabled: false });
     } else {
@@ -168,22 +179,25 @@ Page({
   },
   //选择分类
   chooseClass: function () {
-    var typeArry = []
-    for (let i in this.data.classMap) {
-      typeArry[i] = this.data.classMap[i]
-    }
-    wx.showActionSheet({
-      itemList: typeArry,
-      success: (res) => {
-        console.log(res)
-        this.setData({
-          category: '' + res.tapIndex
-        })
-        this.taBlurImgList()
-      },
-      fail: (err) => {
-        console.log(err)
-      }
+    // var typeArry = []
+    // for (let i in this.data.classMap) {
+    //   typeArry[i] = this.data.classMap[i]
+    // }
+    // wx.showActionSheet({
+    //   itemList: typeArry,
+    //   success: (res) => {
+    //     console.log(res)
+    //     this.setData({
+    //       category: '' + res.tapIndex
+    //     })
+    //     this.taBlurImgList()
+    //   },
+    //   fail: (err) => {
+    //     console.log(err)
+    //   }
+    // })
+    wx.navigateTo({
+      url: '/pages/release/chooseClass/chooseClass'
     })
   },
 });

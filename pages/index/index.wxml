@@ -13,10 +13,12 @@
 <!--分类-->
 <view class="container" style="background-color:#f4f4f4;">
 
-  <view class="classification {{isFixed ? 'fixed' : ''}}">
-    <view class="scroll-view-item_H" data-id="{{item.id}}" bindtap="ClickTab" wx:for="{{classMap}}" wx:key="{{index}}">
-      <text class="{{selectClass == item.id ? 'cur' : ''}}">{{item.text}}</text>
-    </view>
+  <view class="classification {{isFixed ? 'fixed' : ''}}" >
+    <scroll-view scroll-left="0" scroll-x="true" scroll-with-animation="true" class='scroll-view-shop'>
+      <view class="scroll-view-item_H" data-id="{{item.id}}" bindtap="ClickTab" wx:for="{{classMap}}" wx:key="{{index}}">
+        <text class="{{selectClass == item.id ? 'cur' : ''}}">{{item.text}}</text>
+      </view>
+    </scroll-view>
     <!-- <view class="scroll-view-item_H" data-id="99" bindtap="ClickTab">
       <text class="{{id == 99 ? 'cur' : ''}}">上头条</text>
     </view> -->

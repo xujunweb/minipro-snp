@@ -20,7 +20,8 @@
     "pages/detail/bodies/bodies",
     "pages/subject/check/check",
     "pages/audiolist/audiolist",
-    "pages/release/audio/audio"
+    "pages/release/audio/audio",
+    "pages/release/chooseClass/chooseClass"
   ],
   "window": {
     "backgroundTextStyle": "dark",
