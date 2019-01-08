@@ -3,9 +3,9 @@
 <view class='my_head'>
   <view class='left-content'>
     <view class='my_head_img'>
-      <image src="{{userInfo.avatar&&userInfo.avatar?userInfo.avatar:'https://xcximg.197.com/xcx/zctx2.png'}}" alt="" mode="aspectFill" bindtouchstart="touchStart" bindtouchend="touchEnd"  bindtap="manyTap"/>
+      <image src="{{userInfo.avatar&&userInfo.avatar?userInfo.avatar:'https://xcximg.197.com/xcx/zctx2.png'}}" alt="" mode="aspectFill" bindtouchstart="touchStart" bindtouchend="touchEnd" bindtap="manyTap" />
       <button open-type="getUserInfo" bindgetuserinfo="refreshUserInfo" class="vip_refresh" lang="zh_CN">
-          <image class="refresh_btn" src="https://xcximg.197.com/xcx/refresh.png"/>
+        <image class="refresh_btn" src="https://xcximg.197.com/xcx/refresh.png" />
       </button>
     </view>
     <view class="my_head_row">
@@ -13,7 +13,7 @@
       <view class='basic_tel'>{{userMap[userInfo.type]||'头条用户'}}</view>
     </view>
   </view>
-  
+
   <view class="vip_sub_row vip_sub_row1" catchtap="signIn">
     <view class="vip_btn">{{isSignIn?'已签到':'签到'}}</view>
   </view>
@@ -37,54 +37,54 @@
 
 <!-- 我的发布/点赞评论/收藏的店/收藏的商品/优惠券 -->
 <view class='my_row_one'>
-    <view class='my_mid_row my_mid_publish' catchtap="myPublic">
-      <view class='left'>
-        <image src='/images/wdfb.png'></image>
-        <text>我的发布</text>
-      </view>
-      <image class='arrow' src='http://yamxcx.oss-cn-shenzhen.aliyuncs.com/pingtaixcx/next.png'/>
+  <view class='my_mid_row my_mid_publish' catchtap="myPublic">
+    <view class='left'>
+      <image src='/images/wdfb.png'></image>
+      <text>我的发布</text>
     </view>
-    <!-- <view class='my_line'></view> -->
+    <image class='arrow' src='http://yamxcx.oss-cn-shenzhen.aliyuncs.com/pingtaixcx/next.png' />
+  </view>
+  <!-- <view class='my_line'></view> -->
 
-    <!-- <navigator url="/subPackage/my/pages/news_list/news_list" hover-class="none">
+  <!-- <navigator url="/subPackage/my/pages/news_list/news_list" hover-class="none">
       <view class='my_mid_row my_mid_zan'>
         <text>点赞评论</text>
         <view class='my_red' wx:if='{{remindArr[0].status==2}}'></view>
         <image src='http://yamxcx.oss-cn-shenzhen.aliyuncs.com/pingtaixcx/next.png'/>
       </view>
     </navigator> -->
-    <!-- <view class='my_line'></view> -->
+  <!-- <view class='my_line'></view> -->
 
-    <navigator url="/pages/my/follow/follow" hover-class="none">
-      <view class='my_mid_row my_mid_store_shop'>
-        <view class='left'>
-          <image src='/images/wdgz.png'></image>
-          <text>我的关注</text>
-        </view>
-        <image class='arrow' src='http://yamxcx.oss-cn-shenzhen.aliyuncs.com/pingtaixcx/next.png'/>
+  <navigator url="/pages/my/follow/follow" hover-class="none">
+    <view class='my_mid_row my_mid_store_shop'>
+      <view class='left'>
+        <image src='/images/wdgz.png'></image>
+        <text>我的关注</text>
       </view>
-    </navigator>
-    <!-- <view class='my_line'></view> -->
+      <image class='arrow' src='http://yamxcx.oss-cn-shenzhen.aliyuncs.com/pingtaixcx/next.png' />
+    </view>
+  </navigator>
+  <!-- <view class='my_line'></view> -->
 
-    <navigator url="/pages/my/like/like" hover-class="none">
-      <view class='my_mid_row my_mid_store_goods noborder'>
-        <view class='left'>
-          <image src='/images/wdsc.png'></image>
-          <text>我的收藏</text>
-        </view>
-        <image class='arrow' src='http://yamxcx.oss-cn-shenzhen.aliyuncs.com/pingtaixcx/next.png'/>
+  <navigator url="/pages/my/like/like" hover-class="none">
+    <view class='my_mid_row my_mid_store_goods noborder'>
+      <view class='left'>
+        <image src='/images/wdsc.png'></image>
+        <text>我的收藏</text>
       </view>
-    </navigator>
-    <!-- <view class='my_line'></view> -->
+      <image class='arrow' src='http://yamxcx.oss-cn-shenzhen.aliyuncs.com/pingtaixcx/next.png' />
+    </view>
+  </navigator>
+  <!-- <view class='my_line'></view> -->
 
-    <!-- <navigator url="/subPackage/message/pages/pages/coupon_list/coupon_list" hover-class="none">
+  <!-- <navigator url="/subPackage/message/pages/pages/coupon_list/coupon_list" hover-class="none">
       <view class='my_mid_row my_mid_coupon'>
         <text>优惠券</text>
         <image src='http://yamxcx.oss-cn-shenzhen.aliyuncs.com/pingtaixcx/next.png'/>
       </view>
     </navigator> -->
 
-    <!-- <navigator wx:if="{{enableSuperVip==2 && !isIOS}}" url="/subPackage/my/pages/pay-buy-record/pay-buy-record" hover-class="none">
+  <!-- <navigator wx:if="{{enableSuperVip==2 && !isIOS}}" url="/subPackage/my/pages/pay-buy-record/pay-buy-record" hover-class="none">
       <view class='my_mid_row my_mid_buy_record'>
         <text>购买记录</text>
         <image src='http://yamxcx.oss-cn-shenzhen.aliyuncs.com/pingtaixcx/next.png'/>
@@ -94,16 +94,25 @@
 </view>
 <!-- 商家入口/免费入驻/做小程序 -->
 <view class='my_row_one'>
-    <navigator url="/pages/my/feedback/feedback" hover-class="none">
-        <view class='my_mid_row my_mid_shop'>
-          <view class='left'>
-            <image src='/images/yhfk.png'></image>
-            <text>用户反馈</text>
-          </view>
-          <image class='arrow' src='http://yamxcx.oss-cn-shenzhen.aliyuncs.com/pingtaixcx/next.png'/>
-        </view>
-    </navigator>
-    <!-- <block>
+  <navigator url="/pages/my/enter/enter" hover-class="none">
+    <view class='my_mid_row my_mid_shop'>
+      <view class='left'>
+        <image src='/images/yhfk.png'></image>
+        <text>机构入驻</text>
+      </view>
+      <image class='arrow' src='http://yamxcx.oss-cn-shenzhen.aliyuncs.com/pingtaixcx/next.png' />
+    </view>
+  </navigator>
+  <navigator url="/pages/my/feedback/feedback" hover-class="none">
+    <view class='my_mid_row my_mid_shop'>
+      <view class='left'>
+        <image src='/images/yhfk.png'></image>
+        <text>用户反馈</text>
+      </view>
+      <image class='arrow' src='http://yamxcx.oss-cn-shenzhen.aliyuncs.com/pingtaixcx/next.png' />
+    </view>
+  </navigator>
+  <!-- <block>
         <view class='my_mid_row my_mid_join' catchtap="myPublic">
           <view class='left'>
             <image src='/images/xtsz.png'></image>
@@ -112,15 +121,15 @@
           <image class='arrow' src='http://yamxcx.oss-cn-shenzhen.aliyuncs.com/pingtaixcx/next.png'/>
         </view>
     </block> -->
-    <block>
-      <view class='my_mid_row my_mid_xcx noborder'>
-          <view class='left'>
-            <image src='/images/lxkf.png'></image>
-            <text>联系客服</text>
-          </view>
-          <image class='arrow' src='http://yamxcx.oss-cn-shenzhen.aliyuncs.com/pingtaixcx/next.png' />
-        </view>
-    </block>
+  <block>
+    <view class='my_mid_row my_mid_xcx noborder'>
+      <view class='left'>
+        <image src='/images/lxkf.png'></image>
+        <text>联系客服</text>
+      </view>
+      <image class='arrow' src='http://yamxcx.oss-cn-shenzhen.aliyuncs.com/pingtaixcx/next.png' />
+    </view>
+  </block>
 
 </view>
 

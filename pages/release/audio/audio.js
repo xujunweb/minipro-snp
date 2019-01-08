@@ -20,6 +20,9 @@ Page({
     },
     classMap: {},
     record:false, //录音状态
+    item:{
+      img_urls:''
+    }
   },
   onLoad: function (op) {
     this.setData({
@@ -41,7 +44,10 @@ Page({
       const { tempFilePath } = res
       this.setData({
         audioUrl: tempFilePath,
-        record: false
+        record: false,
+        item:{
+          img_urls: tempFilePath
+        }
       })
       this.taBlurImgList()
       // innerAudioContext = wx.createInnerAudioContext()

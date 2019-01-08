@@ -29,7 +29,8 @@
     </view>
 
     <view class='videodiv' wx:if="{{audioUrl}}">
-      <audio id="audioUrl" class="video" src="{{audioUrl}}" controls author="{{userInfo.nickname}}" name="本地音频" ></audio>
+      <audio item="{{item}}" />
+
       <view class='delete' bindtap='deleteImg'>删除音频</view>
     </view>
     <view class='startRecord' wx:if="{{!audioUrl}}">

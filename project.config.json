@@ -37,7 +37,7 @@
 			"list": []
 		},
 		"miniprogram": {
-			"current": 10,
+			"current": 11,
 			"list": [
 				{
 					"id": -1,
@@ -102,7 +102,13 @@
 				{
 					"id": -1,
 					"name": "音频列表",
-					"pathName": "pages/audiolist/audiolist"
+					"pathName": "pages/audiolist/audiolist",
+					"query": ""
+				},
+				{
+					"id": -1,
+					"name": "机构入驻",
+					"pathName": "pages/my/enter/enter"
 				}
 			]
 		}

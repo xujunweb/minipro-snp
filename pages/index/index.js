@@ -1,6 +1,6 @@
 //index.js
 //获取应用实例
-import { pageByArticle, articleLike } from '../../api/article.js'
+import { pageByArticle, articleLike, hotSearch } from '../../api/article.js'
 var app = getApp()
 Page({
 
@@ -113,24 +113,24 @@ Page({
   },
   //获取热搜列表
   getHotList:function(){
-    pageByArticle({
-      pageNum: 1,
-      pageSize:50,
-      type: '',
+    hotSearch({
+      // pageNum: 1,
+      // pageSize:50,
+      // type: '',
       login_user_id: app.globalData.userInfo.id,
-      category: '',
-      article_type: '',
+      // category: '',
+      // article_type: '',
     }).then((res) => {
       console.log(res)
-      var listMap = {}
-      var hotList = []
-      for(let i = 0;i<6;i++){
-        var num = this.recursive(listMap, res.data.list.length, res.data.list)
-        listMap[num] = true
-        hotList.push(res.data.list[num])
-      }
+      // var listMap = {}
+      // var hotList = []
+      // for(let i = 0;i<6;i++){
+      //   var num = this.recursive(listMap, res.data.list.length, res.data.list)
+      //   listMap[num] = true
+      //   hotList.push(res.data.list[num])
+      // }
       this.setData({
-        hotList:hotList
+        hotList: res.data
       })
     })
   },

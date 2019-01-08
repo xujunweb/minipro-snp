@@ -31,6 +31,21 @@ export const pageByArticle = (data) => {
     loading:true,
   })
 }
+//热搜文章
+export const hotSearch = (data) => {
+  let app = getApp()
+  return ajax({
+    url: wx.envConfig.host + 'article/hotSearch',
+    data: {
+      state: '0',
+      // status: '0',
+      // article_type: '0',
+      ...data
+    },
+    method: 'post',
+    loading: true,
+  })
+}
 //文章点赞
 export const articleLike = (data) => {
   return ajax({

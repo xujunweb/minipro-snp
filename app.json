@@ -21,7 +21,8 @@
     "pages/subject/check/check",
     "pages/audiolist/audiolist",
     "pages/release/audio/audio",
-    "pages/release/chooseClass/chooseClass"
+    "pages/release/chooseClass/chooseClass",
+    "pages/my/enter/enter"
   ],
   "window": {
     "backgroundTextStyle": "dark",
