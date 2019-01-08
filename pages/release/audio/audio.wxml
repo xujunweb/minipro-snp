@@ -1,7 +1,7 @@
 <!--pages/release/audio/audio.wxml-->
 <wxs src="../../../utils/util.wxs" module="u" />
 <view class='j_page'>
-    <view class='contact_us' style='overflow:hidden;width:100%;margin-top:0;border-top:1rpx solid #e2e2e2;'>
+    <view class='contact_us' style='overflow:hidden;width:100%;margin-top:0;'>
         <view class='contact_us_li'>
             <input type="text" placeholder='请输入标题' placeholder-style="color:#aaa;" value="{{title}}" class='in_tel' maxlength="40" bindinput='getTitle' bindblur="bindTextAreablur" />
         </view>

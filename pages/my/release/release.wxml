@@ -20,4 +20,7 @@
       </view>
     </view>
   </view>
+  <view class='noData' wx:if="{{!articlelist.length}}">
+    暂无数据
+  </view>
 </view>

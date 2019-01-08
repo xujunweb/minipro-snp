@@ -1,10 +1,10 @@
 /* pages/release/chooseClass/chooseClass.wxss */
-.page{ background-color: #F4F4F4; border-top: 1px solid #EFEFEF;}
-.content{ background-color: white; padding-left: 28rpx}
-.content .label{ position: relative; height: 90rpx; line-height: 90rpx; border-bottom: 1px solid #EFEFEF; font-size: 32rpx}
-.content .label.last{border-bottom: none}
-.content .label.special{ color: #aaaaaa;}
-.content .label image{position: absolute; top:45rpx; right: 30rpx; margin-top: -15rpx; width:17rpx; height:30rpx; display:block}
+.page{ background-color: #F4F4F4;}
+/* .content{ background-color: white; padding-left: 28rpx}
+.content .label{ position: relative; height: 90rpx; line-height: 90rpx; border-bottom: 1px solid #EFEFEF; font-size: 32rpx} */
+
+.content{ background-color: white; padding: 28rpx;display: flex;flex-wrap: wrap;justify-content:space-between;}
+.content .label{ position: relative; height: 70rpx; line-height: 70rpx; border: 1px solid #EFEFEF; font-size: 28rpx;border-radius: 10rpx;display: inline-block;padding: 0 40rpx;margin-bottom: 20rpx;color: #9da3f1;}
 
 .link_view{ width: 100%; text-align: center}
 .to_top{

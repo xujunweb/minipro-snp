@@ -1,1 +1,4 @@
 /* pages/friends/friends.wxss */
+.noData{
+  font-size: 30rpx;text-align: center;margin-top: 50rpx;
+}

@@ -38,6 +38,7 @@
   /* padding-left: 132rpx; */
   /* padding-right: 30rpx; */
   margin-right: 30rpx;
+  flex-grow: 1;
 }
 .goods_row .goods_right .goods_right_a{
   margin-top:-4rpx;
@@ -179,7 +180,7 @@
   /* background: url(http://yamxcx.oss-cn-shenzhen.aliyuncs.com/pingtaixcx/view1213.png) left center / 30rpx 20rpx no-repeat; */
   display: flex;
   justify-content: center;align-items: center;
-  margin-left: 50rpx;
+  /* margin-left: 50rpx; */
   height: 22rpx;
 
 }
@@ -238,7 +239,7 @@
   overflow: visible;
   position: absolute;
   top: -70rpx;
-  right: -35rpx;
+  right: -30rpx;
   z-index:9;
 }
 

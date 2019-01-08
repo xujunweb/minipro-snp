@@ -85,7 +85,7 @@ page{
   z-index: 666; background-color: white;
 }
 .classification .scroll-view-item_H{
-  width: 120rpx; text-align: center;display: inline-block;
+  width: 100rpx; text-align: center;display: inline-block;
   position: static; line-height: 60rpx; height: 70rpx;
 }
 .classification .scroll-view-item_H text { 

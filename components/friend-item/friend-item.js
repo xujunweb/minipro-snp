@@ -109,6 +109,15 @@ Component({
         })
       }
     },
+    /**
+   * 预览图片 （新闻）
+   */
+    previewImage: function (e) {
+      wx.previewImage({
+        current: e.currentTarget.dataset.src, // 当前显示图片的http链接
+        urls: this.data.item.img_urls.split(','), // 需要预览的图片http链接列表
+      })
+    },
     delGoods: function (e) { //删除好友圈
       var that = this;
       wx.showModal({

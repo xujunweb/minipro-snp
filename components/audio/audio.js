@@ -13,7 +13,7 @@ Component({
         if (newVal) {
           this.data.audioSl.src = newVal.img_urls
           this.setData({
-            duration: this.data.audioSl.duration
+            duration: Math.ceil(this.data.audioSl.duration)
           })
         }
       }
@@ -65,7 +65,11 @@ Component({
     })
   },
   attached:function(){
-    
+    setTimeout(() => {
+      this.setData({
+        duration: Math.ceil(this.data.audioSl.duration)
+      })
+    }, 200)
   },
   detached:function(){
     this.data.audioSl.destroy()

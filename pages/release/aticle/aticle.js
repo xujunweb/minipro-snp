@@ -25,6 +25,9 @@ Page({
     classMap:{}
   },
   onLoad: function (op) {
+    wx.setNavigationBarTitle({
+      title: '发布'+this.data.mapType[op.artype]
+    })
     this.setData({
       classMap: app.globalData.classMap,
       article_type: op.artype,
@@ -55,13 +58,14 @@ Page({
     })
   },
   //文件上传
-  uploadFile: function (file) {
+  uploadFile: function (file,i) {
     return uploadFile({
       filePath: file,
       name: 'file',
     }).then((res)=>{
       var data = JSON.parse(res.data)
-      this.data.postImgList = [...this.data.postImgList, ...[data.data[0].url]]
+      // this.data.postImgList = [...this.data.postImgList, ...[data.data[0].url]]
+      this.data.postImgList[i] = data.data[0].url
     })
   },
   //删除图片
@@ -80,14 +84,14 @@ Page({
         //发布显示授权弹窗的事件
         wx.eventBus.trigger('showOnAuthShow')
       } else {
-        if(!this.data.title){
+        if (!this.data.title && this.data.article_type != '1'){
           return wx.showToast({
             title: '请输入标题'
           })
         }
         if (!this.data.content){
           return wx.showToast({
-            title: '请输入标题'
+            title: '请输入内容'
           })
         }
         this.continuePublish();
@@ -102,7 +106,10 @@ Page({
     })
     var pro = []
     for (let i = 0, img; img = this.data.imgList[i]; i++) {
-      pro.push(this.uploadFile(img))
+      ((i)=>{
+        pro.push(this.uploadFile(img, i))
+      })(i)
+      
     }
     Promise.all(pro).then(() => {
       let data = {

@@ -12,5 +12,5 @@
     <view class='time'>{{u.transTime(item.insert_time)}}</view>
   </view>
   <view class='title'>{{item.title}}</view>
-  <audio item="{{item}}" />
+  <audio item="{{item}}" wx:if="{{item.img_urls}}" />
 </view>

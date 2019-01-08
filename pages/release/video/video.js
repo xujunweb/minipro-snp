@@ -19,6 +19,9 @@ Page({
     classMap: {}
   },
   onLoad: function (op) {
+    wx.setNavigationBarTitle({
+      title: '发布' + this.data.mapType[op.artype]
+    })
     this.setData({
       classMap: app.globalData.classMap,
       article_type: op.artype,
@@ -74,7 +77,7 @@ Page({
         //发布显示授权弹窗的事件
         wx.eventBus.trigger('showOnAuthShow')
       } else {
-        if (!this.data.title) {
+        if (!this.data.title && this.data.article_type != '1') {
           return wx.showToast({
             title: '请输入标题'
           })

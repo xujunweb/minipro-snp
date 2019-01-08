@@ -51,7 +51,7 @@ Page({
       login_user_id: app.globalData.userInfo.id,
       category: '',
       insert_author: app.globalData.userInfo.id,
-      article_types: '0,2',
+      article_types: '0,1,2',
     }).then((res) => {
       console.log(res)
       this.data.lastPage = res.data.lastPage
@@ -97,6 +97,10 @@ Page({
   jumpDe: function (e) {
     var item = e.currentTarget.dataset.item
     console.log(item)
+    //朋友圈没有详情
+    if (item.article_type == 1){
+      return
+    }
     var url = ''
     switch (item.type) {
       case 0:

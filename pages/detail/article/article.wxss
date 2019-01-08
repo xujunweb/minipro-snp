@@ -10,7 +10,6 @@ page {
 }
 
 .goods_content {
-  border-top: 1rpx solid #e2e2e2;
 }
 
 .goods_row {
