@@ -63,10 +63,10 @@
   </view> -->
 
   <!--协议-->
-  <view class="agreement" bindtap="radioChange">
+  <!-- <view class="agreement" bindtap="radioChange">
       <image src="http://yamxcx.oss-cn-shenzhen.aliyuncs.com/pingtaixcx/{{isCheck?'select_yes':'select_no'}}.png" />
       <label class="_text">我已阅读并同意<text catchtap="openAgreement" style="color: #76849E">《平台用户服务协议》</text></label>
-  </view>
+  </view> -->
    <!-- <view class='spaceheight'>
 
     </view> -->
