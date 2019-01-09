@@ -138,13 +138,14 @@ Page({
   },
   //判断文本框和图片列表
   taBlurImgList: function () {
-    const { title, videoUrl,category, article_type } = this.data;
-    if ((!title || this.data.article_type != '1') || !videoUrl || !category || !article_type) {
-      //禁止发布
-      this.setData({ usedDisabled: false });
-    } else {
-      this.setData({ usedDisabled: true });
-    }
+    // const { title, videoUrl,category, article_type } = this.data;
+    // if ((!title || this.data.article_type != '1') || !videoUrl) {
+    //   //禁止发布
+    //   this.setData({ usedDisabled: false });
+    // } else {
+    //   this.setData({ usedDisabled: true });
+    // }
+    this.setData({ usedDisabled: true });
   },
   //打开协议
   openAgreement: function () {

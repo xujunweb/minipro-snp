@@ -1,58 +1,66 @@
 <!--pages/my/enter/enter.wxml-->
 <!-- 商家免费入驻 -->
 <view class="shop-container" scroll-y="true" style="height:100%;" scroll-top="{{scrollTop}}" id='j_page'>
-  <view class="shop-tip">
+  <!-- <view class="shop-tip">
       <image src="http://yamxcx.oss-cn-shenzhen.aliyuncs.com/xcx/rzbanner.png" alt=""></image>
-  </view>
+  </view> -->
 
   <view class="store_logo">
-      <label>上传图片</label>
+      <label>预览图片</label>
       <view class="img-wrap">
         <image class="up_img" src="{{logo.length > 0 ? logo:'http://yamxcx.oss-cn-shenzhen.aliyuncs.com/xcx/addpict.png'}}" mode="aspectFill" data-type="0" bindtap="uploadImg"></image>
         <image class="cover-tip" src="http://yamxcx.oss-cn-shenzhen.aliyuncs.com/xcx/cxsc.png" wx-if="{{logo.length > 0?true:false}}"></image>
       </view>
   </view>
   <view class="input_view">
-     <view class="item">
-          <label>门店名称</label>
-          <input type="text" placeholder="请输入门店名称" placeholder-class="placeholder" bindinput="textInput" value="{{orgName}}" data-type="0"/>
+     <view class="item" style="border-bottom:2rpx solid #ddd">
+          <label>机构名称</label>
+          <input type="text" placeholder="机构名称" placeholder-class="placeholder" bindinput="textInput" value="{{name}}" data-type="0"/>
+    </view>
+    <view class="item" style="border-bottom:2rpx solid #ddd">
+          <label>机构描述</label>
+          <input type="text" placeholder="请输入机构描述" placeholder-class="placeholder" bindinput="textInput" value="{{type}}" data-type="1"/>
+    </view>
+    <view class="item">
+          <label>电话号码</label>
+          <input type="text" placeholder="请输入电话号码" placeholder-class="placeholder" bindinput="textInput" value="{{phone}}" data-type="2"/>
     </view>
   </view>
 
   <view class="input_view" style="border-top:0rpx;">
     <view class="item">
-          <label>店铺地址</label>
-          <input type="text" value='{{address}}' bindinput="addressChange" placeholder="请输入店铺地址" placeholder-class="placeholder" maxLength="16" />
+          <label>机构地址</label>
+          <input type="text" value='{{address}}' bindinput="addressChange" placeholder="请输入机构地址" placeholder-class="placeholder" maxLength="16" />
           <view class="item_select" bindtap="setShopLocation">设置定位</view>
     </view>
   </view>
   <!-- 门店简介 -->
   <view class="shop-img-view shop-indro-view">
-      <textarea class="shop-indroduce" placeholder-class="placeholder" maxlength="2000" value="{{description}}"  bindinput="textInput" data-type="4" placeholder="请输入门店简介"  />
-      <view class="imgs-title font32">门店简介</view>
+      <textarea class="shop-indroduce" placeholder-class="placeholder" maxlength="2000" value="{{describe}}"  bindinput="textInput" data-type="3" placeholder="请输入机构简介"  />
+      <view class="imgs-title font32">机构简介</view>
   </view>
 
   <!-- 门店图片 -->
   <view class="shop-img-view">
-      <text class="tipText">为保证显示效果，建议上传3张以上图片</text>
+      <text class="tipText">为保证显示效果，建议上传2张以上图片</text>
        <block  wx:for="{{orgImages}}" wx:for-index="i" wx:key="key">
             <view class="img-sub" wx:if="{{i<9}}">
-              <image src="{{item.url}}" class="img-big" mode="aspectFill"></image>
-              <image src="../../../image/otherImages/close.png" class="img-close" data-id="{{item.id}}" bindtap="delShopImg"></image>
+              <image src="{{item}}" class="img-big" mode="aspectFill"></image>
+              <image src="../../../image/otherImages/close.png" class="img-close" data-id="{{i}}" bindtap="delShopImg"></image>
             </view>
       </block>
       <view class="img-sub" wx:if="{{orgImages.length < 9}}" data-type="1" bindtap="uploadImg">
         <image src="../../../images/add.png" class="img-big"></image>
       </view>
-      <view class="imgs-title font32">门店图片</view>
+      <view class="imgs-title font32">机构图片</view>
   </view>
 
   <!-- 门店分类 -->
-  <view class="check-code-view shop-category" catchtap="selectShopCategory">
+  <!-- <view class="check-code-view shop-category" catchtap="selectShopCategory">
       <text class="font32">选择分类</text>
       <text class="category-name">{{shopCategory.name.length>0 ? shopCategory.name:'请选择入驻分类'}}</text>
       <image src="../../../image/otherImages/next.png"></image>
-  </view>
+  </view> -->
 
   <!--协议-->
   <view class="agreement" bindtap="radioChange">
@@ -65,7 +73,7 @@
 
   <!-- 提交-->
   <view class="shop-join">
-    <view class="btn-join" bindtap="toJoin">提交</view>
+    <view class="btn-join" bindtap="insertInstitute">提交</view>
   </view>
 
   <!--底部固定 发布部分-->

@@ -44,7 +44,7 @@ Page({
       status: '0',
       id: id,
     }).then((res) => {
-      // res.data.img_urls = res.data.img_urls.split(',')
+      res.data.img_urls = res.data.img_urls.split(',')
       this.data.artInfo = res.data
       this.setData({
         artInfo: res.data

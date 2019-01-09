@@ -94,7 +94,7 @@
 </view>
 <!-- 商家入口/免费入驻/做小程序 -->
 <view class='my_row_one'>
-  <!-- <navigator url="/pages/my/enter/enter" hover-class="none">
+  <navigator url="/pages/my/enter/enter" hover-class="none">
     <view class='my_mid_row my_mid_shop'>
       <view class='left'>
         <image src='/images/yhfk.png'></image>
@@ -102,7 +102,7 @@
       </view>
       <image class='arrow' src='http://yamxcx.oss-cn-shenzhen.aliyuncs.com/pingtaixcx/next.png' />
     </view>
-  </navigator> -->
+  </navigator>
   <navigator url="/pages/my/feedback/feedback" hover-class="none">
     <view class='my_mid_row my_mid_shop'>
       <view class='left'>

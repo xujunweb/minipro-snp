@@ -14,4 +14,9 @@
   <view class='jieshao'>
     {{artInfo.describe}}
   </view>
+  <view class="goods_right_c" wx:if="{{artInfo.img_urls.length}}">
+    <view wx:for="{{artInfo.img_urls}}" wx:for-index="idx" wx:key='item'>
+      <image src="{{item}}" data-src="{{item}}" catchtap="previewImage" class="goods_image" mode='widthFix'></image>
+    </view>
+  </view>
 </view>

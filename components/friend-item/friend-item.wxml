@@ -16,7 +16,7 @@
                     <image src='http://yamxcx.oss-cn-shenzhen.aliyuncs.com/pingtaixcx/wechat.png'></image>
                 </view> -->
       </view>
-      <view class="goods_right_b {{item.article?'':'common'}}" wx:if="{{item.title || item.classifyName}}">
+      <view class="goods_right_b {{item.article?'':'common'}}">
         <!-- <text class="category-tag-name" wx:if="{{item.classifyName}}">#{{item.classifyName}}#</text> -->
         <text wx:if="{{item.title}}" capture-bind:longpress="longpress" selectable="true">{{item.title}}</text>
         <view wx:if="{{item.content}}" capture-bind:longpress="longpress" selectable="true">{{item.content}}</view>

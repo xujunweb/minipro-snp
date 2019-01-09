@@ -2,7 +2,7 @@
 <view class='bodies'>
   <view class='list' bindtap='jumpNextPage' wx:for="{{articlelist}}" data-item="{{item}}" wx:if="{{articlelist.length}}" wx:key="{{index}}">
     <view class='left'>
-      <image src='{{item.cover_urls}}'></image>
+      <image src='{{item.cover_urls}}' mode='aspectFill'></image>
       <view class='content'>
         <view class='title'>{{item.name}}</view>
         <view class='dec'>{{item.type}}</view>

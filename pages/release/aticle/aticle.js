@@ -63,7 +63,12 @@ Page({
       filePath: file,
       name: 'file',
     }).then((res)=>{
-      var data = JSON.parse(res.data)
+      var data = null;
+      if (typeof res.data == "string") {
+        data = JSON.parse(res.data);
+      } else {
+        data = res.data;
+      }
       // this.data.postImgList = [...this.data.postImgList, ...[data.data[0].url]]
       this.data.postImgList[i] = data.data[0].url
     })
@@ -172,7 +177,7 @@ Page({
   //判断文本框和图片列表
   taBlurImgList: function () {
     const { title, content, category, article_type} = this.data;
-    if ((!title && this.data.article_type != '1') || !content || !category || !article_type) {
+    if ((!title && this.data.article_type != '1') || !content || !article_type) {
       //禁止发布
       this.setData({ usedDisabled: false });
     }else{

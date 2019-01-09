@@ -60,7 +60,7 @@ Component({
     chooseType: function (tempUserInfo){
       wx.showActionSheet({
         itemList:['教师','家长','学生','头条用户(默认)'],
-        itemColor:'',
+        itemColor:'#9da3f1',
         success:(res)=>{
           console.log(res.tapIndex)
           app.updataUser({ ...tempUserInfo, type:''+ res.tapIndex})
