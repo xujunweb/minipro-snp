@@ -156,12 +156,25 @@
     border-radius: 40rpx;
     box-sizing: border-box;
   }
-  .footer input.goods{
-    width: 328rpx;
+  .footer textarea.goods{
+    width:400rpx;
+    color: #000;
+    line-height: 40rpx;
+    height: 70rpx;
+    font-size: 28rpx;
+    padding-left: 19rpx; padding-right: 14rpx;
+    border:2rpx solid #ddd;
+    border-radius: 15rpx;
+    box-sizing: border-box;
   }
   .footer.focus input{
     width: 100% !important;
   }
+  .footer.focus textarea{
+    width: 100% !important;
+    height: 150rpx;
+  }
+
   .footer .comment{
     background: url(http://yamxcx.oss-cn-shenzhen.aliyuncs.com/xcx/comment_outline.png) left center / 44rpx no-repeat;
     font-size: 28rpx;

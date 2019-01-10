@@ -3,7 +3,7 @@
 <view class='j_page'>
     <view class='contact_us' style='overflow:hidden;width:100%;margin-top:0;'>
         <view class='contact_us_li'>
-            <input type="text" placeholder='请输入标题' placeholder-style="color:#aaa;" value="{{title}}" class='in_tel' maxlength="40" bindinput='getTitle' bindblur="bindTextAreablur" />
+            <input type="text" placeholder='请输入标题' placeholder-style="color:#aaa;" value="{{title}}" class='in_tel' maxlength="80" bindinput='getTitle' bindblur="bindTextAreablur" />
         </view>
     </view>
     <!-- <view class='conception_pic' style='overflow:hidden;width:100%;' wx:if="{{!videoUrl}}">

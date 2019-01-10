@@ -9,6 +9,6 @@
         <view class='adress'>地址：{{item.address}}</view>
       </view>
     </view>
-    <view class='phone'>电话</view>
+    <view class='phone' catchtap='makePhone' data-phone="{{item.phone}}">电话</view>
   </view>
 </view>

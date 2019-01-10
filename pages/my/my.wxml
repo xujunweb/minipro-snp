@@ -125,7 +125,7 @@
     <view class='my_mid_row my_mid_xcx noborder'>
       <view class='left'>
         <image src='/images/lxkf.png'></image>
-        <text>联系客服</text>
+        <text>在线客服</text>
       </view>
       <image class='arrow' src='http://yamxcx.oss-cn-shenzhen.aliyuncs.com/pingtaixcx/next.png' />
     </view>

@@ -8,7 +8,7 @@
     <!--想法-->
     <view class="conception">
         <view class='conception_text'>
-            <textarea rowspan="5" placeholder='要发布的内容...' bindinput="bindTextAreaFocus"  bindblur="bindTextAreablur" placeholder-style="color:#aaa;"></textarea>
+            <textarea rowspan="5" maxlength='10000' placeholder='要发布的内容...' bindinput="bindTextAreaFocus"  bindblur="bindTextAreablur" placeholder-style="color:#aaa;"></textarea>
         </view>
     </view>
 

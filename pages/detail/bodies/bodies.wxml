@@ -9,7 +9,7 @@
       <view class='dec'>{{artInfo.type}}</view>
       <view class='adress'>地址：{{artInfo.address}}</view>
     </view>
-    <view class='phone'>电话</view>
+    <view class='phone' catchtap='makePhone' data-phone="{{artInfo.phone}}">电话</view>
   </view>
   <view class='jieshao'>
     {{artInfo.describe}}

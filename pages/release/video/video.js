@@ -11,7 +11,7 @@ Page({
     width:'', //视频宽
     height:'',  //视频高
     article_type: '',  //文章类型
-    category: '',  //文章分类
+    category: null,  //文章分类
     mapType: {
       0: '资讯',
       1: '朋友圈'
@@ -25,7 +25,7 @@ Page({
     this.setData({
       classMap: app.globalData.classMap,
       article_type: op.artype,
-      category: op.category || ''
+      category: op.category || null
     })
     if (op.artype == '1') {
       this.data.category = '0'
@@ -50,7 +50,7 @@ Page({
         console.log('视频信息',res)
         if (res.duration>15){
           wx.showToast({
-            title: '视频过大',
+            title: '限15秒以内',
             icon: 'none'
           })
           return

@@ -6,7 +6,7 @@
   </view> -->
 
   <view class="store_logo">
-      <label>预览图片</label>
+      <label>公司logo</label>
       <view class="img-wrap">
         <image class="up_img" src="{{logo.length > 0 ? logo:'http://yamxcx.oss-cn-shenzhen.aliyuncs.com/xcx/addpict.png'}}" mode="aspectFill" data-type="0" bindtap="uploadImg"></image>
         <image class="cover-tip" src="http://yamxcx.oss-cn-shenzhen.aliyuncs.com/xcx/cxsc.png" wx-if="{{logo.length > 0?true:false}}"></image>
@@ -18,7 +18,7 @@
           <input type="text" placeholder="机构名称" placeholder-class="placeholder" bindinput="textInput" value="{{name}}" data-type="0"/>
     </view>
     <view class="item" style="border-bottom:2rpx solid #ddd">
-          <label>机构描述</label>
+          <label>业务类型</label>
           <input type="text" placeholder="请输入机构描述" placeholder-class="placeholder" bindinput="textInput" value="{{type}}" data-type="1"/>
     </view>
     <view class="item">

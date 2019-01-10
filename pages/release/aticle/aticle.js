@@ -16,7 +16,7 @@ Page({
     nickName:'',  //用户昵称
     title:'', //标题
     article_type:'',  //文章类型
-    category:'',  //文章分类
+    category:null,  //文章分类
     mapType: {
       0: '资讯',
       1: '朋友圈',
@@ -31,7 +31,7 @@ Page({
     this.setData({
       classMap: app.globalData.classMap,
       article_type: op.artype,
-      category: op.category||''
+      category: op.category||null
     })
     if (op.artype=='1'){
       this.data.category = '0'
@@ -158,6 +158,7 @@ Page({
   *文本框输入
   */
   bindTextAreaFocus: function (e) {
+    console.log('内容文字输入',e)
     var textareavalue = e.detail.value.trim();
     //大于0
     if (textareavalue.length > 0) {

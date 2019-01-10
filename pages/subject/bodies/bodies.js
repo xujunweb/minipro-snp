@@ -92,6 +92,13 @@ Page({
       }
     })
   },
+  //拨打电话
+  makePhone:function(e){
+    var phone = e.currentTarget.dataset.phone
+    wx.makePhoneCall({
+      phoneNumber: phone
+    })
+  },
   jumpNextPage: function (e) {
     console.log(e)
     wx.navigateTo({

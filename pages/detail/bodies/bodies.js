@@ -44,11 +44,20 @@ Page({
       status: '0',
       id: id,
     }).then((res) => {
-      res.data.img_urls = res.data.img_urls.split(',')
+      if (res.data.img_urls){
+        res.data.img_urls = res.data.img_urls.split(',')
+      }
       this.data.artInfo = res.data
       this.setData({
         artInfo: res.data
       })
+    })
+  },
+  //拨打电话
+  makePhone: function (e) {
+    var phone = e.currentTarget.dataset.phone
+    wx.makePhoneCall({
+      phoneNumber: phone
     })
   },
   /**

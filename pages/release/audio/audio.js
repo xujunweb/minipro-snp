@@ -14,7 +14,7 @@ Page({
     width: '', //视频宽
     height: '',  //视频高
     article_type: '0',  //文章类型
-    category: '',  //文章分类
+    category: null,  //文章分类
     mapType: {
       0: '资讯',
     },
@@ -28,7 +28,7 @@ Page({
     this.setData({
       classMap: app.globalData.classMap,
       article_type: op.artype,
-      category: op.category || ''
+      category: op.category || null
     })
     recorderManager = wx.getRecorderManager()
     //监听录音开始
@@ -144,7 +144,7 @@ Page({
   //判断文本框和图片列表
   taBlurImgList: function () {
     const { title, audioUrl, category } = this.data;
-    if (!title || !audioUrl || !category) {
+    if (!title || !audioUrl) {
       //禁止发布
       this.setData({ usedDisabled: false });
     } else {
