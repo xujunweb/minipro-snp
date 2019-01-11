@@ -84,27 +84,30 @@ Page({
   },
   //发布
   quicklyPublish: function (e) {
-    app.isAuthorize().then((data) => {
-      if (!data) {
-        //发布显示授权弹窗的事件
-        wx.eventBus.trigger('showOnAuthShow')
-      } else {
-        if (!this.data.title && this.data.article_type != '1'){
-          return wx.showToast({
-            title: '请输入标题'
-          })
-        }
-        if (!this.data.content){
-          return wx.showToast({
-            title: '请输入内容'
-          })
-        }
-        this.continuePublish();
-      }
-    })
+    // app.isAuthorize().then((data) => {
+    //   if (!data) {
+    //     //发布显示授权弹窗的事件
+    //     wx.eventBus.trigger('showOnAuthShow')
+    //   } else {
+        
+    //   }
+    // })
+    if (!this.data.title && this.data.article_type != '1') {
+      return wx.showToast({
+        title: '请输入标题'
+      })
+    }
+    if (!this.data.content) {
+      return wx.showToast({
+        title: '请输入内容'
+      })
+    }
+    this.continuePublish();
   },
   //调用发布接口
   continuePublish: function(){
+    if(!this.data.isLoading) return
+    this.data.isLoading = true
     wx.showLoading({
       title: '发布中...',
       mask: true
@@ -114,7 +117,6 @@ Page({
       ((i)=>{
         pro.push(this.uploadFile(img, i))
       })(i)
-      
     }
     Promise.all(pro).then(() => {
       let data = {
@@ -134,6 +136,7 @@ Page({
             title: '发布成功,待审核',
             duration: 2000
           })
+          this.data.isLoading = false
           setTimeout(() => {
             if (this.data.article_type == '1') {
               wx.switchTab({

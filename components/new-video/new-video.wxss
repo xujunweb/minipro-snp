@@ -62,6 +62,7 @@
   height: 1000rpx;
   overflow-y: scroll;
   width: 100%;
+  z-index: 9;
 }
 .coverView{
   position: fixed;
@@ -75,6 +76,13 @@
   align-content: center;
   align-items: center;
   text-align: center;
+}
+.video-title{
+  position:fixed;
+  bottom:140rpx;
+  color: #fff;
+  left: 50rpx;
+  font-size: 26rpx;
 }
 .coverIn{
   width: 200rpx;height: 50rpx;background: #fff;

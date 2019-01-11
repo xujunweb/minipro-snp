@@ -50,6 +50,10 @@
           </cover-view>
         </cover-view>
       </cover-view>
+      <!-- 标题 -->
+      <cover-view class='video-title'>
+        {{item.title}}
+      </cover-view>
     </video>
   </view>
   <view wx:if="{{iscomment}}" class="footer {{isIPhoneX?'iphone_x':''}} {{footerShow ? '' : 'hide'}}" style="bottom:{{boardHeigt + 'px'}}">
