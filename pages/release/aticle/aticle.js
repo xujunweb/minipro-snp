@@ -106,7 +106,7 @@ Page({
   },
   //调用发布接口
   continuePublish: function(){
-    if(!this.data.isLoading) return
+    if(this.data.isLoading) return
     this.data.isLoading = true
     wx.showLoading({
       title: '发布中...',
