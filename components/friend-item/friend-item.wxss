@@ -180,7 +180,7 @@
   /* background: url(http://yamxcx.oss-cn-shenzhen.aliyuncs.com/pingtaixcx/view1213.png) left center / 30rpx 20rpx no-repeat; */
   display: flex;
   justify-content: center;align-items: center;
-  /* margin-left: 50rpx; */
+  margin-left: 50rpx;
   height: 22rpx;
 
 }

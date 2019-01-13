@@ -1,9 +1,10 @@
 <!--pages/friends/friends.wxml-->
-<friend-item wx:for="{{articlelist}}" wx:key="{{index}}" wx:if="{{articlelist.length}}" item="{{item}}" arIndex="{{index}}" bind:deleArticle="deleArticle" />
-<view class='noData' wx:if="{{!articlelist.length}}">
-  暂无数据
+<view class="bigdiv">
+  <friend-item wx:for="{{articlelist}}" wx:key="{{index}}" wx:if="{{articlelist.length}}" item="{{item}}" arIndex="{{index}}" bind:deleArticle="deleArticle" />
+  <view class='noData' wx:if="{{!articlelist.length}}">
+    暂无数据
+  </view>
 </view>
-
 <!-- 授权弹窗 -->
 <authorize onShow="{{onAuthShow}}" onHide="{{onAuthHide}}" />
 <!-- 发布按钮 -->

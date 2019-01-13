@@ -11,7 +11,7 @@
             <view class="goods_right" style="min-height:90rpx">
                 <view class="goods_right_a">
                     <view class="goods_orgname">{{artInfo.user.nickname?artInfo.user.nickname:"微信用户"}}</view>
-                    <view class='type'>{{userMap[artInfo.type]||'头条用户'}}</view>
+                    <view class='type'>{{userMap[artInfo.user.type]||'头条用户'}}</view>
                     <view class='contact_2' catchtap='followUser' wx:if="{{artInfo.user.id != userInfo.id}}">
                         {{isfollow?'取消关注':'关注'}}
                     </view>
