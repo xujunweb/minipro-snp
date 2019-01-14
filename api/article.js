@@ -4,7 +4,7 @@ import ajax from '../utils/ajax.js'
 export const insertArticle = (data) => {
   return ajax({
     url: wx.envConfig.host + 'article/insert',
-    data: { ...data },
+    data: { status:'0',...data },
     method: 'post',
   })
 }
@@ -12,7 +12,7 @@ export const insertArticle = (data) => {
 export const getByArticleId = (data)=>{
   return ajax({
     url: wx.envConfig.host + 'article/getByArticleId',
-    data: { ...data },
+    data: { ...data, status:'' },
     method: 'post',
   })
 }
@@ -23,7 +23,7 @@ export const pageByArticle = (data) => {
     url: wx.envConfig.host + 'article/pageByArticle',
     data: {
       state: '0', 
-      status: '0', 
+      status: '', 
       article_type:'0',
       ...data
     },
@@ -38,7 +38,7 @@ export const hotSearch = (data) => {
     url: wx.envConfig.host + 'article/hotSearch',
     data: {
       state: '0',
-      // status: '0',
+      status: '',
       // article_type: '0',
       ...data
     },

@@ -6,6 +6,7 @@ export const pageByInstitute = (data) => {
     url: wx.envConfig.host + 'institute/pageByInstitute',
     data: {
       state: '0',
+      status:'',
       ...data
     },
     method: 'post',

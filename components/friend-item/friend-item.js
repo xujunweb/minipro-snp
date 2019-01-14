@@ -136,7 +136,7 @@ Component({
       updateArticle({
         id:this.data.item.id,
         state:'1',
-        update_author: this.data.item.id,
+        update_author: this.data.item.user.id,
       }).then(()=>{
         //删除成功，通知父级删除对应索引的
         this.triggerEvent('deleArticle', { index: this.data.arIndex})

@@ -3,7 +3,7 @@
 <view class='comment_and_praise' wx:if="{{artid}}">
     <view class='tab' id="test">
         <view class="tab_l tab_active">{{type==2?'他们的解答':'评论'}}</view>
-        <view class="tab_r" wx:if="{{type!=2}}">
+        <view class="tab_r">
           <image src='../../images/icon-zan.png'></image>
           <text>{{likeNum}}</text>
         </view>

@@ -126,7 +126,8 @@ Page({
         img_urls: this.data.postImgList.join(','),
         cover_urls: this.data.postImgList[0],
         category: this.data.category,
-        article_type: this.data.article_type
+        article_type: this.data.article_type,
+        status: this.data.article_type=='1'?'1':'0',
       }
       insertArticle(data).then((res) => {
         console.log(res)

@@ -111,7 +111,8 @@ Page({
       img_urls: url.url,
       cover_urls: url.cover_url,
       category: this.data.category,
-      article_type: this.data.article_type
+      article_type: this.data.article_type,
+      status: this.data.article_type == '1'?'1':'0'
     }
     insertArticle(data).then((res) => {
       console.log(res)

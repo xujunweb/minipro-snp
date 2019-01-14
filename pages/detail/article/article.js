@@ -60,6 +60,33 @@ Page({
       }
     })
   },
+  delGoods: function (e) { //删除咨询
+    var id = e.currentTarget.dataset.id;
+    var that = this;
+    wx.showModal({
+      title: '删除提醒',
+      content: '确定删除该文章？',
+      confirmColor: "#ff7800",
+      success: function (res) {
+        if (res.confirm) {
+          that.confirmDelGoods(id);
+        }
+      }
+    });
+  },
+  confirmDelGoods: function (id) { //确认删除
+    updateArticle({
+      id: this.data.id,
+      state: '1',
+      update_author: app.globalData.userInfo.id,
+    }).then(() => {
+      //删除成功，通知父级删除对应索引的
+      // this.triggerEvent('deleArticle', { index: this.data.arIndex })
+      wx.switchTab({
+        url: '/pages/index/index'
+      })
+    })
+  },
   //跳转到指定评论位置
   scollCommnet: function (e) {
     var query = wx.createSelectorQuery(),

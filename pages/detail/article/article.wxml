@@ -36,7 +36,7 @@
             <view class="goods_time">
                 <text class='time'>发布于：{{u.transTime(artInfo.insert_time)}}</text>
                 <!-- <text class="read-num">点赞 {{artInfo.like}}</text> -->
-                <text class='del' wx:if='{{artInfo.user.openid===userInfo.openid}}' catchtap='confirmDelGoods'>删除{{app.globalData.openid}}</text>
+                <text class='del' wx:if='{{artInfo.user.openid===userInfo.openid}}' catchtap='delGoods'>删除{{app.globalData.openid}}</text>
                 <!-- <text class='tel_he' catchtap="contactHe" data-tel="{{item.phone}}">评论{{artInfo.comment}}</text> -->
             </view>
         </view>

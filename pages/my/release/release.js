@@ -52,6 +52,7 @@ Page({
       category: '',
       insert_author: app.globalData.userInfo.id,
       article_types: '0,1,2',
+      status:'',
     }).then((res) => {
       console.log(res)
       this.data.lastPage = res.data.lastPage
