@@ -262,6 +262,11 @@ Component({
         article_id:this.data.artid,
         user_id: app.globalData.userInfo.id
       }).then((res)=>{
+        if (this.data.likeStatus != 1){
+          wx.showToast({
+            title: '感谢爱心',
+          })
+        }
         this.setData({
           reClick: false,
           isLikeDisabled: false,

@@ -289,9 +289,6 @@ Component({
         article_id: this.data.item.id,
         user_id: app.globalData.userInfo.id
       }).then((res) => {
-        wx.showToast({
-          title: '操作成功'
-        })
         if (!this.data.item.articleInfo) {
           this.data.item.articleInfo = {
             like: is_like
@@ -306,6 +303,9 @@ Component({
             return arr.user_id !== app.globalData.userInfo.id
           })
         }else{
+          wx.showToast({
+            title: '多谢点赞'
+          })
           this.data.item.like = this.data.item.like + 1
           //点赞列表添加一个点赞记录
           this.data.item.articleLike.push({
