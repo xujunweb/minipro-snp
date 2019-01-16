@@ -1,4 +1,5 @@
 <!--pages/detail/bodies/bodies.wxml-->
+<wxs src="../../../utils/util.wxs" module="u" />
 <view class='bod-detail'>
   <view class='top'>
     <image class='img' src='{{artInfo.cover_urls}}' mode='aspectFill'></image>
@@ -7,6 +8,9 @@
     <view class='content'>
       <view class='title'>{{artInfo.name}}</view>
       <view class='dec'>{{artInfo.type}}</view>
+      <view class='class'>
+        分类：<text wx:for="{{u.strToArry(artInfo.institute_type_child)}}" wx:key="{{index}}">{{litClass[item]+' '}}</text>
+      </view>
       <view class='adress'>地址：{{artInfo.address}}</view>
     </view>
     <view class='phone' catchtap='makePhone' data-phone="{{artInfo.phone}}">电话</view>

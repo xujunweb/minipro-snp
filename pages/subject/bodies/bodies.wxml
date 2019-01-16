@@ -1,14 +1,31 @@
 <!--pages/subject/bodies/bodies.wxml-->
+<wxs src="../../../utils/util.wxs" module="u" />
 <view class='bodies'>
+  <view class="classification fixed" >
+    <scroll-view scroll-left="0" scroll-x="true" scroll-with-animation="true" class='scroll-view-shop'>
+      <view class="scroll-view-item_H" data-id="{{item.key}}" bindtap="ClickTab" wx:for="{{classifyList}}" wx:key="{{index}}">
+        <text class="{{selectClass == item.key ? 'cur' : ''}}">{{item.name}}</text>
+      </view>
+    </scroll-view>
+    <!-- <view class="scroll-view-item_H" data-id="99" bindtap="ClickTab">
+      <text class="{{id == 99 ? 'cur' : ''}}">上头条</text>
+    </view> -->
+  </view>
   <view class='list' bindtap='jumpNextPage' wx:for="{{articlelist}}" data-item="{{item}}" wx:if="{{articlelist.length}}" wx:key="{{index}}">
     <view class='left'>
       <image src='{{item.cover_urls}}' mode='aspectFill'></image>
       <view class='content'>
         <view class='title'>{{item.name}}</view>
         <view class='dec'>{{item.type}}</view>
+        <view class='class'>
+          分类：<text wx:for="{{u.strToArry(item.institute_type_child)}}" wx:key="{{index}}">{{litClass[item]+' '}}</text>
+        </view>
         <view class='adress'>地址：{{item.address}}</view>
       </view>
     </view>
     <view class='phone' catchtap='makePhone' data-phone="{{item.phone}}">电话</view>
+  </view>
+  <view class='noData' wx:if="{{!articlelist.length}}">
+    暂无入住机构
   </view>
 </view>

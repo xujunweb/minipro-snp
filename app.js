@@ -78,6 +78,14 @@ App({
     //     }
     //   }
     // })
+    this.globalData.bigClass = {}
+    this.globalData.litClass = {}
+    for (let i = 0, bigClass; bigClass = this.globalData.instClass[i];i++){
+      this.globalData.bigClass[bigClass.key] = bigClass.name
+      for(let k = 0,litClass;litClass = bigClass.child[k];k++){
+        this.globalData.litClass[litClass.key] = litClass.name
+      }
+    }
   },
   globalData: {
     userInfo: null,
@@ -114,6 +122,81 @@ App({
       28:'综艺',
       29:'节日'
     },
+    instClass:[
+      {key:'0',name:'综合',child:[
+        { key: '01', name:'小提琴'},
+        { key: '02', name: '吉他' },
+        { key: '03', name: '优克里里' },
+        { key: '04', name: '非洲鼓' },
+        { key: '05', name: '视唱练耳' },
+        { key: '06', name: '跆拳道' },
+        { key: '07', name: '国际象棋' },
+        { key: '08', name: '珠心算' },
+        { key: '09', name: '少儿情商班' },
+        { key: '010', name: '自然发音' },
+        { key: '011', name: '玩乐英语' },
+      ]},
+      { key: '1', name:'舞蹈',child:[
+        { key: '11', name: '中国舞' },
+        { key: '12', name: '芭蕾舞' },
+        { key: '13', name: '爵士舞' },
+        { key: '14', name: '拉丁舞' },
+        { key: '15', name: '街舞' },
+      ]},
+      {
+        key: '2', name: '美术', child: [
+          { key: '21', name: '山水' },
+          { key: '22', name: '花鸟' },
+          { key: '23', name: '毛笔班' },
+          { key: '24', name: '素描' },
+          { key: '25', name: '动漫' },
+          { key: '26', name: '设计' },
+          { key: '27', name: '创想' },
+          { key: '28', name: '插画' },
+          { key: '29', name: '书画' },
+          { key: '210', name: '基础' },
+          { key: '211', name: '提高' },
+          { key: '212', name: '大师班' },
+        ]
+      },
+      {
+        key: '3', name: '科技', child: [
+          { key: '31', name: '机器人' },
+          { key: '32', name: '小小发明家' },
+          { key: '33', name: '小小建筑师' },
+          { key: '34', name: '创意生活班' },
+          { key: '35', name: '趣味科学' },
+          { key: '36', name: '机械结构' },
+          { key: '37', name: '机械奥秘' },
+          { key: '38', name: '机械达人' },
+          { key: '39', name: '科技工程师' },
+          { key: '310', name: '动力大师' },
+        ]
+      },
+      {
+        key: '4', name: '影视', child: [
+          { key: '41', name: '影视剧表演' },
+          { key: '42', name: '播音主持' },
+        ]
+      },
+      {
+        key: '5', name: '钢琴', child: [
+          { key: '51', name: '启蒙2级' },
+          { key: '52', name: '中级3-4级' },
+          { key: '53', name: '中级5-6级' },
+          { key: '54', name: '高级7-8级' },
+          { key: '55', name: '高级9-10级' },
+        ]
+      },
+      {
+        key: '6', name: '语言', child: [
+          { key: '61', name: '语言表演' },
+          { key: '62', name: '声优主持' },
+          { key: '63', name: '形体表演' },
+          { key: '64', name: '童声表演' },
+        ]
+      },
+    ],
     userMap:{
       0:'教师',
       1:'家长',

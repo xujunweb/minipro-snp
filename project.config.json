@@ -37,7 +37,7 @@
 			"list": []
 		},
 		"miniprogram": {
-			"current": 11,
+			"current": 12,
 			"list": [
 				{
 					"id": -1,
@@ -108,7 +108,13 @@
 				{
 					"id": -1,
 					"name": "机构入驻",
-					"pathName": "pages/my/enter/enter"
+					"pathName": "pages/my/enter/enter",
+					"query": ""
+				},
+				{
+					"id": -1,
+					"name": "选择机构分类",
+					"pathName": "pages/my/class/class"
 				}
 			]
 		}

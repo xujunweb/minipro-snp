@@ -21,14 +21,18 @@ Page({
       1:'type',
       2:"phone",
       3:'describe'
-    }
+    },
+    postBigClass:[],  //选中的大分类
+    postLitClass:[],  //选中的小分类
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function(options) {
-
+    this.setData({
+      litClass: app.globalData.litClass
+    })
   },
 
   /**
@@ -167,6 +171,8 @@ Page({
       address: this.data.address,
       cover_urls: this.data.logo,
       img_urls: this.data.orgImages.join(','),
+      institute_type_child:this.data.postLitClass.join(','),
+      institute_type:this.data.postBigClass.join(',')
     }
     var pass = true
     for(let key in data){
@@ -193,6 +199,11 @@ Page({
           url: '/pages/subject/bodies/bodies',
         })
       },1500)
+    })
+  },
+  chooseClass: function () {
+    wx.navigateTo({
+      url: '/pages/my/class/class'
     })
   },
   /**

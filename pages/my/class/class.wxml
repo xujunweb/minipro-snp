@@ -1,0 +1,14 @@
+<!--pages/my/class/class.wxml-->
+<view class="page" >
+    <view>
+      <view class='button'>
+        <text bindtap='chooseOk'>确定</text>
+      </view>
+      <view wx:for="{{classifyList}}" wx:for-item="bigItem" wx:for-index="bigIndex" wx:key="bigIndex" class="content">
+        <view class='bigClass'>{{bigItem.name}}</view>
+        <view wx:for="{{bigItem.child}}" wx:key="index" data-bigindex="{{bigIndex}}" bindtap="choose" class="label {{item.select?'select':''}}" data-litindex="{{index}}">
+            <text>{{item.name}}</text>
+        </view>
+      </view>
+    </view>
+</view>

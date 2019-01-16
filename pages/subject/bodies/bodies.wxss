@@ -6,6 +6,13 @@
   padding: 30rpx;background: #fff;
   border-bottom: 2rpx solid #ddd;
 }
+.noData{
+  text-align: center;
+  font-size: 30rpx;margin-top: 50rpx;
+}
+.bodies{
+  padding-top: 70rpx;
+}
 .list .left{
   display: flex;
   justify-content: space-between;
@@ -32,7 +39,41 @@
   font-size: 24rpx;
   margin-top: 15rpx;
 }
+.class{
+  font-size: 24rpx;
+  margin-top: 15rpx;
+}
 .phone{
   width: 80rpx;height: 80rpx;border: 2rpx solid #9da3f1;border-radius: 80rpx;
   text-align: center;line-height: 80rpx;font-size: 28rpx;color: #9da3f1;
+}
+
+
+/*分类*/
+.classification{
+  width: 100%;
+  box-sizing: border-box;
+  overflow: hidden;
+  position: relative;
+  background-color: white;
+  display: flex; padding-left: 0; justify-content:space-around;
+  border-bottom: 1rpx solid #e2e2e2;
+  border-top: 1rpx solid #e2e2e2;
+}
+.classification.fixed {
+  position: fixed; left: 0; top: 0;
+  z-index: 666; background-color: white;
+}
+.classification .scroll-view-item_H{
+  width: 100rpx; text-align: center;display: inline-block;
+  position: static; line-height: 60rpx; height: 70rpx;
+}
+.classification .scroll-view-item_H text { 
+  display: inline-block; 
+  font-size:28rpx;
+  color: #222;
+}
+.scroll-view-item_H text.cur{ color:#9da3f1; font-weight: 600;  }
+.card_rank button { 
+  display: inline-block; width: auto; color: #666; font-size: 28rpx; border:none;
 }

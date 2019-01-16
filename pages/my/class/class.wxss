@@ -1,0 +1,54 @@
+/* pages/my/class/class.wxss */
+/* pages/release/chooseClass/chooseClass.wxss */
+.page{ background-color: #F4F4F4;}
+/* .content{ background-color: white; padding-left: 28rpx}
+.content .label{ position: relative; height: 90rpx; line-height: 90rpx; border-bottom: 1px solid #EFEFEF; font-size: 32rpx} */
+
+.content{ background-color: white; padding:0 28rpx;overflow: hidden;padding-top: 28rpx;}
+.content .label{ position: relative; height: 70rpx; line-height: 70rpx; border: 1px solid #EFEFEF; font-size: 28rpx;border-radius: 10rpx;display: inline-block;padding: 0 40rpx;color: #9da3f1;float: left;margin: 0 5rpx;margin-bottom: 10rpx;}
+.content .select{
+  border: 1px solid #888;
+  color: #999;
+}
+.button{
+  padding: 10rpx 0;background: #fff;
+  text-align: right;padding-right: 30rpx;
+}
+.button text{
+  display: inline-block;
+  padding: 0 30rpx;line-height: 50rpx;border: 2rpx solid #999;
+  font-size: 28rpx;border-radius: 10rpx;
+}
+.link_view{ width: 100%; text-align: center}
+.to_top{
+    background-color:#e6e6e6; height:60rpx; line-height:60rpx;
+    display:inline-block; margin: 0 auto; margin-top: 60rpx;
+    border-radius:10rpx; font-size:28rpx;
+}
+.to_top text{ color:#999; margin-left:25rpx;   vertical-align: middle;  }
+.to_top image{ width:24rpx; height:24rpx; margin-left: 10rpx;vertical-align: middle;  }
+.to_top .to_top_tel{ color:#667494; margin-right: 25rpx; vertical-align: middle;  }
+
+.xz_img{
+    width: 100rpx;
+    height: 118rpx;
+    margin: 0 auto;
+    display: block;
+    margin-top:272rpx;
+}
+.bigClass{
+  font-size: 30rpx;color: #333;line-height: 60rpx;border-bottom: 2rpx solid #ddd;
+  margin-bottom: 20rpx;
+}
+.bind_click {
+    margin-top:24rpx;
+    text-align: center;
+    width: 100%;
+    margin-bottom: 318rpx;
+    font-size: 26rpx;
+    color: #bababa;
+}
+.bind_click text{
+    font-weight: bold;
+    color: #888;
+}

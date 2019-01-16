@@ -33,6 +33,10 @@
   font-size: 24rpx;
   margin-top: 15rpx;
 }
+.class{
+  font-size: 24rpx;
+  margin-top: 15rpx;
+}
 .phone{
   width: 80rpx;height: 80rpx;border: 2rpx solid #9da3f1;border-radius: 80rpx;
   text-align: center;line-height: 80rpx;font-size: 28rpx;color: #9da3f1;

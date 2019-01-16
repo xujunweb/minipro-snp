@@ -22,7 +22,8 @@
     "pages/audiolist/audiolist",
     "pages/release/audio/audio",
     "pages/release/chooseClass/chooseClass",
-    "pages/my/enter/enter"
+    "pages/my/enter/enter",
+    "pages/my/class/class"
   ],
   "window": {
     "backgroundTextStyle": "dark",

@@ -55,12 +55,12 @@
       <view class="imgs-title font32">机构图片</view>
   </view>
 
-  <!-- 门店分类 -->
-  <!-- <view class="check-code-view shop-category" catchtap="selectShopCategory">
+  <!-- 机构分类 -->
+  <view class="check-code-view shop-category" catchtap="chooseClass">
       <text class="font32">选择分类</text>
-      <text class="category-name">{{shopCategory.name.length>0 ? shopCategory.name:'请选择入驻分类'}}</text>
+      <text class="category-name">{{postLitClass.length>0 ? litClass[postLitClass[0]]+'等分类':'请选择入驻分类'}}</text>
       <image src="../../../image/otherImages/next.png"></image>
-  </view> -->
+  </view>
 
   <!--协议-->
   <!-- <view class="agreement" bindtap="radioChange">

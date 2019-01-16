@@ -22,6 +22,11 @@ Page({
       })
       this.getByArticleId(options.id)
     }
+    this.setData({
+      litClass: {
+        ...app.globalData.litClass
+      }
+    })
   },
 
   /**

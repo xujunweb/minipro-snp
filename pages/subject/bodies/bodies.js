@@ -12,14 +12,21 @@ Page({
     lastPage: 1, //总共页数
     noMore: false, //没有更多数据了
     classMap: [],
-    selectClass: 99, //默认选中的分类
+    selectClass: '0', //默认选中的分类
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-
+    this.setData({
+      classifyList: [
+        ...app.globalData.instClass
+      ],
+      litClass: {
+        ...app.globalData.litClass
+      }
+    })
   },
   /**
    * 生命周期函数--监听页面初次渲染完成
@@ -77,6 +84,7 @@ Page({
       pageNum: this.data.thisp,
       pageSize: 10,
       login_user_id: app.globalData.userInfo.id,
+      institute_type:this.data.selectClass,
     }).then((res) => {
       console.log(res)
       this.data.lastPage = res.data.lastPage
