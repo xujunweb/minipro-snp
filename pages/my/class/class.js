@@ -33,6 +33,13 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
+    for (let i = 0, big; big = app.globalData.instClass[i];i++){
+      big.num = 0
+      for(let k=0,lit;lit=big.child[k];k++ ){
+        lit.select = false
+      }
+      app.globalData.instClass[i] = big
+    }
     this.setData({
       classifyList: [
         ...app.globalData.instClass
