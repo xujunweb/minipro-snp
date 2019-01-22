@@ -148,15 +148,17 @@ Component({
         article_id: this.data.item.id,
         user_id: app.globalData.userInfo.id
       }).then((res) => {
-        wx.showToast({
-          title: '操作成功'
-        })
         if (!this.data.item.articleInfo) {
           this.data.item.articleInfo = {
             like: is_like
           }
         } else {
           this.data.item.articleInfo.like = is_like
+        }
+        if (is_like == 1){
+          wx.showToast({
+            title: '感谢爱心'
+          })
         }
         this.data.item.like = is_like != 1 ? this.data.item.like - 1 : this.data.item.like + 1
         this.setData({

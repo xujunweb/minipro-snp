@@ -97,7 +97,7 @@
   <navigator url="/pages/my/enter/enter" hover-class="none">
     <view class='my_mid_row my_mid_shop'>
       <view class='left'>
-        <image src='/images/yhfk.png'></image>
+        <image src='/images/xtsz.png'></image>
         <text>机构入驻</text>
       </view>
       <image class='arrow' src='http://yamxcx.oss-cn-shenzhen.aliyuncs.com/pingtaixcx/next.png' />

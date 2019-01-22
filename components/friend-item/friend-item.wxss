@@ -94,10 +94,10 @@
   font-size:30rpx;
   color: #333;
   line-height: 42rpx;
-  display: -webkit-box;
-  -webkit-box-orient: vertical;
+  /* display: -webkit-box; */
+  /* -webkit-box-orient: vertical; */
   overflow: hidden;
-  word-wrap: break-word;
+  /* word-wrap: break-word; */
   margin-top: 12rpx;
 }
 .goods_row .goods_right .goods_right_b view{
