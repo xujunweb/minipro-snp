@@ -1,0 +1,208 @@
+/* pages/chatIM/chatList/chatList.wxss */
+.recentchat-wrapper {
+  width: 100%;
+  padding: 0 22rpx;
+  box-sizing:border-box;
+  background-color: #fff;
+  min-height: 100%;
+  overflow-x: hidden;
+  overflow-y: scroll;
+}
+.recentchat-wrapper:first-child {
+}
+.no-recent {
+  width:100%;
+  position: fixed;
+  top: 30%;
+  color: #ccc;
+  display:flex;
+  flex-direction:column;
+  justify-content:center;
+  align-items:center;
+  margin-left: -20rpx;
+}
+.no-recent-image {
+  width:550rpx;
+  height:200rpx;
+  margin-bottom:40rpx;
+}
+.no-recent-text {
+  width:100%;
+  text-align:center;
+}
+/* 循环列表条目样式 */
+.recentchat-item {
+  width:100%;
+  height:132rpx;
+  padding:20rpx 28rpx 20rpx 0;
+  box-sizing:border-box;
+  display:flex;
+  border-bottom: 1px solid rgba(220,220,220,0.5);
+}
+.recentchat-item-img {
+  width: 100rpx;
+  height: 100rpx;
+  margin-right: 24rpx;
+  box-sizing: border-box;
+  display: flex;
+  align-self: center;
+  border-radius: 100%;
+}
+.recentchat-item-right {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  justify-content: space-around;
+}
+.recentchat-item-right .recentchat-item-message {
+  font-size: 28rpx;
+  color: #ccc;
+  word-break:break-all;
+}
+.recentchat-item-top {
+  align-self:flex-start;
+  display:flex;
+  flex-direction:row;
+  justify-content:space-between;
+  width:100%;
+  height:44rpx;
+  line-height:44rpx;
+  font-size: 36rpx;
+}
+.recentchat-item-bottom {
+  display:flex;
+  flex-direction:row;
+  justify-content:space-between;
+  /* align-self: flex-start; */
+  font-size: 28rpx;
+  color: #9B9B9B;
+  height:44rpx;
+  line-height:44rpx;
+}
+.recentchat-item-bottom .recentchat-item-desc {
+  max-width: 400rpx;
+  overflow: hidden;
+  display: inline-block;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}
+.recentchat-item-bottom .recentchat-item-unread {
+  background: #F43530;
+  border-radius: 18rpx;
+  width:52rpx;
+  height: 36rpx;
+  line-height: 36rpx;
+  text-align:center;
+  font-size: 22rpx;
+  color:#fff;
+}
+.recentchat-item-top .recentchat-item-title {
+  overflow: hidden;
+  max-width: 330rpx;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  font-size: 32rpx;
+}
+.recentchat-item-top .recentchat-item-time {
+  font-size: 24rpx;
+  color: #9B9B9B;
+}
+/* 删除按钮样式 */
+.swipedelete-btn {
+  position:absolute;
+  top:0;
+  right:-160rpx;
+  text-align:center;
+  background:#ffcb20;
+  color:#fff;
+  width:160rpx;
+  height:100%;
+  display:flex;
+  justify-content:center;
+  align-items:center;
+}
+
+
+
+
+.contact-add-button {
+  width: 89%;
+  font-size:32rpx;
+  margin-top: 20rpx;
+  background-color: #fff;
+}
+.contact-content-wrapper {
+  width: 100%;
+  padding-top: 20rpx;
+  box-sizing:border-box;
+  overflow:hidden;
+}
+/*消息通知、黑名单、我的电脑  */
+.contact-function-wrapper {
+  width: 100%;
+}
+.contact-header-item {
+  height: 120rpx;
+  display:flex;
+  position: relative;
+  border-bottom:1px solid rgba(220,220,220,0.5);
+  background-color:#fff;
+}
+.contact-header-item-img {
+  width:80rpx;
+  height:80rpx;
+  margin:0 40rpx;
+  align-self:center;
+}
+.contact-header-item-text {
+  align-self:center;
+  font-size: 32rpx;
+}
+.contact-header-item-arrow {
+  align-self:center;
+  position:absolute;
+  right:20rpx;
+  color:#aaa;
+  width: 18rpx;
+  height: 30rpx;
+}
+/*分类表头  */
+.contact-catagory-header {
+  width: 100%;
+  height: 46rpx;
+  line-height: 46rpx;
+  padding-left: 30rpx;
+  font-size: 28rpx;
+  color: #959595;
+}
+/*好友列表 */
+.contact-friend-wrapper {
+  padding-bottom:20rpx;
+}
+.contact-firend-item {
+  display: flex;
+  height: 112rpx;
+  line-height: 112rpx;
+  background-color:#fff;
+  border-bottom:1px solid rgba(220,220,220,0.5);
+}
+.contact-friend-item-logo {
+  width:80rpx;
+  height:80rpx;
+  margin:0 40rpx;
+  align-self:center;
+  border-radius:50%;
+}
+.contact-friend-item-nick {
+  align-self:center;
+  font-size: 32rpx;
+}
+
+/*公共样式*/
+.contact-item-hover {
+  background-color: #eee;
+}
+.gray {
+  filter: grayscale(100%);
+  /* filter: gray; */
+}

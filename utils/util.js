@@ -102,6 +102,19 @@ function formatNumber(n) {
   return n[1] ? n : '0' + n
 } 
 
+//处理IM返回的用户信息
+function handleArryToObject(arry){
+  var obj = {}
+  for(let i =0,item;item=arry[i];i++){
+    obj[item.To_Account] = {}
+    for (let k = 0, list; list = item.ProfileItem[k];k++){
+      obj[item.To_Account][list.Tag] = list.Value
+    }
+  }
+  return obj
+}
+
+
 module.exports = {
   formatTime:formatTime,
   formatLocation:formatLocation,
@@ -109,5 +122,6 @@ module.exports = {
   formatMoney,
   formatMoney2,
   formatMoney3,
-  formatTimeLayout
+  formatTimeLayout,
+  handleArryToObject
 };

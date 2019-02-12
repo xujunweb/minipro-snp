@@ -1,8 +1,36 @@
 //app.js
 import { getOpenId, getNewUserInfo, userUpdate } from './api/global.js'
 import { pageByFollow } from './api/user.js'
+import { getUserSig }from './api/chat.js'
 import { newPage, eventBus } from './utils/global-life-cycle.js'
 import env from './utils/config.js'
+import { handleArryToObject} from './utils/util.js'
+
+//获取应用实例
+import webim from './utils/webim_wx.js'
+import webimhandler from './utils/webim_handler.js'
+var tls = require('./utils/tls.js');
+
+var IMuserInfoMap = []
+var IMgetUserinfo = {
+  "To_Account": [],
+  "TagList":
+    [
+      "Tag_Profile_IM_Nick",
+      "Tag_Profile_IM_Image",
+      "Tag_Profile_IM_AllowType",
+      "Tag_Profile_IM_MsgSettings",
+      "Tag_Profile_IM_AdminForbidType",
+    ]
+}
+
+global.webim = webim;
+var Config = {
+  sdkappid: 1400181648,
+  accountType: 36862,
+  accountMode: 0 //帐号模式，0-表示独立模式，1-表示托管模式
+};
+
 
 newPage({//引入监听全局每个页面的生命周期
   onLoad: function (that, s) {
@@ -58,6 +86,8 @@ App({
     wx.envConfig = env[env.mode]
     //登录
     this.getOpenId()
+    //登陆腾讯IM
+    this.startLogin()
     // 获取用户信息
     // wx.getSetting({
     //   success: res => {
@@ -203,6 +233,8 @@ App({
       2:'学生',
       3:'头条用户'
     },
+    UserSig:null, //腾讯IM签名
+    Identifier:null,  //腾讯IM账号
   },
   //获取openid
   getOpenId: function (data) {
@@ -219,8 +251,19 @@ App({
             console.log('微信登录信息openid---',res)
             this.globalData.openid = res.data.openid
             this.globalData.userInfo = { ...res.data}
+            this.globalData.userInfo.nickName = this.globalData.userInfo.nickname
+            this.globalData.identifier = res.data.ticket
+            //获取腾讯IM签名
+            if (!this.globalData.UserSig){
+              getUserSig({ ticket: res.data.ticket}).then((re) => {
+                console.log('腾讯IM签名------', re)
+                this.globalData.UserSig = re.data
+                resolve(res.data)
+              })
+            }else{
+              resolve(res.data)
+            }
             wx.eventBus.trigger('updataUser', { ...res.data })
-            resolve(res.data)
           }).catch((res)=>{
             reject(res)
           })
@@ -301,11 +344,108 @@ App({
           var followMap = {}
           for (let i = 0, user; user = res.data.list[i]; i++) {
             followMap[user.user_id] = user
+            IMuserInfoMap.push(user.ticket)
+            // IMuserInfoMap[user.ticket] = user
+            // IMuserInfoMap[userInfo.ticket] = userInfo
           }
+          IMuserInfoMap.push(userInfo.ticket)
+          IMgetUserinfo.To_Account = [...IMuserInfoMap]
+          //设置关注用户
           wx.setStorageSync('followUser', followMap)
           resolve()
         })
       })
     })
   },
+  //开始登陆
+  startLogin:function(){
+    this.getOpenId().then((userInfo)=>{
+      this.IMlogin(userInfo)
+    })
+  },
+  //腾讯IM登陆
+  IMlogin: function (userInfo){
+    var that = this;
+    var avChatRoomId = 'd7b69830e9b24f20bb7adc728061d0ef';
+    webimhandler.init({
+      accountMode: Config.accountMode,
+      accountType: Config.accountType,
+      sdkAppID: Config.sdkappid,
+      avChatRoomId: avChatRoomId, //默认房间群ID，群类型必须是直播聊天室（AVChatRoom)
+      selType: webim.SESSION_TYPE.C2C,
+      selToID: avChatRoomId,
+      selSess: null //当前聊天会话
+    });
+    //当前用户身份
+    var loginInfo = {
+      'sdkAppID': Config.sdkappid, //用户所属应用id,必填
+      'appIDAt3rd': Config.sdkappid, //用户所属应用id，必填
+      'accountType': Config.accountType, //用户所属应用帐号类型，必填
+      // 'identifier': this.globalData.Identifier, //当前用户ID,必须是否字符串类型，选填
+      'identifier': userInfo.ticket, //当前用户ID,必须是否字符串类型，选填
+      'identifierNick': userInfo.nickname, //当前用户昵称，选填
+      'fromAccountHeadurl': userInfo.avatar,
+      'userSig': this.globalData.UserSig, //当前用户身份凭证，必须是字符串类型，选填
+    };
+    //监听（多终端同步）群系统消息方法，方法都定义在demo_group_notice.js文件中
+    var onGroupSystemNotifys = {
+      "5": webimhandler.onDestoryGroupNotify, //群被解散(全员接收)
+      "11": webimhandler.onRevokeGroupNotify, //群已被回收(全员接收)
+      "255": webimhandler.onCustomGroupNotify //用户自定义通知(默认全员接收)
+    };
+
+    //监听连接状态回调变化事件
+    var onConnNotify = function (resp) {
+      switch (resp.ErrorCode) {
+        case webim.CONNECTION_STATUS.ON:
+          //webim.Log.warn('连接状态正常...');
+          break;
+        case webim.CONNECTION_STATUS.OFF:
+          webim.Log.warn('连接已断开，无法收到新消息，请检查下你的网络是否正常');
+          break;
+        default:
+          webim.Log.error('未知连接状态,status=' + resp.ErrorCode);
+          break;
+      }
+    };
+
+
+    //监听事件
+    var listeners = {
+      "onConnNotify": webimhandler.onConnNotify, //选填
+      "onBigGroupMsgNotify": function (msg) {
+        //接收群消息
+        wx.eventBus.trigger('onBigGroupMsgNotify', msg)
+        // webimhandler.onBigGroupMsgNotify(msg, function (msgs) {
+        //   that.receiveMsgs(msgs);
+        // })
+      }, //监听新消息(大群)事件，必填
+      "onMsgNotify": (msgs)=>{
+        console.log('触发私聊--------',msgs)
+        //接收私聊消息
+        wx.eventBus.trigger('onMsgNotify', msgs)
+        // webimhandler.onMsgNotify(msgs)
+      }, //监听新消息(私聊(包括普通消息和全员推送消息)，普通群(非直播聊天室)消息)事件，必填
+      "onGroupSystemNotifys": webimhandler.onGroupSystemNotifys, //监听（多终端同步）群系统消息事件，必填
+      "onGroupInfoChangeNotify": webimhandler.onGroupInfoChangeNotify //监听群资料变化事件，选填
+    };
+
+    //其他对象，选填
+    var options = {
+      'isAccessFormalEnv': true, //是否访问正式环境，默认访问正式，选填
+      'isLogOn': false //是否开启控制台打印日志,默认开启，选填
+    };
+    //sdk登录
+    webimhandler.sdkLogin(loginInfo, listeners, options,()=>{
+      this.pageByFollow().then(()=>{
+        webim.getProfilePortrait(IMgetUserinfo, (res) => {
+          console.log('关注用户的IM信息----', res)
+          //设置IM相关用户缓存
+          wx.setStorageSync('IMUserInfoMap', handleArryToObject(res.UserProfileItem))
+        }, (err) => {
+          console.log('用户信息获取失败---', err)
+        })
+      })
+    });
+  }
 })

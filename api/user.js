@@ -1,7 +1,8 @@
 import ajax from '../utils/ajax.js'
-
+import { handleArryToObject} from '../utils/util.js'
 //关注用户
 export const followUser = (data,user) => {
+  console.log(user)
   return ajax({
     url: wx.envConfig.host + 'user/follow',
     data: { ...data },
@@ -16,6 +17,28 @@ export const followUser = (data,user) => {
       ...wx.getStorageSync('followUser'),
       ...obj
     })
+    var IMgetUserinfo = {
+      "To_Account": [user.ticket],
+      "TagList":
+        [
+          "Tag_Profile_IM_Nick",
+          "Tag_Profile_IM_Image",
+          "Tag_Profile_IM_AllowType",
+          "Tag_Profile_IM_MsgSettings",
+          "Tag_Profile_IM_AdminForbidType",
+        ]
+    }
+    global.webim.getProfilePortrait(IMgetUserinfo, (res) => {
+      console.log('关注用户的IM信息----', res)
+      //设置IM相关用户缓存
+      wx.setStorageSync('IMUserInfoMap', {
+        ...wx.getStorageSync('IMUserInfoMap'),
+        ...handleArryToObject(res.UserProfileItem)
+      })
+    }, (err) => {
+      console.log('用户信息获取失败---', err)
+    })
+    
     
   })
 }

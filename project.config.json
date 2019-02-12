@@ -37,7 +37,7 @@
 			"list": []
 		},
 		"miniprogram": {
-			"current": 12,
+			"current": 14,
 			"list": [
 				{
 					"id": -1,
@@ -114,7 +114,19 @@
 				{
 					"id": -1,
 					"name": "选择机构分类",
-					"pathName": "pages/my/class/class"
+					"pathName": "pages/my/class/class",
+					"query": ""
+				},
+				{
+					"id": -1,
+					"name": "IM单聊",
+					"pathName": "pages/chatIM/chat/chat",
+					"query": ""
+				},
+				{
+					"id": -1,
+					"name": "会话列表",
+					"pathName": "pages/chatIM/chatList/chatList"
 				}
 			]
 		}

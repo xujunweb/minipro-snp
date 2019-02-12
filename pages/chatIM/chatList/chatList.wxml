@@ -1,0 +1,49 @@
+<!--pages/chatIM/chatList/chatList.wxml-->
+<view class='recentchat-wrapper'>
+  <button class='contact-add-button' catchtap='addFriendHandler'>+ 创建群聊</button>
+  <view class='contact-content-wrapper'>
+    <view class='contact-function-wrapper'>
+      <view class='contact-header-item' hover-class='contact-item-hover' catchtap='switchToGroupListHandler' data-type="advanced">
+        <image src='/images/advanced.png' class='contact-header-item-img'></image>
+        <text class='contact-header-item-text'>我的群聊</text>
+        <image src="/images/arrow.png" class='contact-header-item-arrow'></image>
+      </view>
+    </view>
+  </view>
+  <view wx:if="{{chatList.length == 0}}" class='no-recent'>
+    <image src="{{iconNoMessage}}" class='no-recent-image'></image>
+    <text class='no-recent-text'>暂无会话内容</text>
+  </view>
+  <view catchtap='catchDeleteNotification'>
+    <swipe-delete>
+      <view wx:if="{{latestNotification.length !== 0}}" catchtap='switchToMessageNotification' class='recentchat-item' hover-class='recentchat-item-hover'>
+        <image src='/images/notice.png' class='recentchat-item-img'></image>
+        <view class='recentchat-item-right'>
+          <text class='recentchat-item-message'>{{latestNotification}}</text>
+        </view>
+      </view>
+    </swipe-delete>
+  </view>
+  <view wx:if="{{chatList.length != 0}}" wx:for="{{chatList}}" wx:for-item="message" wx:key="message.SessionId" data-session='{{message}}' catchtap='catchDeleteTap'>
+    <swipe-delete>
+      <view wx:if="{{message.account !== '消息通知'}}" class='recentchat-item' hover-class='recentchat-item-hover' catchtap='stopEventPropagation'>
+        <image src='{{message.SessionImage}}' class='recentchat-item-img' data-account='{{message.SessionId}}' catchtap='switchToPersonCard'></image>
+        <view class='recentchat-item-right' data-account='{{message.SessionId}}'
+        data-session='{{message}}' catchtap='switchToChating'>
+          <view class='recentchat-item-top'>
+            <text class='recentchat-item-title'>{{message.SessionNick}}</text>
+            <text class='recentchat-item-time'>{{message.MsgTimeStamp}}</text>
+          </view>
+          <view class='recentchat-item-bottom'>
+            <view style='display:flex;align-items:center;'>
+              <!-- <text class='recentchat-item-status'>[{{message.MsgSeq}}]</text> -->
+              <text class='recentchat-item-desc'>{{message.MsgShow}}</text>
+            </view>
+            <view wx:if="{{message.unread}}" class='recentchat-item-unread'>{{message.UnreadMsgCount || ''}}</view>
+          </view>
+        </view>
+      </view>
+    </swipe-delete>
+  </view>
+</view>
+

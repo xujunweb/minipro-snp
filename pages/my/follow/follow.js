@@ -79,7 +79,7 @@ Page({
             is_follow: '0',
             user_id: item.user_id,
             follow_user_id: app.globalData.userInfo.id
-          }).then((res) => {
+          }, item).then((res) => {
             //删除对应的索引
             this.data.articlelist.splice(index, 1)
             this.setData({

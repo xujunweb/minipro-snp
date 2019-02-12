@@ -1,0 +1,6 @@
+{
+  "navigationBarTitleText": "会话列表",
+  "usingComponents": {
+    "swipe-delete": "/components/swipedelete/swipedelete"
+  }
+}

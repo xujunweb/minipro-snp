@@ -23,7 +23,9 @@
     "pages/release/audio/audio",
     "pages/release/chooseClass/chooseClass",
     "pages/my/enter/enter",
-    "pages/my/class/class"
+    "pages/my/class/class",
+    "pages/chatIM/chat/chat",
+    "pages/chatIM/chatList/chatList"
   ],
   "window": {
     "backgroundTextStyle": "dark",
