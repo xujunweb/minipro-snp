@@ -25,7 +25,8 @@
     "pages/my/enter/enter",
     "pages/my/class/class",
     "pages/chatIM/chat/chat",
-    "pages/chatIM/chatList/chatList"
+    "pages/chatIM/chatList/chatList",
+    "pages/chatIM/creatGroup/creatGroup"
   ],
   "window": {
     "backgroundTextStyle": "dark",

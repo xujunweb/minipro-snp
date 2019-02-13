@@ -37,7 +37,7 @@
 			"list": []
 		},
 		"miniprogram": {
-			"current": 14,
+			"current": 15,
 			"list": [
 				{
 					"id": -1,
@@ -126,7 +126,15 @@
 				{
 					"id": -1,
 					"name": "会话列表",
-					"pathName": "pages/chatIM/chatList/chatList"
+					"pathName": "pages/chatIM/chatList/chatList",
+					"query": ""
+				},
+				{
+					"id": 15,
+					"name": "创建群聊",
+					"pathName": "pages/chatIM/creatGroup/creatGroup",
+					"query": "action=create",
+					"scene": null
 				}
 			]
 		}

@@ -1,0 +1,31 @@
+<!--pages/chatIM/creatGroup/creatGroup.wxml-->
+<view>
+  <view class='contact-content-wrapper'>
+    <view wx:if='{{friendCard.length === 0}}' class='list-no'>
+      暂无可邀请用户
+    </view>
+    <view wx:if="{{friendCard.length !== 0}}" class='contact-friend-wrapper'>
+      <view>
+        <!-- <view class='contact-catagory-header'>{{header}}</view> -->
+        <view wx:for='{{friendCard}}' wx:for-item='cardItem' wx:if="{{!cardItem.isBlack}}" class='contact-firend-item' hover-class='contact-item-hover' wx:key="cardItem.user_id" catchtap='friendItemClick' data-account='{{cardItem.user_id}}'>
+          <checkbox class="contact-friend-checkbox" value="{{cardItem.user_id}}" checked="{{addListMap[cardItem.user_id]}}"/>
+          <view style='border-radius: 50%;overflow:hidden;margin-top:10rpx;'>
+            <image src='{{cardItem.avatar ? cardItem.avatar : defaultUserLogo}}' class='{{cardItem.status == "离线" ? "contact-friend-item-logo gray" : "contact-friend-item-logo"}}'></image>
+          </view>
+          <text class='contact-friend-item-nick'>{{cardItem.nickname}}</text>
+        </view>
+      </view>
+    </view>
+    <view class='contact-function-wrapper'>
+      <view class='add-list'>
+        <view wx:for="{{addList1to6}}" wx:for-item='person' wx:key="person" class='add-list-item'>
+          <image class='add-list-item-logo' src="{{person.avatar || defaultUserLogo}}" ></image>
+        </view>
+      </view>
+      <view class='add-list-btns'>
+        <button size="mini" class="add-list-btn" hover-class='add-list-btn-hover' disabled="{{addList1to6.length === 0}}" catchtap='sureChoose'>确定</button>
+      </view>
+    </view>
+  </view>
+</view>
+

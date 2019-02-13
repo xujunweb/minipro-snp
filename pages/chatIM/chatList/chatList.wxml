@@ -1,6 +1,6 @@
 <!--pages/chatIM/chatList/chatList.wxml-->
 <view class='recentchat-wrapper'>
-  <button class='contact-add-button' catchtap='addFriendHandler'>+ 创建群聊</button>
+  <button class='contact-add-button' catchtap='creatGroup'>+ 创建群聊</button>
   <view class='contact-content-wrapper'>
     <view class='contact-function-wrapper'>
       <view class='contact-header-item' hover-class='contact-item-hover' catchtap='switchToGroupListHandler' data-type="advanced">

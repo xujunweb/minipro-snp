@@ -67,6 +67,12 @@ Page({
       url: `/pages/chatIM/chat/chat?roomId=${info.SessionId}&type=${info.SessionType}`,
     })
   },
+  //创建群聊
+  creatGroup:function(e){
+    wx.navigateTo({
+      url: `/pages/chatIM/creatGroup/creatGroup?action=create`,
+    })
+  },
   /**
    * 生命周期函数--监听页面隐藏
    */

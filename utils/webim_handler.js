@@ -300,29 +300,33 @@ function setProfilePortrait(options, callback) {
 
 //创建群
 
-function createBigGroup(groupId, loginInfo, callback) {
-  var options = {
-    'GroupId': groupId,
-    'Owner_Account': loginInfo.identifier,
-    'Type': 'Private',
-    'Name': 'DemoGroup',
-    'MemberList': [],
-    "ApplyJoinOption": "FreeAccess" // 申请加群处理方式（选填）
-  };
+function createBigGroup(options, callback) {
+  options.Owner_Account = loginInfo.identifier
+  // var options = {
+  //   'GroupId': groupId,
+  //   'Owner_Account': loginInfo.identifier,
+  //   'Type': 'Private',
+  //   'Name': 'DemoGroup',
+  //   'MemberList': [],
+  //   "ApplyJoinOption": "FreeAccess" // 申请加群处理方式（选填）
+  // };
   webim.createGroup(
     options,
     function(resp) {
       console.info('succ')
-      callback();
+      callback(resp);
     },
     function(err) {
       console.error(err.ErrorInfo);
-      callback();
+      callback(err);
     }
   );
 }
 
+//获取我的群组列表
+function getJoinedGroupListHigh(){
 
+}
 
 //进入大群
 
@@ -1203,4 +1207,6 @@ module.exports = {
   showGroupSystemMsg: showGroupSystemMsg,
   getC2CHistoryMsgs: getC2CHistoryMsgs,
   getRecentContactList,
+  getJoinedGroupListHigh,
+  createBigGroup,
 };
