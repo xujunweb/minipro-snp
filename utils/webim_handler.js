@@ -72,6 +72,88 @@ function getC2CHistoryMsgs(info,cbOk, cbError) {
   );
 }
 
+//获取群历史消息
+function getLastGroupHistoryMsgs(cbOk, cbError) {
+
+  if (selType == webim.SESSION_TYPE.C2C) {
+    console.log('当前的聊天类型为好友聊天，不能进行拉取群历史消息操作');
+    return;
+  }
+  getGroupInfo(selToID, function (resp) {
+    var reqMsgCount = 15
+    //拉取最新的群历史消息
+    var options = {
+      'GroupId': selToID,
+      'ReqMsgSeq': resp.GroupInfo[0].NextMsgSeq - 1,
+      'ReqMsgNumber': reqMsgCount
+    };
+    if (options.ReqMsgSeq == null || options.ReqMsgSeq == undefined || options.ReqMsgSeq <= 0) {
+      webim.Log.warn("该群还没有历史消息:options=" + JSON.stringify(options));
+      return;
+    }
+    webim.syncGroupMsgs(
+      options,
+      function (msgList) {
+        if (msgList.length == 0) {
+          webim.Log.error("该群没有历史消息了:options=" + JSON.stringify(options));
+          return;
+        }
+        // getPrePageGroupHistroyMsgInfoMap[selToID] = {
+        //   "ReqMsgSeq": msgList[msgList.length - 1].MsgSeq - 1
+        // };
+        if (cbOk)
+          cbOk(msgList);
+      },
+      function (err) {
+        console.log(err.ErrorInfo);
+      }
+    );
+  });
+};
+
+//获取群资料
+function getGroupInfo(group_id, cbOK, cbErr) {
+  var options = {
+    'GroupIdList': [
+      group_id
+    ],
+    'GroupBaseInfoFilter': [
+      'Type',
+      'Name',
+      'Introduction',
+      'Notification',
+      'FaceUrl',
+      'CreateTime',
+      'Owner_Account',
+      'LastInfoTime',
+      'LastMsgTime',
+      'NextMsgSeq',
+      'MemberNum',
+      'MaxMemberNum',
+      'ApplyJoinOption'
+    ],
+    'MemberInfoFilter': [
+      'Account',
+      'Role',
+      'JoinTime',
+      'LastSendMsgTime',
+      'ShutUpUntil'
+    ]
+  };
+  webim.getGroupInfo(
+    options,
+    function (resp) {
+      if (cbOK) {
+        cbOK(resp);
+      }
+    },
+    function (err) {
+      alert(err.ErrorInfo);
+    }
+  );
+};
+
+
 //获取会话列表(我的联系人)
 function getRecentContactList(count,cb){
   var options = {
@@ -1209,4 +1291,6 @@ module.exports = {
   getRecentContactList,
   getJoinedGroupListHigh,
   createBigGroup,
+  getLastGroupHistoryMsgs,
+  getGroupInfo,
 };

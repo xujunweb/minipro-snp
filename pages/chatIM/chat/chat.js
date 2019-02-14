@@ -22,7 +22,28 @@ Page({
     Identifier: null,
     UserSig: null,
     msgContent: "",
-    getPageC2CHistroyMsgInfo:{}
+    getPageC2CHistroyMsgInfo:{},
+    defaultUserLogo: app.globalData.PAGE_CONFIG.defaultUserLogo,
+    videoContext: null, // 视频操纵对象
+    isVideoFullScreen: false, // 视频全屏控制标准
+    videoSrc: '', // 视频源
+    recorderManager: null, // 微信录音管理对象
+    recordClicked: false, // 判断手指是否触摸录音按钮
+    iconBase64Map: {}, //发送栏base64图标集合
+    isLongPress: false, // 录音按钮是否正在长按
+    chatWrapperMaxHeight: 0,// 聊天界面最大高度
+    chatTo: '', //聊天对象account
+    chatType: '', //聊天类型 advanced 高级群聊 normal 讨论组群聊 p2p 点对点聊天
+    loginAccountLogo: '',  // 登录账户对象头像
+    focusFlag: false,//控制输入框失去焦点与否
+    emojiFlag: false,//emoji键盘标志位
+    moreFlag: false, // 更多功能标志
+    tipFlag: false, // tip消息标志
+    tipInputValue: '', // tip消息文本框内容
+    sendType: 0, //发送消息类型，0 文本 1 语音
+    messageArr: [], //[{text, time, sendOrReceive: 'send', displayTimeHeader, nodes: []},{type: 'geo',geo: {lat,lng,title}}]
+    inputValue: '',//文本框输入内容
+    from: ''
   },
   //事件处理函数
   bindViewTap: function() {
@@ -97,6 +118,15 @@ Page({
       console.log(err)
     })
   },
+  //获取群聊记录
+  getLastGroupHistoryMsgs:function(){
+    webimhandler.getLastGroupHistoryMsgs((msgs)=>{
+      console.log('群历史记录---',msgs)
+      for (let i = 0, msg; msg = msgs[i]; i++) {
+        this.receiveMsgs(webimhandler.showMsg(msg))
+      }
+    })
+  },
   onShow:function(){
     //监听群消息
     wx.eventBus.on('onBigGroupMsgNotify', (msg) => {
@@ -122,7 +152,11 @@ Page({
       });
     }
     setTimeout(()=>{
-      this.getC2CHistoryMsgs()
+      if(ops.type === 'GROUP'){
+        this.getLastGroupHistoryMsgs()
+      }else{
+        this.getC2CHistoryMsgs()
+      }
     },0)
   }
 })
